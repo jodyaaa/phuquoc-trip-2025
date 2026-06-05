@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phú Quốc 2026</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
   --bg:      #F7F6F2;
@@ -496,6 +498,17 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .btn-save:hover { background: var(--ocean2); }
 
+/* ━━━ MAP ━━━ */
+#map-wrap { height: calc(100vh - 180px); min-height: 420px; border-radius: var(--r2); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.map-day-sel { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.map-legend { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.map-leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; }
+.map-leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.leaflet-popup-content-wrapper { border-radius: 12px !important; box-shadow: 0 8px 24px rgba(0,0,0,.15) !important; font-family: var(--f-body) !important; }
+.leaflet-popup-content { font-size: 13px !important; line-height: 1.5 !important; margin: 10px 14px !important; }
+.map-popup-name { font-weight: 700; font-size: 14px; margin-bottom: 2px; color: var(--text); }
+.map-popup-type { font-size: 11px; color: var(--text3); }
+
 /* ━━━ DDAY ━━━ */
 .dday-badge {
   display: inline-flex; align-items: center; gap: 4px;
@@ -540,6 +553,7 @@ tbody tr:last-child td { border-bottom: none; }
       <button class="ntab" onclick="switchTab('activities')"><span class="ntab-icon">🌊</span>액티비티</button>
       <button class="ntab" onclick="switchTab('restaurants')"><span class="ntab-icon">🍜</span>맛집</button>
       <button class="ntab" onclick="switchTab('hotels')"><span class="ntab-icon">🏨</span>호텔 시설</button>
+      <button class="ntab" onclick="switchTab('map')"><span class="ntab-icon">🗺</span>지도</button>
     </div>
     <div class="nav-sync"><span id="syncStatus"></span></div>
   </div>
@@ -774,6 +788,54 @@ const SEED_HOTELS = [
   ]},
 ];
 
+// ━━━ MAP DATA ━━━
+const LOCS = {
+  airport:    {name:'푸꾸옥 국제공항',         lat:10.2269, lng:103.9670, icon:'✈️', color:'#6B7280'},
+  bw:         {name:'베스트웨스턴 프리미어 소나시', lat:10.2209, lng:103.9576, icon:'🏨', color:'#1A4A5C'},
+  ihg:        {name:'인터컨티넨탈 롱비치 리조트',  lat:10.1940, lng:103.9583, icon:'🏨', color:'#1A4A5C'},
+  cp:         {name:'크라운플라자 스타베이',      lat:10.4018, lng:103.9533, icon:'🏨', color:'#1A4A5C'},
+  nw:         {name:'뉴월드 푸꾸옥 리조트',      lat:10.0270, lng:103.9758, icon:'🏨', color:'#1A4A5C'},
+  sonas:      {name:'소나시 야시장',            lat:10.2215, lng:103.9573, icon:'🌃', color:'#D97706'},
+  duong:      {name:'즈엉동 야시장',            lat:10.2178, lng:103.9556, icon:'🌃', color:'#D97706'},
+  dinhcau:    {name:'딘꺼우 사원',             lat:10.2261, lng:103.9563, icon:'🏯', color:'#7C3AED'},
+  islands4:   {name:'4섬 호핑투어 출발지 (안토이)', lat:10.0320, lng:103.9710, icon:'🚢', color:'#0284C7'},
+  safari:     {name:'빈펄 사파리 푸꾸옥',        lat:10.3944, lng:103.8970, icon:'🦁', color:'#059669'},
+  vinwonders: {name:'빈원더스 푸꾸옥',           lat:10.3856, lng:103.9045, icon:'🎢', color:'#059669'},
+  grandworld: {name:'그랜드월드 + 야시장',        lat:10.3867, lng:103.9605, icon:'🌆', color:'#D97706'},
+  sunworld:   {name:'혼똔섬 케이블카 (선셋타운)',   lat:10.0190, lng:103.9720, icon:'🚡', color:'#DC2626'},
+  starfish:   {name:'스타피쉬 비치',            lat:10.3914, lng:103.8542, icon:'⭐', color:'#D97706'},
+  antoi:      {name:'안토이 군도 스노클링',       lat:10.0250, lng:103.9760, icon:'🤿', color:'#0284C7'},
+  ink360:     {name:'INK 360 루프탑바 (인터컨티넨탈)', lat:10.1940, lng:103.9583, icon:'🌅', color:'#7C3AED'},
+  cview:      {name:'C View 루프탑 (베스트웨스턴)',  lat:10.2209, lng:103.9576, icon:'🌅', color:'#7C3AED'},
+  baidai:     {name:'바이다이 비치',             lat:10.4066, lng:103.9520, icon:'🏖', color:'#0284C7'},
+  baikhem:    {name:'켐 비치',                 lat:10.0270, lng:103.9758, icon:'🏖', color:'#0284C7'},
+  meokitchen: {name:'메오 키친',               lat:10.2178, lng:103.9552, icon:'☕', color:'#D97706'},
+  casino:     {name:'코로나 카지노',             lat:10.3880, lng:103.9512, icon:'🎰', color:'#6B7280'},
+  hoasim:     {name:'Hoa Sim 스파 (크라운플라자)', lat:10.4018, lng:103.9533, icon:'💆', color:'#7C3AED'},
+  nwspa:      {name:'뉴월드 스파',             lat:10.0270, lng:103.9758, icon:'🧖', color:'#7C3AED'},
+};
+
+// 일별 방문 동선 (loc key 배열, 순서대로 폴리라인 연결)
+const MAP_DAYS = [
+  ['airport','bw'],                                        // D1
+  ['bw','baikhem','cview','sonas'],                        // D2 (비치→루프탑→야시장)
+  ['bw','islands4','bw','duong'],                          // D3
+  ['bw','baikhem','cview','meokitchen'],                   // D4
+  ['bw','ihg','ink360'],                                   // D5
+  ['ihg','duong'],                                         // D6
+  ['ihg','cp','baidai'],                                   // D7
+  ['cp','safari','vinwonders','grandworld'],                // D8
+  ['cp','sunworld','baidai'],                              // D9
+  ['cp','starfish','cp'],                                  // D10
+  ['cp','hoasim','grandworld'],                            // D11
+  ['cp','nw','baikhem'],                                   // D12
+  ['nw','antoi','nw'],                                     // D13
+  ['nw','nwspa','airport'],                                // D14
+];
+
+// 전체 동선 (호텔 이동 순서)
+const OVERALL_ROUTE = ['airport','bw','ihg','cp','nw','airport'];
+
 // ━━━ STATE ━━━
 const SERVER_URL = 'https://osaka-trip-server.onrender.com';
 let state = {};
@@ -842,13 +904,14 @@ let activeTab = 'schedule';
 
 function switchTab(id) {
   activeTab = id;
-  const labels = {schedule:'일정표', activities:'액티비티', restaurants:'맛집', hotels:'호텔'};
+  const labels = {schedule:'일정표', activities:'액티비티', restaurants:'맛집', hotels:'호텔', map:'지도'};
   document.querySelectorAll('.ntab').forEach(b =>
     b.classList.toggle('on', b.textContent.trim().includes(labels[id]))
   );
-  document.getElementById('fab').classList.toggle('hidden', id === 'hotels');
+  document.getElementById('fab').classList.toggle('hidden', id === 'hotels' || id === 'map');
   renderMain();
   window.scrollTo({top: 0, behavior: 'smooth'});
+  if (id === 'map') requestAnimationFrame(() => initLeafletMap(_mapDay));
 }
 
 function handleFab() {
@@ -863,6 +926,7 @@ function renderMain() {
   else if (activeTab === 'activities') el.innerHTML = renderActivities();
   else if (activeTab === 'restaurants') el.innerHTML = renderRestaurants();
   else if (activeTab === 'hotels') el.innerHTML = renderHotels();
+  else if (activeTab === 'map') el.innerHTML = renderMapTab();
 }
 
 // ━━━ SCHEDULE ━━━
@@ -1196,6 +1260,136 @@ function saveModal() {
     else { const i=state.restaurants.findIndex(x=>x.id===mCtx.id); state.restaurants[i]={...state.restaurants[i],...r}; }
     saveState(); hideModal(); renderMain();
   }
+}
+
+// ━━━ MAP ━━━
+let _map = null;
+let _mapDay = -1; // -1 = 전체
+
+function renderMapTab() {
+  const dayBtns = MAP_DAYS.map((_, i) =>
+    `<span class="fchip${_mapDay===i?' on':''}" onclick="selectMapDay(${i})">D${i+1}</span>`
+  ).join('');
+  return `
+    <div class="map-day-sel">
+      <span class="fchip${_mapDay===-1?' on':''}" onclick="selectMapDay(-1)">🗺 전체 동선</span>
+      ${dayBtns}
+    </div>
+    <div id="map-wrap"></div>
+    <div class="map-legend" id="map-legend"></div>`;
+}
+
+function selectMapDay(di) {
+  _mapDay = di;
+  renderMain();
+  requestAnimationFrame(() => initLeafletMap(di));
+}
+
+function makeIcon(emoji, color) {
+  return L.divIcon({
+    html: `<div style="width:32px;height:32px;background:${color};border:2.5px solid #fff;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)"><span style="transform:rotate(45deg);font-size:14px">${emoji}</span></div>`,
+    iconSize: [32, 32], iconAnchor: [16, 30], popupAnchor: [0, -30],
+    className: ''
+  });
+}
+
+function makeSmallIcon(color) {
+  return L.divIcon({
+    html: `<div style="width:12px;height:12px;background:${color};border:2px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.2)"></div>`,
+    iconSize: [12, 12], iconAnchor: [6, 6], popupAnchor: [0, -10],
+    className: ''
+  });
+}
+
+function initLeafletMap(di) {
+  if (_map) { try { _map.remove(); } catch(e) {} _map = null; }
+  const container = document.getElementById('map-wrap');
+  if (!container || typeof L === 'undefined') return;
+
+  _map = L.map('map-wrap', { zoomControl: true, attributionControl: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(_map);
+  L.control.attribution({prefix: '© OpenStreetMap'}).addTo(_map);
+
+  if (di === -1) renderOverallMap();
+  else renderDayMap(di);
+}
+
+function popupHtml(loc, seq) {
+  return `<div class="map-popup-name">${seq ? seq + '. ' : ''}${loc.icon} ${loc.name}</div>`;
+}
+
+function renderOverallMap() {
+  const bounds = [];
+
+  // 호텔 이동 폴리라인
+  const routeCoords = OVERALL_ROUTE.map(k => [LOCS[k].lat, LOCS[k].lng]);
+  L.polyline(routeCoords, {color:'#1A4A5C', weight:3, opacity:.7, dashArray:'8 6'}).addTo(_map);
+
+  // 호텔 마커 (크게)
+  const hotels = ['bw','ihg','cp','nw'];
+  hotels.forEach((k, i) => {
+    const loc = LOCS[k];
+    const m = L.marker([loc.lat, loc.lng], {icon: makeIcon(loc.icon, loc.color)}).addTo(_map);
+    m.bindPopup(popupHtml(loc, i+1));
+    bounds.push([loc.lat, loc.lng]);
+  });
+
+  // 공항 마커
+  const ap = LOCS.airport;
+  L.marker([ap.lat, ap.lng], {icon: makeIcon(ap.icon, ap.color)}).addTo(_map)
+    .bindPopup(popupHtml(ap, null));
+  bounds.push([ap.lat, ap.lng]);
+
+  // 모든 관광지 소형 마커
+  const skip = new Set(['bw','ihg','cp','nw','airport','baikhem','cview','ink360','hoasim','nwspa']);
+  Object.entries(LOCS).forEach(([k, loc]) => {
+    if (skip.has(k)) return;
+    L.marker([loc.lat, loc.lng], {icon: makeSmallIcon(loc.color)}).addTo(_map)
+      .bindPopup(popupHtml(loc, null));
+    bounds.push([loc.lat, loc.lng]);
+  });
+
+  _map.fitBounds(bounds, {padding:[40,40]});
+
+  // 범례
+  document.getElementById('map-legend').innerHTML = `
+    <div class="map-leg-item"><div class="map-leg-dot" style="background:#1A4A5C"></div>호텔 & 이동 동선</div>
+    <div class="map-leg-item"><div class="map-leg-dot" style="background:#0284C7"></div>해양 액티비티</div>
+    <div class="map-leg-item"><div class="map-leg-dot" style="background:#059669"></div>테마파크</div>
+    <div class="map-leg-item"><div class="map-leg-dot" style="background:#D97706"></div>야시장·식당</div>
+    <div class="map-leg-item"><div class="map-leg-dot" style="background:#7C3AED"></div>뷰포인트·스파</div>`;
+}
+
+function renderDayMap(di) {
+  const keys = MAP_DAYS[di];
+  const day  = SEED_SCHEDULE[di];
+  const bounds = [];
+  const seen = {};
+
+  // 폴리라인
+  const coords = keys.map(k => [LOCS[k].lat, LOCS[k].lng]);
+  L.polyline(coords, {color:'#1A4A5C', weight:3.5, opacity:.85}).addTo(_map);
+
+  // 마커 (중복 제거, 번호 부여)
+  let seq = 1;
+  keys.forEach(k => {
+    if (seen[k]) return;
+    seen[k] = true;
+    const loc = LOCS[k];
+    const m = L.marker([loc.lat, loc.lng], {icon: makeIcon(loc.icon, loc.color)}).addTo(_map);
+    m.bindPopup(popupHtml(loc, seq++));
+    m.openPopup && bounds.push([loc.lat, loc.lng]);
+    bounds.push([loc.lat, loc.lng]);
+  });
+
+  _map.fitBounds(bounds, {padding:[60,60]});
+
+  // 범례 (당일 장소 목록)
+  const items = [...new Set(keys)].map((k,i) => {
+    const loc = LOCS[k];
+    return `<div class="map-leg-item"><div class="map-leg-dot" style="background:${loc.color}"></div>${i+1}. ${loc.icon} ${loc.name}</div>`;
+  }).join('');
+  document.getElementById('map-legend').innerHTML = `<div style="font-size:12px;color:var(--text3);font-weight:600;margin-bottom:6px;width:100%">📍 ${day.d} · ${day.date} 방문 장소</div>${items}`;
 }
 
 // ━━━ DDAY ━━━
