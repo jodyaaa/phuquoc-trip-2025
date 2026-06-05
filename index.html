@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>푸꾸옥 여행 가이드 2025 · 7/24 – 8/7</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #F5EDD8;
+  --sand-dark: #E8D9BA;
+  --ocean: #1A4A5C;
+  --ocean-light: #2D6B82;
+  --ocean-pale: #E8F4F8;
+  --coral: #D4614A;
+  --coral-light: #F0A090;
+  --gold: #B8860B;
+  --gold-light: #F5D06A;
+  --text-dark: #1C1C1C;
+  --text-mid: #4A4A4A;
+  --text-light: #7A7A7A;
+  --white: #FDFAF5;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  background: var(--ocean);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5rem 5%;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(45,107,130,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(212,97,74,0.25) 0%, transparent 50%),
+    linear-gradient(160deg, #0D2E3A 0%, #1A4A5C 40%, #0F3040 100%);
+}
+.hero-wave {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: var(--white);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-dots {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 900px; }
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--white);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero-meta-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,208,106,0.7);
+}
+.hero-meta-value {
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 300;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 140px;
+  right: 5%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s 1.2s forwards;
+}
+.scroll-hint span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  writing-mode: vertical-rl;
+}
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253,250,245,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand-dark);
+  padding: 0 5%;
+}
+.nav-inner {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  overflow-x: auto;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  padding: 18px 20px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  border: none;
+  background: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav-btn:hover, .nav-btn.active {
+  color: var(--ocean);
+  border-bottom-color: var(--ocean);
+}
+
+/* ─── SECTION WRAPPER ─── */
+.section { display: none; padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+.section.active { display: block; }
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ocean);
+  margin-bottom: 0.5rem;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  margin-bottom: 3rem;
+}
+.divider {
+  width: 60px; height: 2px;
+  background: var(--coral);
+  margin: 1rem 0 2.5rem;
+}
+
+/* ─── HOTEL CARDS ─── */
+.hotel-block { margin-bottom: 4rem; }
+.hotel-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.hotel-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ocean);
+}
+.hotel-period {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--white);
+  background: var(--ocean);
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+.table-card {
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  border-radius: 16px;
+  overflow: hidden;
+}
+table { width: 100%; border-collapse: collapse; }
+th {
+  background: var(--ocean);
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+}
+td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--sand);
+  font-size: 13.5px;
+  vertical-align: top;
+  line-height: 1.5;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(232,244,248,0.4); }
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.badge-free { background: #E8F4F8; color: #1A4A5C; }
+.badge-paid { background: #FEF0ED; color: #A0441C; }
+.tip-box {
+  background: var(--ocean-pale);
+  border-left: 3px solid var(--ocean);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--ocean);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* ─── ACTIVITY GRID ─── */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+.activity-card {
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.activity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(26,74,92,0.12);
+}
+.act-icon { font-size: 28px; margin-bottom: 10px; }
+.act-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; color: var(--ocean); }
+.act-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; }
+.act-price {
+  font-size: 11.5px;
+  color: var(--text-light);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--sand);
+}
+.sub-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--ocean);
+  margin: 2.5rem 0 1.2rem;
+}
+
+/* ─── FOOD GRID ─── */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 2.5rem;
+}
+.food-card {
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  border-radius: 14px;
+  padding: 1.1rem;
+  transition: transform 0.2s;
+}
+.food-card:hover { transform: translateY(-2px); }
+.food-name { font-weight: 600; font-size: 14px; color: var(--text-dark); margin-bottom: 3px; }
+.food-cat { font-size: 11.5px; color: var(--coral); margin-bottom: 6px; }
+.food-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
+.note-box {
+  background: #FFFBF0;
+  border: 1px solid var(--gold-light);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--gold);
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+/* ─── SCHEDULE ─── */
+.day-grid { display: flex; flex-direction: column; gap: 16px; }
+.day-card {
+  border: 1px solid var(--sand-dark);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.day-card:hover { box-shadow: 0 4px 20px rgba(26,74,92,0.1); }
+.day-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--sand);
+  cursor: pointer;
+  user-select: none;
+}
+.day-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ocean);
+  min-width: 120px;
+}
+.day-title-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+.day-hotel-badge {
+  font-size: 11px;
+  background: var(--ocean);
+  color: var(--white);
+  padding: 3px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.day-arrow {
+  font-size: 14px;
+  color: var(--text-light);
+  transition: transform 0.2s;
+}
+.day-card.open .day-arrow { transform: rotate(180deg); }
+.day-body {
+  display: none;
+  padding: 1rem 1.25rem 1.25rem;
+}
+.day-card.open .day-body { display: block; }
+.tl { display: flex; flex-direction: column; gap: 8px; }
+.tl-row { display: flex; gap: 12px; align-items: flex-start; }
+.tl-t {
+  font-size: 12px;
+  color: var(--text-light);
+  min-width: 48px;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.tl-dot-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; padding-top: 5px; }
+.tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.tl-line { width: 1px; height: 100%; background: var(--sand-dark); flex: 1; min-height: 16px; }
+.d-meal { background: #27A060; }
+.d-pool { background: #1A6EA0; }
+.d-out  { background: var(--coral); }
+.d-hotel{ background: var(--ocean); }
+.d-eve  { background: var(--gold); }
+.tl-c { font-size: 13px; line-height: 1.5; flex: 1; }
+.tag {
+  display: inline-block;
+  font-size: 10.5px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 4px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+.t-meal { background: #E1F5EC; color: #166034; }
+.t-pool { background: #DEEEF9; color: #0F4F7A; }
+.t-out  { background: #FEF0ED; color: #9A3020; }
+.t-hotel{ background: #E8F4F8; color: #0F3A4E; }
+.t-eve  { background: #FFF8E0; color: #7A5B00; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ocean);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 2rem 5%;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ─── ANIM ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50%      { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .hero-title { font-size: 3.5rem; }
+  .hero-meta { gap: 1.2rem; }
+  .day-top { flex-wrap: wrap; gap: 8px; }
+  .day-hotel-badge { display: none; }
+  table { font-size: 12.5px; }
+  th, td { padding: 9px 11px; }
+}
+
+/* ─── INTERACTIVE ─── */
+#syncDot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--sand-dark); display: inline-block;
+  margin-left: 6px; vertical-align: middle; flex-shrink: 0;
+  transition: background 0.4s;
+}
+#syncDot.syncing { background: var(--gold-light); }
+#syncDot.ok      { background: #27A060; }
+#syncDot.error   { background: var(--coral); }
+
+.act-status {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px; cursor: pointer;
+  border: none; margin-top: 8px; transition: all 0.15s;
+  background: var(--sand-dark); color: var(--text-light);
+  font-family: inherit;
+}
+.act-status.booked { background: #DEEEF9; color: #0F4F7A; }
+.act-status.done   { background: #E1F5EC; color: #166034; }
+
+.food-status {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px; cursor: pointer;
+  border: none; margin-top: 8px; transition: all 0.15s;
+  background: var(--sand-dark); color: var(--text-light);
+  font-family: inherit;
+}
+.food-status.wish    { background: #FFF8E0; color: #7A5B00; }
+.food-status.visited { background: #E1F5EC; color: #166034; }
+
+.hotel-done {
+  font-size: 15px; cursor: pointer; opacity: 0.3;
+  transition: opacity 0.15s; user-select: none;
+}
+.hotel-done.checked { opacity: 1; color: #166034; }
+
+.tl-row { cursor: pointer; border-radius: 6px; padding: 2px 4px; transition: background 0.1s; }
+.tl-row:hover { background: rgba(26,74,92,0.04); }
+.tl-row.done .tl-c { text-decoration: line-through; opacity: 0.4; }
+.tl-row.done .tl-dot { opacity: 0.3; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">베트남 · 푸꾸옥 · 완전정복 가이드</div>
+    <h1 class="hero-title">Phú<br><em>Quốc</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">출발</span>
+        <span class="hero-meta-value">2025. 7. 24 (목) 19:30</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">귀국</span>
+        <span class="hero-meta-value">2025. 8. 7 (목) 08:15</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">숙박</span>
+        <span class="hero-meta-value">4개 리조트 · 13박</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">항공</span>
+        <span class="hero-meta-value">이스타항공 · 직항</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+  <div class="hero-wave"></div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-tab="hotels">🏨 호텔 시설</button>
+    <button class="nav-btn" data-tab="activities">🌊 액티비티</button>
+    <button class="nav-btn" data-tab="food">🍜 맛집</button>
+    <button class="nav-btn" data-tab="schedule">📅 전체 일정표</button>
+    <span id="syncDot" title=""></span>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB: HOTELS -->
+<!-- ════════════════════════════════════════ -->
+<main>
+<div id="tab-hotels" class="section active" style="padding-top:4rem">
+  <h2 class="section-heading">호텔 무료 시설 & 프로그램</h2>
+  <p class="section-sub">4개 리조트별 포함 서비스 완전 정리</p>
+  <div class="divider"></div>
+
+  <!-- BW -->
+  <div class="hotel-block">
+    <div class="hotel-header">
+      <span class="hotel-name">베스트 웨스턴 프리미어 소나시</span>
+      <span class="hotel-period">7/24 – 7/28 · 4박</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <tr><th>완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>조식 뷔페 (Essence Restaurant)</td><td>매일</td><td>베트남+인터내셔널 · 도넛월 인기</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>300m 라군풀 + 프라이빗 비치</td><td>07:00 – 19:00</td><td>패들보딩·카약·보드서핑 포함</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>네모 키즈클럽 (Nemo Kids Club)</td><td>08:30 – 16:00</td><td>영화·미술공예·풀게임 주간 스케줄</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>피트니스센터 + 스팀룸</td><td>06:00 – 22:00</td><td>트레드밀·사이클·웨이트</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>C View 루프탑 스카이바 입장</td><td>저녁</td><td>360도 선셋뷰 ★★★</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>코코넛잎 아트·수중스쿠터 체험</td><td>수시</td><td>프런트 스케줄 확인 후 참여</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>공항 셔틀 + Wi-Fi 전 구역</td><td>08:00 – 18:00</td><td>사전 예약 필요</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>Thala Spa 마사지</td><td>–</td><td>인도차이나 스타일</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>베이비시팅 (키즈클럽 연계)</td><td>08:30 – 16:00</td><td>소액 추가요금</td></tr>
+      </table>
+    </div>
+    <div class="tip-box">💡 소나시 야시장이 호텔 바로 맞은편. 저녁 즈엉동 셔틀 1회 무료 운영. C View 루프탑은 석양 시간대에 꼭 이용할 것.</div>
+  </div>
+
+  <!-- IHG -->
+  <div class="hotel-block">
+    <div class="hotel-header">
+      <span class="hotel-name">인터컨티넨탈 푸꾸옥 롱비치 리조트</span>
+      <span class="hotel-period">7/28 – 7/30 · 2박</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <tr><th>완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>조식 뷔페 (Sora &amp; Umi)</td><td>06:30 – 10:30</td><td>일식·베트남식·인터내셔널</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>수영장 4개 (Oasis·Vista·SPLASH! 포함)</td><td>07:00 – 19:00</td><td>SPLASH!는 워터슬라이드 키즈풀</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>Planet Trekkers 키즈클럽 (4–12세)</td><td>매일</td><td>250㎡, 인증 교사 운영</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>The Hideout 게임룸 (빌리어드·PS4·보드게임)</td><td>09:00 – 21:00</td><td>틴에이저 전용</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>The Theatre 영화관</td><td>저녁</td><td>스낵 포함 패밀리 스크리닝</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>피트니스센터 (Precor·Technogym) 24h</td><td>24시간</td><td>요가·스트레칭 세션 예약 가능</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>INK 360 루프탑바 입장 (19층)</td><td>저녁</td><td>푸꾸옥 최고층 선셋뷰 ★★★★★</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>요가·명상·팔찌·모자 페인팅 프로그램</td><td>시간대별</td><td>전날 예약 필수</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>즈엉동 야시장 셔틀 (1일 1회)</td><td>저녁</td><td>프런트 확인</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>HARNN Heritage Spa</td><td>–</td><td>어워드 수상 스파</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>Kids Can Cook / Kids Camp</td><td>주말+방학</td><td>별도 예약·요금</td></tr>
+      </table>
+    </div>
+    <div class="tip-box">💡 리조트 프로그램이 시간대별로 매우 촘촘함. 체크인 당일 프런트에서 전체 액티비티 스케줄표 받아둘 것. INK 360 선셋 좌석 사전 예약 강력 추천.</div>
+  </div>
+
+  <!-- CP -->
+  <div class="hotel-block">
+    <div class="hotel-header">
+      <span class="hotel-name">크라운 플라자 푸꾸옥 스타베이</span>
+      <span class="hotel-period">7/30 – 8/4 · 5박</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <tr><th>완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>조식 뷔페 (Horizons Restaurant)</td><td>매일</td><td>–</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>수영장 2개 (50m 랩풀 포함)</td><td>–</td><td>야간 성운 관측 명소</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>Tribe 키즈클럽 &amp; 게임룸</td><td>–</td><td>야생탐험가 컨셉, 창의·교육 활동</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>피트니스센터 (최신 장비)</td><td>–</td><td>–</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>바이다이 프라이빗 비치</td><td>–</td><td>섬 최고 선셋 포인트 ★★★★★</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>일일 레크리에이션 (비치 스포츠·요가 등)</td><td>매일</td><td>스케줄 프런트 확인</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>공항 셔틀 (스케줄 운영)</td><td>정해진 시간</td><td>12시간 전 예약 필수</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>Hoa Sim Spa</td><td>–</td><td>커플 패키지 인기</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>Amber Sands Beach Club 식음</td><td>–</td><td>비치클럽 분위기</td></tr>
+      </table>
+    </div>
+    <div class="tip-box">💡 북서쪽 바이다이 위치 → 빈원더스·사파리·그랜드월드 가장 가까운 호텔. 5박 베이스로 북부 관광지 모두 공략 가능. 50m 풀 새벽 수영 강력 추천.</div>
+  </div>
+
+  <!-- NW -->
+  <div class="hotel-block">
+    <div class="hotel-header">
+      <span class="hotel-name">뉴 월드 푸꾸옥 리조트</span>
+      <span class="hotel-period">8/4 – 8/6 · 2박</span>
+    </div>
+    <div class="table-card">
+      <table>
+        <tr><th>완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>조식 뷔페 (5세 미만 어린이 무료)</td><td>07:00 – 10:30</td><td>아이 코너 만족도 매우 높음</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>워터파크 (슬라이드·스플래시존)</td><td>–</td><td>투숙객 무료 입장</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>수영장 2개 + 키즈풀 (120m 인피니티 메인풀)</td><td>–</td><td>–</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>키즈클럽 (3–12세)</td><td>–</td><td>게임·미술·야외활동</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>카약·패들보딩·비치 수상스포츠</td><td>–</td><td>켐 비치 직접 연결</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>자전거 대여 + 피트니스센터</td><td>–</td><td>–</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-free">무료</span></td><td>공항 셔틀</td><td>08:00 – 17:45</td><td>24시간 전 예약 필수</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>스파 (16개 트리트먼트 룸)</td><td>–</td><td>마지막 날 패키지 추천</td></tr>
+        <tr><td class="hotel-done-cell" style="width:36px;text-align:center;vertical-align:middle"><span class="hotel-done" onclick="toggleHotel(this)">○</span></td><td><span class="badge badge-paid">유료</span></td><td>볼링장</td><td>–</td><td>–</td></tr>
+      </table>
+    </div>
+    <div class="tip-box">💡 남부 켐 비치 위치 → 가장 조용하고 프라이빗. 마지막 2박 여행 피로 회복에 최적. 귀국 전날 스파 예약 필수.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB: ACTIVITIES -->
+<!-- ════════════════════════════════════════ -->
+<div id="tab-activities" class="section">
+  <h2 class="section-heading">추천 액티비티</h2>
+  <p class="section-sub">호텔 위치별 최적 동선 기준</p>
+  <div class="divider"></div>
+
+  <h3 class="sub-heading">중부 롱비치 (베스트 웨스턴 · 인터컨티넨탈)</h3>
+  <div class="activity-grid">
+    <div class="activity-card"><div class="act-icon">🌊</div><div class="act-name">4섬 스노클링 호핑투어</div><div class="act-desc">낚시·스노클링·해적선 포함. 열대어·산호 직접 관찰. 아이 동반 가능. 마이리얼트립/피크타임 사전 예약.</div><div class="act-price">약 15,000–25,000원/인 · 하루 투어</div></div>
+    <div class="activity-card"><div class="act-icon">🌅</div><div class="act-name">INK 360 루프탑바</div><div class="act-desc">푸꾸옥 최고층(19층) 선셋 칵테일. 인터컨티넨탈 투숙 중 절대 빠뜨리면 안 되는 코스.</div><div class="act-price">입장 무료 · 음료 유료 · 저녁</div></div>
+    <div class="activity-card"><div class="act-icon">🏍</div><div class="act-name">딘꺼우 사원</div><div class="act-desc">푸꾸옥 수호신 사원. 일출·일몰 때 아름다운 현지 문화 명소. 즈엉동 야시장과 동선 연결.</div><div class="act-price">무료 · 오전 or 저녁 추천</div></div>
+    <div class="activity-card"><div class="act-icon">🌃</div><div class="act-name">즈엉동 야시장</div><div class="act-desc">푸꾸옥 최대 야시장. 해산물 직접 고르기, 길거리 음식, 기념품 쇼핑. 인터컨티넨탈 셔틀 무료.</div><div class="act-price">무료 입장 · 17:00 – 23:00</div></div>
+    <div class="activity-card"><div class="act-icon">🧖</div><div class="act-name">로컬 마사지</div><div class="act-desc">즈엉동 야시장 주변 마사지샵. 야시장 후 루틴으로 인기. 1시간에 3만원 내외.</div><div class="act-price">약 3,000 – 5,000원/60분</div></div>
+    <div class="activity-card"><div class="act-icon">☕</div><div class="act-name">메오 키친</div><div class="act-desc">즈엉동 모던 베트남 식당. 반쎄오·꼬치·에어컨 완비. 낮에도 쾌적하게 식사 가능.</div><div class="act-price">가성비 ★★★ · 즈엉동</div></div>
+  </div>
+
+  <h3 class="sub-heading">북서부 바이다이 (크라운 플라자)</h3>
+  <div class="activity-grid">
+    <div class="activity-card"><div class="act-icon">🦁</div><div class="act-name">빈펄 사파리 + 빈원더스</div><div class="act-desc">아프리카 사파리 동물원 + 워터파크·아쿠아리움 복합 시설. 가족 여행 최고 코스. 콤보 티켓 구매 시 저렴.</div><div class="act-price">약 70,000–100,000원/인 · 하루</div></div>
+    <div class="activity-card"><div class="act-icon">🚡</div><div class="act-name">혼똔섬 케이블카 + 썬월드</div><div class="act-desc">세계 최장급 해상 케이블카 → 혼똔섬 썬월드. 워터파크·놀이공원 포함. 눈 앞 절경.</div><div class="act-price">약 30,000–40,000원/인 · 반나절+</div></div>
+    <div class="activity-card"><div class="act-icon">⭐</div><div class="act-name">스타피쉬 비치</div><div class="act-desc">불가사리 가득한 비치. 크라운 플라자에서 차로 10분. 인생샷 명소. 오전 방문 추천.</div><div class="act-price">무료 · 오전 추천 (더위 전)</div></div>
+    <div class="activity-card"><div class="act-icon">🌆</div><div class="act-name">그랜드월드 + 야시장</div><div class="act-desc">복합 쇼핑·엔터테인먼트 단지. 분수쇼·야시장·쇼핑. 즈엉동보다 넓고 쾌적.</div><div class="act-price">무료 입장 · 저녁 추천</div></div>
+    <div class="activity-card"><div class="act-icon">🎰</div><div class="act-name">코로나 카지노</div><div class="act-desc">외국인 입장 가능 카지노. 크라운 플라자에서 매우 가까워 저녁 번외 코스로 접근 용이.</div><div class="act-price">외국인 무료 입장</div></div>
+    <div class="activity-card"><div class="act-icon">⛳</div><div class="act-name">빈펄 골프</div><div class="act-desc">국제 규격 골프장. 크라운 플라자에서 10분. 성인 단독 여유 시간 활용 가능.</div><div class="act-price">약 50,000원+/인</div></div>
+  </div>
+
+  <h3 class="sub-heading">남부 켐 비치 (뉴 월드 리조트)</h3>
+  <div class="activity-grid">
+    <div class="activity-card"><div class="act-icon">🏖</div><div class="act-name">켐 비치 선셋</div><div class="act-desc">푸꾸옥 남부 최고 비치. 프라이빗하고 물 맑음. 리조트 전용 해변에서 일몰 감상.</div><div class="act-price">무료 · 저녁 석양 ★★★★★</div></div>
+    <div class="activity-card"><div class="act-icon">🤿</div><div class="act-name">안토이 군도 스노클링</div><div class="act-desc">남부 섬 일대 산호·열대어 포인트. 푸꾸옥 전체에서 가장 물 투명도 높은 구역.</div><div class="act-price">약 20,000원/인 · 반나절</div></div>
+    <div class="activity-card"><div class="act-icon">💆</div><div class="act-name">뉴 월드 스파</div><div class="act-desc">16개 트리트먼트 룸. 귀국 전날 패키지로 완전 리프레시. 마지막 날 필수 코스.</div><div class="act-price">유료 · 사전 예약 추천</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB: FOOD -->
+<!-- ════════════════════════════════════════ -->
+<div id="tab-food" class="section">
+  <h2 class="section-heading">맛집 가이드</h2>
+  <p class="section-sub">구역별 검증된 맛집 리스트</p>
+  <div class="divider"></div>
+
+  <h3 class="sub-heading">중부 소나시 / 롱비치 (베스트 웨스턴·인터컨티넨탈 근처)</h3>
+  <div class="food-grid">
+    <div class="food-card"><div class="food-name">39K 소나시 야시장</div><div class="food-cat">🦐 해산물 · 야시장</div><div class="food-desc">마늘버터 새우구이·오징어튀김 명물. 기본 메뉴 39,000동(약 2천원). 할아버지 맥주 꼭 주문할 것.</div></div>
+    <div class="food-card"><div class="food-name">앵그리 크랩</div><div class="food-cat">🦀 씨푸드 레스토랑</div><div class="food-desc">즈엉동 야시장 근처. 게·새우·조개 구이 전문. 현지인+관광객 모두 줄 서는 맛집.</div></div>
+    <div class="food-card"><div class="food-name">신 짜오 (Xin Chào)</div><div class="food-cat">🦞 프리미엄 해산물</div><div class="food-desc">해변가 씨푸드 레스토랑. 소금달걀 새우구이·레몬그라스 오징어. 야시장에서 500m.</div></div>
+    <div class="food-card"><div class="food-name">메오 키친</div><div class="food-cat">🥘 베트남 퓨전</div><div class="food-desc">모던 인테리어·에어컨 완비. 반쎄오·꼬치·쌀국수 인기. 낮에도 쾌적.</div></div>
+    <div class="food-card"><div class="food-name">크랩 하우스</div><div class="food-cat">🦀 씨푸드</div><div class="food-desc">즈엉동 대표 씨푸드. 랍스터·킹크랩 직접 선택 후 즉석 조리. 세트 메뉴 추천.</div></div>
+    <div class="food-card"><div class="food-name">반쎄오 꾸어이</div><div class="food-cat">🥗 로컬 분식</div><div class="food-desc">바삭한 반쎄오 전문 로컬 맛집. 저렴하고 푸짐. 신선 채소와 함께 먹는 정통 스타일.</div></div>
+  </div>
+
+  <h3 class="sub-heading">북부 그랜드월드 (크라운 플라자 근처)</h3>
+  <div class="food-grid">
+    <div class="food-card"><div class="food-name">그랜드월드 야시장</div><div class="food-cat">🌃 복합 야시장</div><div class="food-desc">즈엉동보다 쾌적하고 넓음. 해산물·양념닭발·열대과일. 분수쇼 보면서 식사 가능.</div></div>
+    <div class="food-card"><div class="food-name">Amber Sands Beach Club</div><div class="food-cat">🍹 비치클럽 (크라운 플라자 내)</div><div class="food-desc">낮에는 풀&비치, 저녁에는 칵테일&다이닝. 분위기 최고.</div></div>
+    <div class="food-card"><div class="food-name">Horizons Restaurant</div><div class="food-cat">🍽 인터내셔널 (크라운 플라자 내)</div><div class="food-desc">뷔페 조식 수준 높음. 저녁 세트 메뉴도 품질 대비 합리적.</div></div>
+  </div>
+
+  <h3 class="sub-heading">남부 켐 비치 (뉴 월드 리조트)</h3>
+  <div class="food-grid">
+    <div class="food-card"><div class="food-name">LUA Grill &amp; Bar</div><div class="food-cat">🔥 우드파이어 그릴 (뉴 월드 내)</div><div class="food-desc">현지 식재료 장작 구이. 인터랙티브 쿠킹쇼 스타일. 리조트 내 저녁 식사 강력 추천.</div></div>
+    <div class="food-card"><div class="food-name">Bai Khem Bar</div><div class="food-cat">🍹 비치바 (뉴 월드 내)</div><div class="food-desc">켐 비치 접한 칵테일 바. 석양 보며 트로피컬 분위기. 체크아웃 전 오전도 운영.</div></div>
+  </div>
+
+  <div class="note-box">
+    💡 현금 필수: 야시장·로컬 식당은 현금(베트남 동) 결제만 가능. 공항 도착 직후 ATM 또는 킹콩마트 근처 환전소 이용 추천.
+    고수(cilantro)는 주문 시 미리 "không ngò" (콩응오) 라고 빼달라고 하세요.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB: SCHEDULE -->
+<!-- ════════════════════════════════════════ -->
+<div id="tab-schedule" class="section">
+  <h2 class="section-heading">전체 일정표</h2>
+  <p class="section-sub">13박 14일 · J스타일 완전 정복 플랜</p>
+  <div class="divider"></div>
+
+  <div class="note-box" style="margin-bottom:2rem">
+    ⚡ 사전 예약 필수: INK 360 선셋 좌석 / 4섬 호핑투어 / 빈펄 사파리+빈원더스 콤보 / 혼똔섬 케이블카 / 각 리조트 스파 / 인터컨티넨탈 리조트 프로그램 (전날까지)
+  </div>
+
+  <div class="day-grid" id="dayGrid"></div>
+</div>
+</main>
+
+<footer>
+  <p>푸꾸옥 여행 가이드 · 2025년 7월–8월 · 모든 정보는 사전 현지 확인 권장</p>
+</footer>
+
+<script>
+// ─── NAV TAB LOGIC ───
+const navBtns = document.querySelectorAll('.nav-btn');
+const sections = document.querySelectorAll('.section');
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    navBtns.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// ─── STATE ───
+const SERVER = 'https://osaka-trip-server.onrender.com';
+let state = { activities: {}, restaurants: {}, hotels: {}, schedule: {} };
+let _syncTimer = null;
+
+function loadLocalState() {
+  try { const s = localStorage.getItem('phuquoc2025'); if (s) state = JSON.parse(s); } catch(e) {}
+}
+
+function saveState() {
+  localStorage.setItem('phuquoc2025', JSON.stringify(state));
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(syncToServer, 800);
+}
+
+function setSyncStatus(s) {
+  const el = document.getElementById('syncDot');
+  if (!el) return;
+  el.className = s;
+  el.title = { syncing:'저장 중…', ok:'서버 동기화됨', error:'서버 저장 실패 (로컬 저장됨)' }[s] || '';
+}
+
+async function syncToServer() {
+  setSyncStatus('syncing');
+  try {
+    const res = await fetch(`${SERVER}/phuquoc/state`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(state),
+    });
+    setSyncStatus(res.ok ? 'ok' : 'error');
+  } catch(e) { setSyncStatus('error'); }
+}
+
+async function loadFromServer() {
+  try {
+    const res = await fetch(`${SERVER}/phuquoc/state`);
+    if (!res.ok) return;
+    const sv = await res.json();
+    if (!sv) return;
+    state = { activities:{}, restaurants:{}, hotels:{}, schedule:{}, ...sv };
+    localStorage.setItem('phuquoc2025', JSON.stringify(state));
+    applyAllState();
+    setSyncStatus('ok');
+  } catch(e) {}
+}
+
+// ─── ACTIVITY CARDS ───
+function toggleActivity(btn) {
+  const key = btn.dataset.key;
+  const cur = state.activities[key] || '';
+  const next = cur === '' ? 'booked' : cur === 'booked' ? 'done' : '';
+  state.activities[key] = next;
+  applyActivityBtn(btn, next);
+  saveState();
+}
+
+function applyActivityBtn(btn, s) {
+  if (s === 'done')   { btn.textContent = '✓ 완료'; btn.className = 'act-status done'; }
+  else if (s === 'booked') { btn.textContent = '예약완료'; btn.className = 'act-status booked'; }
+  else                { btn.textContent = '예약 전'; btn.className = 'act-status'; }
+}
+
+function enhanceActivities() {
+  document.querySelectorAll('.activity-card').forEach(card => {
+    const name = card.querySelector('.act-name')?.textContent?.trim() || '';
+    const btn = document.createElement('button');
+    btn.className = 'act-status';
+    btn.dataset.key = name;
+    applyActivityBtn(btn, state.activities[name] || '');
+    btn.onclick = (e) => { e.stopPropagation(); toggleActivity(btn); };
+    card.appendChild(btn);
+  });
+}
+
+// ─── FOOD CARDS ───
+function toggleFood(btn) {
+  const key = btn.dataset.key;
+  const cur = state.restaurants[key] || '';
+  const next = cur === '' ? 'wish' : cur === 'wish' ? 'visited' : '';
+  state.restaurants[key] = next;
+  applyFoodBtn(btn, next);
+  saveState();
+}
+
+function applyFoodBtn(btn, s) {
+  if (s === 'visited') { btn.textContent = '✓ 방문완료'; btn.className = 'food-status visited'; }
+  else if (s === 'wish') { btn.textContent = '♡ 가고싶어요'; btn.className = 'food-status wish'; }
+  else                 { btn.textContent = '+ 가고싶어요'; btn.className = 'food-status'; }
+}
+
+function enhanceFoods() {
+  document.querySelectorAll('.food-card').forEach(card => {
+    const name = card.querySelector('.food-name')?.textContent?.trim() || '';
+    const btn = document.createElement('button');
+    btn.className = 'food-status';
+    btn.dataset.key = name;
+    applyFoodBtn(btn, state.restaurants[name] || '');
+    btn.onclick = (e) => { e.stopPropagation(); toggleFood(btn); };
+    card.appendChild(btn);
+  });
+}
+
+// ─── HOTEL ROWS ───
+function toggleHotel(el) {
+  const row = el.closest('tr');
+  const table = el.closest('table');
+  const block = el.closest('.hotel-block');
+  const hotelName = block?.querySelector('.hotel-name')?.textContent?.trim() || '';
+  const facilityName = row?.querySelector('td:nth-child(3)')?.textContent?.trim() || '';
+  const key = (hotelName + '_' + facilityName).substring(0, 60);
+  el.dataset.key = key;
+  state.hotels[key] = !state.hotels[key];
+  el.textContent = state.hotels[key] ? '✓' : '○';
+  el.className = 'hotel-done' + (state.hotels[key] ? ' checked' : '');
+  saveState();
+}
+
+function applyHotelState() {
+  document.querySelectorAll('.hotel-done').forEach(el => {
+    if (!el.dataset.key) return;
+    const done = state.hotels[el.dataset.key];
+    el.textContent = done ? '✓' : '○';
+    el.className = 'hotel-done' + (done ? ' checked' : '');
+  });
+}
+
+// ─── SCHEDULE DONE ───
+function toggleScheduleRow(row) {
+  const key = row.dataset.key;
+  state.schedule[key] = !state.schedule[key];
+  row.classList.toggle('done', state.schedule[key]);
+  saveState();
+}
+
+function applyAllState() {
+  enhanceActivities();
+  enhanceFoods();
+  applyHotelState();
+  document.querySelectorAll('.tl-row[data-key]').forEach(row => {
+    row.classList.toggle('done', !!state.schedule[row.dataset.key]);
+  });
+}
+
+// ─── DAY ACCORDION ───
+
+// ─── NAV TAB LOGIC ───
+const navBtns = document.querySelectorAll('.nav-btn');
+const sections = document.querySelectorAll('.section');
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    navBtns.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// ─── DAY ACCORDION ───
+const days = [
+  { d:'D1 · 7/24(목)', title:'입국 & 소나시 정착', hotel:'베스트 웨스턴', rows:[
+    ['19:30','out','인천 출발 (이스타항공)'],
+    ['23:20','hotel','푸꾸옥 도착 → 공항 라운지 이용 (트립닷컴 무료) → 택시 이동','체크인','hotel'],
+    ['자정','eve','짐 정리 후 취침 (내일 일정 위해 숙면)'],
+  ]},
+  { d:'D2 · 7/25(금)', title:'리조트 탐험 + 소나시 야시장', hotel:'베스트 웨스턴', rows:[
+    ['07:30','meal','조식 뷔페 (Essence)','무료','meal'],
+    ['09:00','hotel','네모 키즈클럽 등록 + 300m 라군풀 탐방','풀','pool'],
+    ['11:00','pool','프라이빗 비치 – 카약 / 패들보딩','무료','pool'],
+    ['13:00','meal','Oasis Pool Bar 런치'],
+    ['15:00','hotel','낮잠·휴식 (시차 적응)'],
+    ['17:30','eve','C View 루프탑 → 석양 감상','선셋 ★★★','eve'],
+    ['19:30','meal','소나시 야시장 39K – 마늘버터 새우·할아버지맥주','맛집','meal'],
+    ['21:30','hotel','귀환 및 취침'],
+  ]},
+  { d:'D3 · 7/26(토)', title:'4섬 호핑투어 (스노클링)', hotel:'베스트 웨스턴', rows:[
+    ['07:30','meal','조식 후 준비'],
+    ['08:30','out','4섬 호핑투어 픽업','예약 필수','out'],
+    ['16:00','pool','귀환 → 라군풀에서 마무리 물놀이'],
+    ['17:30','hotel','피트니스 or 스팀룸','무료','hotel'],
+    ['19:00','meal','딘꺼우 사원 → 즈엉동 야시장 크랩하우스','맛집','meal'],
+  ]},
+  { d:'D4 · 7/27(일)', title:'비치 & 리조트 완전 여유', hotel:'베스트 웨스턴', rows:[
+    ['07:30','meal','조식 (여유롭게 2시간)'],
+    ['09:30','hotel','네모 키즈클럽 프로그램 + 비치 수영','무료','hotel'],
+    ['13:00','meal','Essence 레스토랑 런치'],
+    ['15:00','hotel','코코넛잎 아트 체험','무료','hotel'],
+    ['17:30','eve','C View 루프탑 석양 칵테일'],
+    ['20:00','meal','메오 키친 베트남 저녁','맛집','meal'],
+  ]},
+  { d:'D5 · 7/28(월)', title:'인터컨티넨탈 체크인 & INK 360', hotel:'인터컨티넨탈 체크인', rows:[
+    ['07:30','meal','베스트 웨스턴 마지막 조식'],
+    ['10:00','hotel','체크아웃 → 인터컨티넨탈 이동 (차 5분)'],
+    ['11:00','pool','얼리 체크인 or SPLASH! 풀','키즈풀','pool'],
+    ['15:00','hotel','정식 체크인 → 액티비티 스케줄표 수령'],
+    ['15:30','hotel','Planet Trekkers 키즈클럽 등록','무료','hotel'],
+    ['17:30','eve','INK 360 루프탑바 (19층) 선셋 칵테일','★★★★★','eve'],
+    ['20:00','meal','Sora & Umi 레스토랑 디너'],
+  ]},
+  { d:'D6 · 7/29(화)', title:'인터컨티넨탈 풀 패키지 + 야시장', hotel:'인터컨티넨탈', rows:[
+    ['07:00','hotel','리조트 요가 프로그램','무료·예약필수','hotel'],
+    ['08:00','meal','조식 뷔페 (아이 코너 이용)'],
+    ['10:00','pool','Planet Trekkers + SPLASH! 풀','키즈 타임','pool'],
+    ['14:00','hotel','팔찌 만들기·모자 페인팅','무료','hotel'],
+    ['16:30','pool','Oasis Pool 수영 (아이: The Hideout 게임룸)'],
+    ['18:30','out','야시장 무료 셔틀 탑승 → 즈엉동 야시장','셔틀 무료','out'],
+    ['20:30','hotel','귀환 → The Theatre 패밀리 스크리닝','무료','hotel'],
+  ]},
+  { d:'D7 · 7/30(수)', title:'크라운 플라자 체크인 & 바이다이 선셋', hotel:'크라운 플라자 체크인', rows:[
+    ['08:00','meal','인터컨티넨탈 마지막 조식'],
+    ['11:00','hotel','체크아웃 → 크라운 플라자 이동 (북서부, 약 25분)'],
+    ['13:00','hotel','체크인 → Tribe 키즈클럽 등록'],
+    ['14:00','pool','50m 랩풀 + 프라이빗 비치 탐방'],
+    ['17:30','eve','바이다이 선셋','섬 최고 석양 ★★★★★','eve'],
+    ['19:30','meal','Horizons or Amber Sands 디너'],
+  ]},
+  { d:'D8 · 7/31(목)', title:'빈펄 사파리 + 빈원더스 풀코스', hotel:'크라운 플라자', rows:[
+    ['07:00','meal','조식 후 바로 출발 준비'],
+    ['08:30','out','빈펄 사파리 입장 (오전 동물 활동 시간)','가족 필수','out'],
+    ['12:00','meal','사파리 내 점심'],
+    ['13:30','out','빈원더스 이동 – 워터파크·아쿠아리움·놀이공원'],
+    ['17:30','hotel','귀환 → 50m 풀에서 다리 풀기'],
+    ['19:30','meal','그랜드월드 야시장 저녁 (분수쇼 감상)'],
+  ]},
+  { d:'D9 · 8/1(금)', title:'혼똔섬 케이블카 + 선셋타운', hotel:'크라운 플라자', rows:[
+    ['07:30','meal','조식'],
+    ['09:00','out','선셋타운 이동 → 세계최장 해상 케이블카 탑승','예약 추천','out'],
+    ['10:30','out','혼똔섬 썬월드 – 워터파크·놀이기구 (입장권 포함)'],
+    ['15:00','hotel','귀환 → 비치 휴식'],
+    ['17:30','eve','바이다이 해변 선셋 산책'],
+    ['19:30','meal','신 짜오 씨푸드 or Amber Sands 저녁'],
+  ]},
+  { d:'D10 · 8/2(토)', title:'스타피쉬 비치 + 별 관측', hotel:'크라운 플라자', rows:[
+    ['07:30','meal','조식'],
+    ['09:00','out','스타피쉬 비치 (차 10분) – 불가사리 인생샷','무료','out'],
+    ['11:30','hotel','귀환 → 리조트 수영·비치 자유'],
+    ['14:00','hotel','Tribe 키즈클럽 오후 프로그램'],
+    ['19:30','meal','Horizons 레스토랑 저녁'],
+    ['21:00','eve','50m 풀에서 성운 관측 (북서부 빛공해 적음)','★★★★','eve'],
+  ]},
+  { d:'D11 · 8/3(일)', title:'Hoa Sim 스파 + 완전 휴식일', hotel:'크라운 플라자', rows:[
+    ['07:00','hotel','피트니스 오전 운동 or 비치 조깅'],
+    ['08:00','meal','조식'],
+    ['10:00','hotel','Hoa Sim 스파 커플 패키지','추천','hotel'],
+    ['13:00','meal','Amber Sands Beach Club 런치'],
+    ['14:30','pool','비치 + 풀 자유 시간'],
+    ['17:30','eve','바이다이 선셋 마지막 감상'],
+    ['20:00','meal','그랜드월드 야시장 or 호텔 디너'],
+  ]},
+  { d:'D12 · 8/4(월)', title:'뉴 월드 체크인 & 켐 비치 휴양', hotel:'뉴 월드 체크인', rows:[
+    ['07:30','meal','크라운 플라자 마지막 조식'],
+    ['11:00','hotel','체크아웃 → 뉴 월드 이동 (남부, 약 40분)'],
+    ['13:00','pool','체크인 → 무료 워터파크 입장','키즈 천국','pool'],
+    ['15:30','pool','120m 인피니티풀 + 켐 비치 수영'],
+    ['17:30','eve','Bai Khem Bar 석양 칵테일','남부 최고 선셋','eve'],
+    ['19:30','meal','LUA Grill & Bar 우드파이어 저녁'],
+  ]},
+  { d:'D13 · 8/5(화)', title:'안토이 스노클링 + 리조트 마무리', hotel:'뉴 월드 리조트', rows:[
+    ['07:00','meal','조식 뷔페 (5세 미만 무료)','무료','meal'],
+    ['08:30','out','안토이 군도 스노클링 (남부 최고 투명도)','예약 필수','out'],
+    ['13:00','meal','귀환 점심 + 아이 낮잠'],
+    ['15:00','hotel','키즈클럽 오후 프로그램 + 카약','무료','hotel'],
+    ['17:30','eve','켐 비치 선셋 산책'],
+    ['19:30','meal','리조트 디너 (마지막 여유 저녁)'],
+    ['21:00','hotel','짐 정리 시작'],
+  ]},
+  { d:'D14 · 8/6(수)', title:'스파 & 귀국', hotel:'귀국일', rows:[
+    ['07:00','meal','마지막 조식 (여유롭게)'],
+    ['09:00','hotel','스파 마지막 트리트먼트','추천','hotel'],
+    ['11:00','hotel','체크아웃 → 짐 보관'],
+    ['12:00','pool','체크아웃 후 풀·게임룸 이용 가능'],
+    ['21:00','out','공항 이동 (셔틀 예약)'],
+    ['00:20','out','푸꾸옥 출발 → 8/7 08:15 인천 도착'],
+  ]},
+];
+
+const tagClass = { meal:'t-meal', pool:'t-pool', out:'t-out', hotel:'t-hotel', eve:'t-eve' };
+const dotClass = { meal:'d-meal', pool:'d-pool', out:'d-out', hotel:'d-hotel', eve:'d-eve' };
+
+function buildDays() {
+  const grid = document.getElementById('dayGrid');
+  days.forEach((day, i) => {
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    if (i === 0) card.classList.add('open');
+
+    const rows = day.rows.map((r, ri) => {
+      const [time, type, text, tagTxt, tagType] = r;
+      const isLast = ri === day.rows.length - 1;
+      const rowKey = `${day.d}_${ri}`;
+      return `<div class="tl-row" data-key="${rowKey}" onclick="toggleScheduleRow(this)">
+        <span class="tl-t">${time}</span>
+        <div class="tl-dot-wrap">
+          <span class="tl-dot ${dotClass[type]||'d-hotel'}"></span>
+          ${!isLast ? '<div class="tl-line"></div>' : ''}
+        </div>
+        <span class="tl-c">${text}${tagTxt ? `<span class="tag ${tagClass[tagType||type]}">${tagTxt}</span>` : ''}</span>
+      </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="day-top" onclick="toggleDay(this.parentElement)">
+        <span class="day-num">${day.d}</span>
+        <span class="day-title-text">${day.title}</span>
+        <span class="day-hotel-badge">${day.hotel}</span>
+        <span class="day-arrow">▼</span>
+      </div>
+      <div class="day-body"><div class="tl">${rows}</div></div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function toggleDay(card) {
+  card.classList.toggle('open');
+}
+
+buildDays();
+
+// ─── INIT ───
+loadLocalState();
+enhanceActivities();
+enhanceFoods();
+loadFromServer();
+
+</script>
+</body>
+</html>
