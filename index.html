@@ -532,10 +532,7 @@ tbody tr:last-child td { border-bottom: none; }
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <div style="display:flex;align-items:center;gap:8px">
-        <div class="nav-brand-name">Phú Quốc</div>
-        <span class="dday-badge" id="navDday"></span>
-      </div>
+      <div class="nav-brand-name">푸꾸옥</div>
       <div class="nav-brand-sub">7/24 – 8/7 · 2026</div>
     </div>
     <div class="nav-tabs">
@@ -1209,9 +1206,6 @@ function initDday() {
   if (diff > 0)      { text = `D-${diff}`;          cls = ''; }
   else if (diff === 0) { text = 'D-Day! 🛫';         cls = 'today'; }
   else               { text = `D+${Math.abs(diff)}`; cls = 'past'; }
-
-  const nav = document.getElementById('navDday');
-  if (nav) { nav.textContent = text; nav.className = 'dday-badge ' + cls; }
 
   const strip = document.getElementById('stripDday');
   if (strip) { strip.textContent = text; }
