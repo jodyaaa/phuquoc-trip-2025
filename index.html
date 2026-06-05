@@ -3,199 +3,530 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>푸꾸옥 여행 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Phú Quốc · 가족여행 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ocean:#1A4A5C; --ocean-light:#2D6B82; --ocean-pale:#E8F4F8;
-  --coral:#D4614A; --coral-light:#F0A090;
-  --gold:#B8860B; --gold-light:#F5D06A;
-  --sand:#F5EDD8; --sand-dark:#E8D9BA;
-  --text:#1C1C1C; --text2:#4A4A4A; --text3:#7A7A7A;
-  --bg:#FDFAF5; --card:#FFFFFF;
-  --green:#166034; --green-bg:#E1F5EC;
-  --blue:#0F4F7A; --blue-bg:#DEEEF9;
-  --amber:#7A5B00; --amber-bg:#FFF8E0;
-  --font:'DM Sans',sans-serif;
-  --serif:'Cormorant Garamond',serif;
-  --radius:14px;
+  /* Core palette */
+  --ink:   #0C1F2C;
+  --ocean: #1A4A5C;
+  --sea:   #2D6B82;
+  --foam:  #E8F4F8;
+  --coral: #D4614A;
+  --gold:  #C49A2A;
+  --sand:  #F5EDD8;
+  --sand2: #EDE0C4;
+  --cream: #FBF8F3;
+  --white: #FFFFFF;
+  --mist:  #F0EBE1;
+  --text:  #1C1C1C;
+  --text2: #4A4840;
+  --text3: #8A847A;
+  --green:     #166034;
+  --green-bg:  #E1F5EC;
+  --blue-dark: #0F4F7A;
+  --blue-bg:   #DEEEF9;
+  --amber:     #7A5B00;
+  --amber-bg:  #FFF8E0;
+  /* Type */
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+  --r: 12px;
+  --r-lg: 20px;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-tap-highlight-color:transparent;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-tap-highlight-color: transparent; }
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(253,250,245,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand-dark);}
-.nav-inner{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;padding:10px 16px;max-width:1100px;margin:0 auto;}
-.nav-inner::-webkit-scrollbar{display:none;}
-.nav-logo{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ocean);flex-shrink:0;margin-right:6px;}
-.nb{flex-shrink:0;padding:6px 13px;border-radius:20px;border:1px solid var(--sand-dark);font-size:12px;cursor:pointer;background:transparent;color:var(--text2);transition:all .15s;white-space:nowrap;font-family:var(--font);}
-.nb.on{background:var(--ocean);color:#fff;border-color:var(--ocean);}
-.nb:hover:not(.on){background:var(--sand);}
-#syncStatus{margin-left:auto;font-size:13px;flex-shrink:0;opacity:.7;cursor:default;}
+/* ───── HEADER ───── */
+.site-header {
+  background: var(--ink);
+  padding: 0 24px;
+  position: sticky; top: 0; z-index: 100;
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: stretch; gap: 0;
+}
+.header-brand {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 14px 24px 14px 0;
+  border-right: 1px solid rgba(255,255,255,.1);
+  flex-shrink: 0;
+}
+.brand-name {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 600;
+  color: var(--white); letter-spacing: -0.01em; line-height: 1;
+}
+.brand-name em { font-style: italic; color: #F5D06A; }
+.brand-dates {
+  font-size: 10px; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.4);
+  margin-top: 3px;
+}
+.header-tabs {
+  display: flex; align-items: stretch; overflow-x: auto;
+  scrollbar-width: none; flex: 1;
+}
+.header-tabs::-webkit-scrollbar { display: none; }
+.htab {
+  display: flex; align-items: center; gap: 7px;
+  padding: 0 18px; font-size: 12.5px; font-weight: 500;
+  color: rgba(255,255,255,.45); cursor: pointer; border: none;
+  background: none; white-space: nowrap; font-family: var(--sans);
+  border-bottom: 2px solid transparent; transition: all .2s;
+  position: relative;
+}
+.htab:hover { color: rgba(255,255,255,.75); }
+.htab.on { color: #F5D06A; border-bottom-color: #F5D06A; }
+.htab-icon { font-size: 14px; }
+.header-right {
+  display: flex; align-items: center; padding: 0 0 0 16px;
+  margin-left: auto; flex-shrink: 0;
+}
+#syncStatus { font-size: 12px; color: rgba(255,255,255,.4); cursor: default; }
 
-/* MAIN */
-.main{max-width:1100px;margin:0 auto;padding:20px 16px 100px;}
-.panel{display:none;}.panel.on{display:block;}
+/* ───── TRIP STRIP ───── */
+.trip-strip {
+  background: var(--ocean);
+  padding: 10px 24px;
+}
+.trip-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+}
+.ts-item { display: flex; flex-direction: column; }
+.ts-label { font-size: 9px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.4); }
+.ts-value { font-size: 12px; color: rgba(255,255,255,.85); font-weight: 500; }
+.ts-sep { width: 1px; height: 28px; background: rgba(255,255,255,.15); flex-shrink:0; }
 
-/* SEC */
-.sec{margin-bottom:22px;}
-.sec-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:11px;}
+/* ───── MAIN ───── */
+.main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 100px; }
 
-/* DAY CARDS */
-.day-card{border:1px solid var(--sand-dark);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
-.day-top{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--sand);cursor:pointer;user-select:none;}
-.day-num{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--ocean);min-width:110px;}
-.day-ttl{flex:1;font-size:14px;font-weight:500;}
-.day-badge{font-size:11px;background:var(--ocean);color:#fff;padding:3px 10px;border-radius:20px;white-space:nowrap;}
-.day-arr{font-size:12px;color:var(--text3);transition:transform .2s;}
-.day-card.open .day-arr{transform:rotate(180deg);}
-.day-body{display:none;padding:12px 16px 16px;}
-.day-card.open .day-body{display:block;}
+/* ───── STAT ROW ───── */
+.stat-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
+  gap: 10px; margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--white); border: 1px solid var(--sand2);
+  border-radius: var(--r-lg); padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.stat-num {
+  font-family: var(--serif); font-size: 2rem; font-weight: 600;
+  color: var(--ocean); line-height: 1;
+}
+.stat-lbl { font-size: 11px; color: var(--text3); font-weight: 500; margin-top:2px; }
+.stat-card.accent { background: var(--ocean); border-color: var(--ocean); }
+.stat-card.accent .stat-num { color: var(--white); }
+.stat-card.accent .stat-lbl { color: rgba(255,255,255,.5); }
 
-/* TIMELINE */
-.tl{display:flex;flex-direction:column;gap:6px;}
-.tl-row{display:flex;gap:10px;align-items:flex-start;padding:4px 6px;border-radius:8px;cursor:pointer;transition:background .1s;}
-.tl-row:hover{background:var(--ocean-pale);}
-.tl-row.done .tl-c{text-decoration:line-through;opacity:.45;}
-.tl-row.done .tl-dot{opacity:.25;}
-.tl-t{font-size:12px;color:var(--text3);min-width:42px;padding-top:3px;font-variant-numeric:tabular-nums;}
-.tl-dot-w{display:flex;flex-direction:column;align-items:center;padding-top:6px;}
-.tl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.tl-line{width:1px;background:var(--sand-dark);flex:1;min-height:14px;}
-.tl-c{font-size:13px;flex:1;line-height:1.5;}
-.tl-actions{display:flex;gap:4px;flex-shrink:0;opacity:0;transition:opacity .15s;}
-.tl-row:hover .tl-actions{opacity:1;}
-.tl-act-btn{font-size:11px;padding:2px 6px;border-radius:6px;border:1px solid var(--sand-dark);background:var(--card);cursor:pointer;color:var(--text2);}
-.tl-act-btn:hover{background:var(--sand);}
-.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;font-weight:500;}
-.t-meal{background:#E1F5EC;color:#166034;} .t-pool{background:#DEEEF9;color:#0F4F7A;}
-.t-out{background:#FEF0ED;color:#9A3020;} .t-hotel{background:var(--ocean-pale);color:#0F3A4E;}
-.t-eve{background:var(--amber-bg);color:var(--amber);}
-.d-meal{background:#27A060;} .d-pool{background:#1A6EA0;}
-.d-out{background:var(--coral);} .d-hotel{background:var(--ocean);}
-.d-eve{background:var(--gold);}
-.tl-add-btn{margin-top:8px;font-size:12px;padding:5px 14px;border-radius:20px;border:1px dashed var(--sand-dark);background:transparent;cursor:pointer;color:var(--text3);}
-.tl-add-btn:hover{background:var(--sand);color:var(--ocean);}
+/* ───── SECTION LABEL ───── */
+.sec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--text3);
+  margin-bottom: 14px; padding-left: 2px;
+}
 
-/* ACTIVITY GRID */
-.region-heading{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--ocean);margin:1.8rem 0 1rem;}
-.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:1.5rem;}
-.act-card{background:var(--card);border:1px solid var(--sand-dark);border-radius:var(--radius);padding:1.1rem;transition:box-shadow .2s;}
-.act-card:hover{box-shadow:0 6px 24px rgba(26,74,92,.1);}
-.act-icon{font-size:26px;margin-bottom:8px;}
-.act-name{font-weight:600;font-size:14px;color:var(--ocean);margin-bottom:4px;}
-.act-desc{font-size:12.5px;color:var(--text2);line-height:1.5;}
-.act-price{font-size:11.5px;color:var(--text3);margin-top:6px;padding-top:6px;border-top:1px solid var(--sand);}
-.act-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:6px;}
-.act-status{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;cursor:pointer;border:none;font-family:var(--font);background:var(--sand-dark);color:var(--text3);transition:all .15s;}
-.act-status.booked{background:var(--blue-bg);color:var(--blue);}
-.act-status.done{background:var(--green-bg);color:var(--green);}
-.act-edit-btn{font-size:11px;padding:3px 8px;border-radius:8px;border:1px solid var(--sand-dark);background:transparent;cursor:pointer;color:var(--text2);}
-.act-edit-btn:hover{background:var(--sand);}
+/* ───── NOTE BOX ───── */
+.note-box {
+  background: #FFFBF0; border-left: 3px solid var(--gold);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 12px 16px; font-size: 12.5px; color: var(--amber);
+  line-height: 1.6; margin-bottom: 20px;
+}
 
-/* RESTAURANT */
-.r-search-bar{margin-bottom:10px;}
-.r-search-input{width:100%;padding:9px 14px;border:1px solid var(--sand-dark);border-radius:10px;font-size:13px;background:var(--card);font-family:var(--font);outline:none;}
-.r-search-input:focus{border-color:var(--ocean-light);}
-.r-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
-.r-filter{font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--sand-dark);cursor:pointer;background:transparent;color:var(--text2);transition:all .15s;}
-.r-filter.on{background:var(--ocean);color:#fff;border-color:var(--ocean);}
-.r-grid{display:flex;flex-direction:column;gap:12px;}
-.r-card{background:var(--card);border:1px solid var(--sand-dark);border-radius:var(--radius);padding:1.1rem;}
-.r-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px;}
-.r-emoji{font-size:24px;}
-.r-name{font-weight:600;font-size:15px;color:var(--text);margin-bottom:4px;}
-.r-cat{font-size:11.5px;color:var(--coral);margin-bottom:2px;}
-.r-region{font-size:11px;background:var(--ocean-pale);color:var(--ocean);padding:2px 8px;border-radius:10px;display:inline-block;}
-.r-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-top:6px;}
-.r-note{font-size:12px;color:var(--text3);margin-top:4px;font-style:italic;}
-.r-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
-.visit-btn{font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--sand-dark);background:transparent;cursor:pointer;color:var(--text2);font-family:var(--font);}
-.visit-btn.on{background:var(--green-bg);color:var(--green);border-color:var(--green);}
-.visit-btn:hover:not(.on){background:var(--sand);}
-.r-edit-btn,.r-del-btn{font-size:12px;padding:4px 10px;border-radius:20px;border:1px solid var(--sand-dark);background:transparent;cursor:pointer;font-family:var(--font);}
-.r-edit-btn{color:var(--ocean);}
-.r-del-btn{color:var(--coral);}
-.r-edit-btn:hover{background:var(--ocean-pale);}
-.r-del-btn:hover{background:#FEF0ED;}
-.r-visited-badge{font-size:10px;background:var(--green-bg);color:var(--green);padding:2px 8px;border-radius:10px;font-weight:600;}
+/* ───── DAY CARDS ───── */
+.days-wrap { display: flex; flex-direction: column; gap: 8px; }
+.day-card {
+  background: var(--white); border: 1px solid var(--sand2);
+  border-radius: var(--r-lg); overflow: hidden;
+  transition: box-shadow .2s;
+}
+.day-card:hover { box-shadow: 0 4px 20px rgba(12,31,44,.08); }
+.day-top {
+  display: flex; align-items: center; gap: 0;
+  cursor: pointer; user-select: none;
+}
+.day-date-col {
+  width: 90px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 16px 10px;
+  background: var(--ocean); color: var(--white);
+  border-radius: 0;
+}
+.day-d {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 700;
+  line-height: 1; color: #F5D06A;
+}
+.day-date-sm { font-size: 9.5px; opacity: .6; margin-top: 2px; font-weight: 500; letter-spacing:.04em; }
+.day-content { flex: 1; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+.day-ttl { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+.day-hotel-badge {
+  font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 20px;
+  background: var(--foam); color: var(--ocean); white-space: nowrap; flex-shrink:0;
+}
+.day-meta { font-size: 12px; color: var(--text3); }
+.day-arr { font-size: 11px; color: var(--text3); padding: 0 18px 0 0; transition: transform .2s; flex-shrink:0; }
+.day-card.open .day-arr { transform: rotate(180deg); }
+.day-body { display: none; padding: 14px 18px 18px 18px; border-top: 1px solid var(--mist); }
+.day-card.open .day-body { display: block; }
 
-/* HOTEL FACILITIES */
-.hotel-block{margin-bottom:2.5rem;}
-.hotel-header{display:flex;align-items:baseline;gap:14px;margin-bottom:1rem;flex-wrap:wrap;}
-.hotel-name-h{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--ocean);}
-.hotel-period{font-size:11px;background:var(--ocean);color:#fff;padding:3px 12px;border-radius:20px;}
-.table-card{background:var(--card);border:1px solid var(--sand-dark);border-radius:var(--radius);overflow:hidden;}
-table{width:100%;border-collapse:collapse;}
-th{background:var(--ocean);color:rgba(255,255,255,.8);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:10px 14px;text-align:left;}
-td{padding:10px 14px;border-bottom:1px solid var(--sand);font-size:13px;vertical-align:middle;line-height:1.5;}
-tr:last-child td{border-bottom:none;}
-tr:hover td{background:rgba(232,244,248,.35);}
-.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:20px;}
-.badge-free{background:var(--ocean-pale);color:var(--ocean);}
-.badge-paid{background:#FEF0ED;color:#A0441C;}
-.fac-done{width:32px;text-align:center;cursor:pointer;font-size:16px;user-select:none;transition:color .15s;}
-.fac-done.on{color:var(--green);}
-.tip-box{background:var(--ocean-pale);border-left:3px solid var(--ocean);padding:10px 14px;font-size:12.5px;color:var(--ocean);margin-top:10px;border-radius:0 8px 8px 0;line-height:1.5;}
+/* ───── TIMELINE ───── */
+.tl { display: flex; flex-direction: column; position: relative; }
+.tl::before {
+  content: ''; position: absolute; left: 54px; top: 8px; bottom: 8px;
+  width: 1px; background: var(--sand2);
+}
+.tl-row {
+  display: flex; gap: 0; align-items: flex-start;
+  padding: 5px 4px; border-radius: 8px; cursor: pointer;
+  transition: background .1s; position: relative;
+}
+.tl-row:hover { background: var(--mist); }
+.tl-row.done .tl-text { text-decoration: line-through; opacity: .4; }
+.tl-row.done .tl-dot { background: var(--sand2) !important; }
+.tl-time {
+  width: 46px; font-size: 11px; color: var(--text3); flex-shrink: 0;
+  padding-top: 4px; font-variant-numeric: tabular-nums; text-align: right;
+  padding-right: 8px;
+}
+.tl-dot-col {
+  width: 16px; flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: center; padding-top: 6px; z-index: 1;
+}
+.tl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.tl-body { flex: 1; padding: 2px 0 2px 10px; display: flex; align-items: center; gap: 8px; }
+.tl-text { font-size: 13px; line-height: 1.5; flex: 1; }
+.tl-tag {
+  display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px;
+  margin-left: 4px; vertical-align: middle; font-weight: 500; flex-shrink:0;
+}
+.tl-actions {
+  display: flex; gap: 3px; opacity: 0; transition: opacity .15s; flex-shrink:0;
+}
+.tl-row:hover .tl-actions { opacity: 1; }
+.tl-act-btn {
+  font-size: 11px; padding: 2px 7px; border-radius: 6px;
+  border: 1px solid var(--sand2); background: var(--white); cursor: pointer; color: var(--text3);
+}
+.tl-act-btn:hover { background: var(--sand); color: var(--ocean); }
+.d-meal  { background: #27A060; }
+.d-pool  { background: #1A6EA0; }
+.d-out   { background: var(--coral); }
+.d-hotel { background: var(--ocean); }
+.d-eve   { background: var(--gold); }
+.t-meal  { background: var(--green-bg); color: var(--green); }
+.t-pool  { background: var(--blue-bg); color: var(--blue-dark); }
+.t-out   { background: #FEF0ED; color: #9A3020; }
+.t-hotel { background: var(--foam); color: var(--ocean); }
+.t-eve   { background: var(--amber-bg); color: var(--amber); }
+.tl-add-btn {
+  margin-top: 10px; font-size: 12px; padding: 6px 16px; border-radius: 20px;
+  border: 1px dashed var(--sand2); background: transparent; cursor: pointer;
+  color: var(--text3); font-family: var(--sans); transition: all .15s;
+}
+.tl-add-btn:hover { background: var(--foam); color: var(--ocean); border-style: solid; }
 
-/* NOTE BOX */
-.note-box{background:#FFFBF0;border:1px solid var(--gold-light);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--gold);line-height:1.6;margin-top:1.2rem;}
+/* ───── ACTIVITY ───── */
+.region-head {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 400; font-style: italic;
+  color: var(--ocean); margin: 28px 0 14px; padding-left: 2px;
+  border-bottom: 1px solid var(--sand2); padding-bottom: 8px;
+}
+.act-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px; margin-bottom: 8px;
+}
+.act-card {
+  background: var(--white); border: 1px solid var(--sand2);
+  border-radius: var(--r-lg); padding: 0; overflow: hidden;
+  transition: box-shadow .2s, transform .2s;
+}
+.act-card:hover { box-shadow: 0 8px 28px rgba(12,31,44,.1); transform: translateY(-2px); }
+.act-card-top {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--mist);
+}
+.act-icon-wrap {
+  width: 42px; height: 42px; border-radius: 12px; display: flex;
+  align-items: center; justify-content: center; font-size: 22px;
+  background: var(--foam); margin-bottom: 10px;
+}
+.act-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.act-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
+.act-card-bot {
+  padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.act-price { font-size: 11px; color: var(--text3); flex: 1; }
+.act-note-txt { font-size: 11px; color: var(--text3); font-style: italic; padding: 4px 14px 0; }
+.act-status {
+  font-size: 10.5px; font-weight: 600; padding: 3px 11px; border-radius: 20px;
+  cursor: pointer; border: none; font-family: var(--sans); transition: all .15s;
+  background: var(--mist); color: var(--text3); flex-shrink:0;
+}
+.act-status.booked { background: var(--blue-bg); color: var(--blue-dark); }
+.act-status.done   { background: var(--green-bg); color: var(--green); }
+.act-edit-btn {
+  font-size: 11px; padding: 3px 9px; border-radius: 8px;
+  border: 1px solid var(--sand2); background: transparent; cursor: pointer;
+  color: var(--text3); flex-shrink:0;
+}
+.act-edit-btn:hover { background: var(--foam); }
 
-/* FAB */
-.fab{position:fixed;bottom:24px;right:20px;width:52px;height:52px;border-radius:50%;background:var(--ocean);color:#fff;font-size:24px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(26,74,92,.35);z-index:90;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-.fab:hover{background:var(--ocean-light);}
-.fab.hidden{display:none;}
+/* ───── RESTAURANTS ───── */
+.r-search-bar { margin-bottom: 12px; }
+.r-search-input {
+  width: 100%; padding: 10px 16px; border: 1.5px solid var(--sand2);
+  border-radius: 12px; font-size: 13px; background: var(--white);
+  font-family: var(--sans); outline: none; color: var(--text);
+  transition: border-color .2s;
+}
+.r-search-input:focus { border-color: var(--sea); }
+.r-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.r-filter {
+  font-size: 12px; padding: 5px 14px; border-radius: 20px;
+  border: 1.5px solid var(--sand2); cursor: pointer; background: transparent;
+  color: var(--text2); transition: all .15s; font-family: var(--sans);
+}
+.r-filter.on { background: var(--ocean); color: var(--white); border-color: var(--ocean); }
+.r-grid { display: flex; flex-direction: column; gap: 10px; }
+.r-card {
+  background: var(--white); border: 1px solid var(--sand2);
+  border-radius: var(--r-lg); padding: 16px 18px; display: flex; gap: 14px;
+  transition: box-shadow .2s;
+}
+.r-card:hover { box-shadow: 0 4px 18px rgba(12,31,44,.07); }
+.r-emoji-col {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--foam); display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.r-info { flex: 1; min-width: 0; }
+.r-top { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 5px; }
+.r-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.r-visited-badge {
+  font-size: 10px; background: var(--green-bg); color: var(--green);
+  padding: 2px 9px; border-radius: 20px; font-weight: 600; flex-shrink:0;
+}
+.r-cat { font-size: 11.5px; color: var(--coral); font-weight: 500; }
+.r-region-pill {
+  display: inline-block; font-size: 10.5px; background: var(--foam);
+  color: var(--ocean); padding: 2px 9px; border-radius: 10px; margin-left: 6px;
+}
+.r-desc { font-size: 12.5px; color: var(--text2); line-height: 1.55; margin-top: 4px; }
+.r-note { font-size: 11.5px; color: var(--text3); margin-top: 3px; font-style: italic; }
+.r-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.visit-btn {
+  font-size: 12px; padding: 5px 14px; border-radius: 20px;
+  border: 1.5px solid var(--sand2); background: transparent; cursor: pointer;
+  color: var(--text2); font-family: var(--sans); transition: all .15s;
+}
+.visit-btn.on { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+.r-edit-btn, .r-del-btn {
+  font-size: 12px; padding: 5px 12px; border-radius: 20px;
+  border: 1.5px solid var(--sand2); background: transparent;
+  cursor: pointer; font-family: var(--sans); transition: all .15s;
+}
+.r-edit-btn { color: var(--ocean); }
+.r-del-btn  { color: var(--coral); }
+.r-edit-btn:hover { background: var(--foam); border-color: var(--sea); }
+.r-del-btn:hover  { background: #FEF0ED; border-color: var(--coral); }
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:16px;}
-.modal-overlay.on{display:flex;}
-.modal{background:var(--card);border-radius:18px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.modal-head{padding:18px 20px 0;display:flex;align-items:center;justify-content:space-between;}
-.modal-title{font-size:16px;font-weight:600;color:var(--ocean);}
-.modal-close{font-size:20px;cursor:pointer;color:var(--text3);background:none;border:none;line-height:1;}
-.modal-body{padding:16px 20px;}
-.form-row{margin-bottom:14px;}
-.form-label{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:5px;display:block;}
-.form-input,.form-select,.form-textarea{width:100%;padding:9px 12px;border:1px solid var(--sand-dark);border-radius:10px;font-size:13px;font-family:var(--font);outline:none;background:var(--bg);}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--ocean-light);}
-.form-textarea{resize:vertical;min-height:80px;}
-.modal-footer{padding:0 20px 18px;display:flex;gap:8px;justify-content:flex-end;}
-.btn-cancel{padding:8px 18px;border-radius:20px;border:1px solid var(--sand-dark);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font);}
-.btn-save{padding:8px 18px;border-radius:20px;border:none;background:var(--ocean);color:#fff;cursor:pointer;font-size:13px;font-family:var(--font);}
-.btn-save:hover{background:var(--ocean-light);}
+/* ───── HOTELS ───── */
+.hotel-block { margin-bottom: 36px; }
+.hotel-hdr {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.hotel-hdr-name {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+  color: var(--ocean); line-height: 1.1;
+}
+.hotel-period-badge {
+  font-size: 11px; font-weight: 600; padding: 4px 13px; border-radius: 20px;
+  background: var(--ocean); color: var(--white); letter-spacing: .02em;
+}
+.hotel-table-wrap {
+  background: var(--white); border: 1px solid var(--sand2);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  background: var(--ocean); color: rgba(255,255,255,.75);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; padding: 11px 14px; text-align: left;
+}
+tbody tr { transition: background .1s; }
+tbody tr:hover td { background: var(--mist); }
+tbody td {
+  padding: 11px 14px; border-bottom: 1px solid var(--mist);
+  font-size: 13px; vertical-align: middle; line-height: 1.5;
+}
+tbody tr:last-child td { border-bottom: none; }
+.badge {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; padding: 2px 9px; border-radius: 20px;
+}
+.badge-free { background: var(--foam); color: var(--ocean); }
+.badge-paid { background: #FEF0ED; color: #A0441C; }
+.fac-done {
+  width: 34px; height: 34px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; cursor: pointer;
+  font-size: 16px; color: var(--sand2); transition: all .15s;
+  border: 1.5px solid var(--sand2);
+}
+.fac-done:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+.fac-done.on { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+.hotel-tip {
+  background: linear-gradient(135deg, var(--foam), #F0FAF5);
+  border-left: 3px solid var(--sea); border-radius: 0 var(--r) var(--r) 0;
+  padding: 12px 16px; font-size: 12.5px; color: var(--ocean);
+  margin-top: 10px; line-height: 1.6;
+}
 
-/* EMPTY */
-.empty-state{text-align:center;padding:40px 20px;color:var(--text3);font-size:13px;}
+/* ───── FAB ───── */
+.fab {
+  position: fixed; bottom: 28px; right: 22px;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--ocean); color: var(--white); font-size: 26px;
+  border: none; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(26,74,92,.4); z-index: 90;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s, box-shadow .15s;
+}
+.fab:hover { background: var(--sea); transform: scale(1.05); box-shadow: 0 8px 28px rgba(26,74,92,.5); }
+.fab.hidden { display: none; }
 
-/* STAT BAR */
-.stat-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
-.stat-item{background:var(--card);border:1px solid var(--sand-dark);border-radius:12px;padding:10px 16px;min-width:100px;}
-.stat-val{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--ocean);}
-.stat-lbl{font-size:11px;color:var(--text3);}
+/* ───── MODAL ───── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(12,31,44,.5);
+  backdrop-filter: blur(4px); z-index: 200;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.on { display: flex; }
+.modal {
+  background: var(--white); border-radius: 22px;
+  width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(12,31,44,.25);
+  animation: modalIn .2s cubic-bezier(.2,.8,.4,1);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-head {
+  padding: 22px 22px 0;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ocean); }
+.modal-close {
+  font-size: 18px; cursor: pointer; color: var(--text3);
+  background: var(--mist); border: none; border-radius: 50%;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.modal-close:hover { background: var(--sand2); }
+.modal-body { padding: 18px 22px; }
+.form-row { margin-bottom: 14px; }
+.form-label {
+  font-size: 11.5px; font-weight: 600; color: var(--text2);
+  margin-bottom: 6px; display: block; letter-spacing: .02em;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 10px 14px; border: 1.5px solid var(--sand2);
+  border-radius: 10px; font-size: 13px; font-family: var(--sans); outline: none;
+  background: var(--cream); color: var(--text); transition: border-color .2s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--sea); background: var(--white); }
+.form-textarea { resize: vertical; min-height: 82px; }
+.modal-footer {
+  padding: 0 22px 22px;
+  display: flex; gap: 8px; justify-content: flex-end;
+}
+.btn-cancel {
+  padding: 9px 20px; border-radius: 20px; border: 1.5px solid var(--sand2);
+  background: transparent; cursor: pointer; font-size: 13px; font-family: var(--sans);
+  color: var(--text2); transition: all .15s;
+}
+.btn-cancel:hover { background: var(--mist); }
+.btn-save {
+  padding: 9px 22px; border-radius: 20px; border: none;
+  background: var(--ocean); color: var(--white); cursor: pointer;
+  font-size: 13px; font-family: var(--sans); font-weight: 600;
+  transition: background .15s;
+}
+.btn-save:hover { background: var(--sea); }
 
-@media(max-width:600px){
-  .act-grid{grid-template-columns:1fr 1fr;}
-  table{font-size:12px;}th,td{padding:8px 10px;}
+/* ───── EMPTY ───── */
+.empty-state {
+  text-align: center; padding: 48px 20px; color: var(--text3);
+  font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.empty-state::before { content: '🌊'; font-size: 32px; }
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 640px) {
+  .trip-strip { display: none; }
+  .r-card { flex-direction: column; }
+  .r-emoji-col { width: 40px; height: 40px; }
+  .act-grid { grid-template-columns: 1fr 1fr; }
+  .header-brand { padding-right: 14px; }
+  .brand-name { font-size: 1.05rem; }
+  tbody td { padding: 9px 10px; font-size: 12px; }
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <span class="nav-logo">Phú Quốc</span>
-    <button class="nb on" onclick="switchTab('schedule')">📅 일정표</button>
-    <button class="nb" onclick="switchTab('activities')">🌊 액티비티</button>
-    <button class="nb" onclick="switchTab('restaurants')">🍜 맛집</button>
-    <button class="nb" onclick="switchTab('hotels')">🏨 호텔 시설</button>
-    <span id="syncStatus" title=""></span>
+<!-- HEADER + TABS -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="brand-name">Phú <em>Quốc</em></div>
+      <div class="brand-dates">7 / 24 – 8 / 7 · 2025</div>
+    </div>
+    <div class="header-tabs">
+      <button class="htab on" onclick="switchTab('schedule')">
+        <span class="htab-icon">📅</span> 일정표
+      </button>
+      <button class="htab" onclick="switchTab('activities')">
+        <span class="htab-icon">🌊</span> 액티비티
+      </button>
+      <button class="htab" onclick="switchTab('restaurants')">
+        <span class="htab-icon">🍜</span> 맛집
+      </button>
+      <button class="htab" onclick="switchTab('hotels')">
+        <span class="htab-icon">🏨</span> 호텔 시설
+      </button>
+    </div>
+    <div class="header-right">
+      <span id="syncStatus" title=""></span>
+    </div>
   </div>
-</nav>
+</header>
+
+<!-- TRIP STRIP -->
+<div class="trip-strip">
+  <div class="trip-strip-inner">
+    <div class="ts-item"><span class="ts-label">출발</span><span class="ts-value">7/24 (목) 19:30 · 이스타항공</span></div>
+    <div class="ts-sep"></div>
+    <div class="ts-item"><span class="ts-label">귀국</span><span class="ts-value">8/7 (목) 08:15 인천</span></div>
+    <div class="ts-sep"></div>
+    <div class="ts-item"><span class="ts-label">숙박</span><span class="ts-value">4개 리조트 · 13박</span></div>
+    <div class="ts-sep"></div>
+    <div class="ts-item"><span class="ts-label">리조트</span><span class="ts-value">BW → IHG → 크라운 플라자 → 뉴 월드</span></div>
+  </div>
+</div>
 
 <main class="main" id="main"></main>
 
-<button class="fab" id="fab" onclick="handleFab()">＋</button>
+<!-- FAB -->
+<button class="fab" id="fab" onclick="handleFab()" title="추가">＋</button>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <div class="modal-head">
@@ -211,6 +542,7 @@ tr:hover td{background:rgba(232,244,248,.35);}
 </div>
 
 <script>
+
 // ──────────────────────────────────────────────
 // SEED DATA
 // ──────────────────────────────────────────────
@@ -485,9 +817,8 @@ async function loadFromServer() {
 let activeTab = 'schedule';
 function switchTab(id) {
   activeTab = id;
-  document.querySelectorAll('.nb').forEach(b => b.classList.toggle('on', b.textContent.includes(
-    id==='schedule'?'일정표':id==='activities'?'액티비티':id==='restaurants'?'맛집':'호텔'
-  )));
+  const labels = {schedule:'일정표',activities:'액티비티',restaurants:'맛집',hotels:'호텔'};
+  document.querySelectorAll('.htab').forEach(b => b.classList.toggle('on', b.textContent.includes(labels[id]||'')));
   const fab = document.getElementById('fab');
   fab.classList.toggle('hidden', id === 'hotels');
   renderMain();
@@ -512,10 +843,11 @@ function renderSchedule() {
   const doneCount = state.schedule.reduce((acc, d) => acc + d.items.filter(i => i.done).length, 0);
   const totalCount = state.schedule.reduce((acc, d) => acc + d.items.length, 0);
   return `
-  <div class="stat-bar">
-    <div class="stat-item"><div class="stat-val">${state.schedule.length}</div><div class="stat-lbl">총 일수</div></div>
-    <div class="stat-item"><div class="stat-val">${doneCount}</div><div class="stat-lbl">완료 항목</div></div>
-    <div class="stat-item"><div class="stat-val">${totalCount}</div><div class="stat-lbl">전체 항목</div></div>
+  <div class="stat-row">
+    <div class="stat-card accent"><div class="stat-num">${state.schedule.length}</div><div class="stat-lbl">총 일수</div></div>
+    <div class="stat-card"><div class="stat-num">${doneCount}</div><div class="stat-lbl">완료 항목</div></div>
+    <div class="stat-card"><div class="stat-num">${totalCount - doneCount}</div><div class="stat-lbl">남은 항목</div></div>
+    <div class="stat-card"><div class="stat-num">${Math.round(doneCount/Math.max(totalCount,1)*100)}%</div><div class="stat-lbl">진행률</div></div>
   </div>
   <div class="note-box">⚡ 사전 예약 필수: INK 360 선셋 좌석 / 4섬 호핑투어 / 빈펄 사파리+빈원더스 / 혼똔섬 케이블카 / 각 리조트 스파</div>
   <div style="margin-top:16px">
@@ -548,15 +880,16 @@ function renderTLItem(di, item, ii) {
   const isLast = ii === state.schedule[di].items.length - 1;
   const tagHtml = item.tag ? `<span class="tag ${TAG_CLASS[item.tagType]||TAG_CLASS[item.type]||'t-hotel'}">${item.tag}</span>` : '';
   return `<div class="tl-row${item.done?' done':''}" onclick="toggleTLDone(${di},${ii})">
-    <span class="tl-t">${item.time}</span>
-    <div class="tl-dot-w">
+    <span class="tl-time">${item.time}</span>
+    <div class="tl-dot-col">
       <span class="tl-dot ${DOT_CLASS[item.type]||'d-hotel'}"></span>
-      ${!isLast?'<div class="tl-line"></div>':''}
     </div>
-    <span class="tl-c">${item.text}${tagHtml}</span>
-    <div class="tl-actions">
-      <button class="tl-act-btn" onclick="event.stopPropagation();showEditTLModal(${di},${ii})">✎</button>
-      <button class="tl-act-btn" onclick="event.stopPropagation();deleteTLItem(${di},${ii})">✕</button>
+    <div class="tl-body">
+      <span class="tl-text">${item.text}${tagHtml}</span>
+      <div class="tl-actions">
+        <button class="tl-act-btn" onclick="event.stopPropagation();showEditTLModal(${di},${ii})">✎</button>
+        <button class="tl-act-btn" onclick="event.stopPropagation();deleteTLItem(${di},${ii})">✕</button>
+      </div>
     </div>
   </div>`;
 }
@@ -585,10 +918,11 @@ function renderActivities() {
   const booked = state.activities.filter(a => a.status === 'booked').length;
   const done = state.activities.filter(a => a.status === 'done').length;
   return `
-  <div class="stat-bar">
-    <div class="stat-item"><div class="stat-val">${state.activities.length}</div><div class="stat-lbl">총 액티비티</div></div>
-    <div class="stat-item"><div class="stat-val">${booked}</div><div class="stat-lbl">예약완료</div></div>
-    <div class="stat-item"><div class="stat-val">${done}</div><div class="stat-lbl">완료</div></div>
+  <div class="stat-row">
+    <div class="stat-card accent"><div class="stat-num">${state.activities.length}</div><div class="stat-lbl">총 액티비티</div></div>
+    <div class="stat-card"><div class="stat-num">${booked}</div><div class="stat-lbl">예약완료</div></div>
+    <div class="stat-card"><div class="stat-num">${done}</div><div class="stat-lbl">완료</div></div>
+    <div class="stat-card"><div class="stat-num">${state.activities.length - booked - done}</div><div class="stat-lbl">미예약</div></div>
   </div>
   <div class="r-filters">
     <span class="r-filter${aFilterRegion==='all'?' on':''}" onclick="aFilterRegion='all';renderMain()">전체</span>
@@ -606,14 +940,16 @@ function renderActivities() {
 function renderActCard(a) {
   const s = a.status || '';
   return `<div class="act-card">
-    <div class="act-icon">${a.icon}</div>
-    <div class="act-name">${a.name}</div>
-    <div class="act-desc">${a.desc}</div>
-    <div class="act-price">${a.price}</div>
-    ${a.note ? `<div style="font-size:11.5px;color:var(--text3);margin-top:4px;font-style:italic">${a.note}</div>` : ''}
-    <div class="act-footer">
+    <div class="act-card-top">
+      <div class="act-icon-wrap">${a.icon}</div>
+      <div class="act-name">${a.name}</div>
+      <div class="act-desc">${a.desc}</div>
+      ${a.note ? `<div class="act-note-txt">${a.note}</div>` : ''}
+    </div>
+    <div class="act-card-bot">
+      <span class="act-price">${a.price}</span>
       <button class="act-status${s==='booked'?' booked':s==='done'?' done':''}" onclick="cycleActStatus('${a.id}')">${s==='done'?'✓ 완료':s==='booked'?'예약완료':'예약 전'}</button>
-      <button class="act-edit-btn" onclick="showEditActivityModal('${a.id}')">편집</button>
+      <button class="act-edit-btn" onclick="showEditActivityModal('${a.id}')">✎</button>
     </div>
   </div>`;
 }
@@ -644,9 +980,10 @@ function renderRestaurants() {
   });
   const visited = state.restaurants.filter(r => r.visited).length;
   return `
-  <div class="stat-bar">
-    <div class="stat-item"><div class="stat-val">${state.restaurants.length}</div><div class="stat-lbl">총 맛집</div></div>
-    <div class="stat-item"><div class="stat-val">${visited}</div><div class="stat-lbl">방문완료</div></div>
+  <div class="stat-row">
+    <div class="stat-card accent"><div class="stat-num">${state.restaurants.length}</div><div class="stat-lbl">총 맛집</div></div>
+    <div class="stat-card"><div class="stat-num">${visited}</div><div class="stat-lbl">방문완료</div></div>
+    <div class="stat-card"><div class="stat-num">${state.restaurants.length - visited}</div><div class="stat-lbl">미방문</div></div>
   </div>
   <div class="r-search-bar">
     <input class="r-search-input" placeholder="🔍 맛집 이름, 메뉴 검색..." value="${rSearch}" oninput="rSearch=this.value;renderMain()">
@@ -663,20 +1000,20 @@ function renderRestaurants() {
 
 function renderRestCard(r) {
   return `<div class="r-card">
-    <div class="r-head">
-      <div class="r-emoji">${r.emoji||'🍴'}</div>
-      <div>
-        <div class="r-name">${r.name} ${r.visited?'<span class="r-visited-badge">✓ 방문완료</span>':''}</div>
-        <div class="r-cat">${r.category}</div>
-        <span class="r-region">${r.region}</span>
+    <div class="r-emoji-col">${r.emoji||'🍴'}</div>
+    <div class="r-info">
+      <div class="r-top">
+        <span class="r-name">${r.name}</span>
+        ${r.visited?'<span class="r-visited-badge">✓ 방문완료</span>':''}
       </div>
-    </div>
-    <div class="r-desc">${r.desc}</div>
-    ${r.note ? `<div class="r-note">📝 ${r.note}</div>` : ''}
-    <div class="r-actions">
-      <button class="visit-btn${r.visited?' on':''}" onclick="toggleVisited('${r.id}')">${r.visited?'✓ 방문완료':'방문 체크'}</button>
-      <button class="r-edit-btn" onclick="showEditRestModal('${r.id}')">편집</button>
-      <button class="r-del-btn" onclick="deleteRest('${r.id}')">삭제</button>
+      <div><span class="r-cat">${r.category}</span><span class="r-region-pill">${r.region}</span></div>
+      <div class="r-desc">${r.desc}</div>
+      ${r.note ? `<div class="r-note">📝 ${r.note}</div>` : ''}
+      <div class="r-actions">
+        <button class="visit-btn${r.visited?' on':''}" onclick="toggleVisited('${r.id}')">${r.visited?'✓ 방문완료':'방문 체크'}</button>
+        <button class="r-edit-btn" onclick="showEditRestModal('${r.id}')">편집</button>
+        <button class="r-del-btn" onclick="deleteRest('${r.id}')">삭제</button>
+      </div>
     </div>
   </div>`;
 }
@@ -695,30 +1032,38 @@ function deleteRest(id) {
 // HOTELS
 // ──────────────────────────────────────────────
 function renderHotels() {
-  return SEED_HOTELS.map(hotel => `
+  const doneKeys = Object.keys(state.hotelDone||{}).filter(k=>state.hotelDone[k]);
+  return SEED_HOTELS.map(hotel => {
+    const totalFac = hotel.facilities.length;
+    const doneFac = hotel.facilities.filter((_,fi)=>state.hotelDone&&state.hotelDone[hotel.id+'_'+fi]).length;
+    return `
   <div class="hotel-block">
-    <div class="hotel-header">
-      <span class="hotel-name-h">${hotel.name}</span>
-      <span class="hotel-period">${hotel.period}</span>
+    <div class="hotel-hdr">
+      <span class="hotel-hdr-name">${hotel.name}</span>
+      <span class="hotel-period-badge">${hotel.period}</span>
+      <span style="font-size:12px;color:var(--text3);margin-left:4px">${doneFac}/${totalFac} 이용완료</span>
     </div>
-    <div class="table-card">
+    <div class="hotel-table-wrap">
       <table>
-        <tr><th>완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr>
+        <thead><tr><th style="width:50px">완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr></thead>
+        <tbody>
         ${hotel.facilities.map((f, fi) => {
           const key = hotel.id + '_' + fi;
           const done = !!(state.hotelDone && state.hotelDone[key]);
           return `<tr>
-            <td class="fac-done${done?' on':''}" onclick="toggleFacDone('${hotel.id}',${fi})" title="완료 체크">${done?'✓':'○'}</td>
+            <td><div class="fac-done${done?' on':''}" onclick="toggleFacDone('${hotel.id}',${fi})" title="완료 체크">${done?'✓':'○'}</div></td>
             <td><span class="badge badge-${f.type}">${f.type==='free'?'무료':'유료'}</span></td>
-            <td>${f.name}</td>
-            <td>${f.hours}</td>
+            <td style="font-weight:500">${f.name}</td>
+            <td style="color:var(--text3)">${f.hours}</td>
             <td style="color:var(--text3)">${f.note}</td>
           </tr>`;
         }).join('')}
+        </tbody>
       </table>
     </div>
-    <div class="tip-box">💡 ${hotel.tip}</div>
-  </div>`).join('');
+    <div class="hotel-tip">💡 ${hotel.tip}</div>
+  </div>`;
+  }).join('');
 }
 
 function toggleFacDone(hotelId, fi) {
@@ -883,6 +1228,7 @@ function saveModal() {
 loadState();
 renderMain();
 loadFromServer();
+
 </script>
 </body>
 </html>
