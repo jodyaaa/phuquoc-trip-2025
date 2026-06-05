@@ -781,7 +781,7 @@ let _syncTimer = null;
 
 function getDefault() {
   return {
-    version: 2,
+    version: 3,
     schedule: SEED_SCHEDULE.map(d => ({...d, items: d.items.map(i => ({...i, done: false}))})),
     activities: JSON.parse(JSON.stringify(SEED_ACTIVITIES)),
     restaurants: JSON.parse(JSON.stringify(SEED_RESTAURANTS)),
@@ -792,7 +792,10 @@ function getDefault() {
 function loadState() {
   try {
     const s = localStorage.getItem('phuquoc2026');
-    if (s) { state = JSON.parse(s); return; }
+    if (s) {
+      const parsed = JSON.parse(s);
+      if (parsed.version >= 3) { state = parsed; return; }
+    }
   } catch(e) {}
   state = getDefault();
 }
@@ -827,7 +830,7 @@ async function loadFromServer() {
     const r = await fetch(`${SERVER_URL}/phuquoc/state`);
     if (!r.ok) return;
     const sv = await r.json();
-    if (!sv || !sv.version) return;
+    if (!sv || !sv.version || sv.version < 3) return;
     state = sv;
     localStorage.setItem('phuquoc2026', JSON.stringify(state));
     renderMain(); setSyncStatus('ok');
