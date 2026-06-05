@@ -3,538 +3,554 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phú Quốc · 가족여행 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Phú Quốc 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Core palette */
-  --ink:   #0C1F2C;
-  --ocean: #1A4A5C;
-  --sea:   #2D6B82;
-  --foam:  #E8F4F8;
-  --coral: #D4614A;
-  --gold:  #C49A2A;
-  --sand:  #F5EDD8;
-  --sand2: #EDE0C4;
-  --cream: #FBF8F3;
-  --white: #FFFFFF;
-  --mist:  #F0EBE1;
-  --text:  #1C1C1C;
-  --text2: #4A4840;
-  --text3: #8A847A;
-  --green:     #166034;
-  --green-bg:  #E1F5EC;
-  --blue-dark: #0F4F7A;
-  --blue-bg:   #DEEEF9;
-  --amber:     #7A5B00;
-  --amber-bg:  #FFF8E0;
-  /* Type */
-  --serif: 'Fraunces', Georgia, serif;
-  --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
-  --r: 12px;
-  --r-lg: 20px;
+  --bg:      #F7F6F2;
+  --surface: #FFFFFF;
+  --border:  #E4E2DC;
+  --border2: #F0EEE8;
+  --nav:     #0C1829;
+  --nav2:    #152338;
+  --ocean:   #0C6E8F;
+  --ocean2:  #0A5A77;
+  --teal:    #0EA5C9;
+  --gold:    #E8A020;
+  --coral:   #D4614A;
+  --sand:    #F5EDD8;
+  --text:    #111110;
+  --text2:   #52524E;
+  --text3:   #A8A49E;
+  --green:   #047857;
+  --green-bg:#D1FAE5;
+  --blue:    #0369A1;
+  --blue-bg: #DBEAFE;
+  --amber:   #92400E;
+  --amber-bg:#FEF3C7;
+  --red:     #B91C1C;
+  --red-bg:  #FEE2E2;
+
+  --f-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --f-serif:   'Instrument Serif', Georgia, serif;
+  --f-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --r:   10px;
+  --r2:  16px;
+  --r3:  22px;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-tap-highlight-color: transparent; }
+body { font-family: var(--f-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-tap-highlight-color: transparent; min-height: 100vh; }
 
-/* ───── HEADER ───── */
-.site-header {
-  background: var(--ink);
-  padding: 0 24px;
+/* ━━━ NAV ━━━ */
+.nav {
   position: sticky; top: 0; z-index: 100;
+  background: var(--nav);
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.header-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: stretch; gap: 0;
+.nav-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: stretch; min-height: 54px;
 }
-.header-brand {
+.nav-brand {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 14px 24px 14px 0;
-  border-right: 1px solid rgba(255,255,255,.1);
+  padding: 0 20px 0 0; border-right: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0; gap: 1px; padding-right: 20px;
+}
+.nav-brand-name {
+  font-family: var(--f-serif); font-size: 15px; font-weight: 400;
+  color: #fff; letter-spacing: .01em; line-height: 1;
+  font-style: italic;
+}
+.nav-brand-sub {
+  font-size: 10px; color: rgba(255,255,255,.3);
+  letter-spacing: .1em; font-weight: 500;
+}
+.nav-tabs {
+  display: flex; overflow-x: auto; scrollbar-width: none; flex: 1;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+.ntab {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0 18px; font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.4); cursor: pointer; border: none;
+  background: none; font-family: var(--f-body); white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .18s, border-color .18s;
+}
+.ntab:hover { color: rgba(255,255,255,.75); }
+.ntab.on { color: #fff; border-bottom-color: var(--gold); }
+.ntab-icon { font-size: 13px; }
+.nav-sync {
+  display: flex; align-items: center; padding: 0 16px;
+  font-size: 12px; color: rgba(255,255,255,.3); flex-shrink: 0;
+}
+
+/* ━━━ TRIP STRIP ━━━ */
+.trip-strip {
+  background: var(--nav2);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.trip-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; gap: 0; align-items: stretch;
+  overflow-x: auto; scrollbar-width: none;
+}
+.trip-inner::-webkit-scrollbar { display: none; }
+.ts {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8px 20px; border-right: 1px solid rgba(255,255,255,.06);
   flex-shrink: 0;
 }
-.brand-name {
-  font-family: var(--serif); font-size: 1.25rem; font-weight: 600;
-  color: var(--white); letter-spacing: -0.01em; line-height: 1;
-}
-.brand-name em { font-style: italic; color: #F5D06A; }
-.brand-dates {
-  font-size: 10px; font-weight: 500; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-  margin-top: 3px;
-}
-.header-tabs {
-  display: flex; align-items: stretch; overflow-x: auto;
-  scrollbar-width: none; flex: 1;
-}
-.header-tabs::-webkit-scrollbar { display: none; }
-.htab {
-  display: flex; align-items: center; gap: 7px;
-  padding: 0 18px; font-size: 12.5px; font-weight: 500;
-  color: rgba(255,255,255,.45); cursor: pointer; border: none;
-  background: none; white-space: nowrap; font-family: var(--sans);
-  border-bottom: 2px solid transparent; transition: all .2s;
-  position: relative;
-}
-.htab:hover { color: rgba(255,255,255,.75); }
-.htab.on { color: #F5D06A; border-bottom-color: #F5D06A; }
-.htab-icon { font-size: 14px; }
-.header-right {
-  display: flex; align-items: center; padding: 0 0 0 16px;
-  margin-left: auto; flex-shrink: 0;
-}
-#syncStatus { font-size: 12px; color: rgba(255,255,255,.4); cursor: default; }
+.ts:last-child { border-right: none; }
+.ts-l { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 2px; }
+.ts-v { font-size: 12px; color: rgba(255,255,255,.75); font-weight: 500; }
 
-/* ───── TRIP STRIP ───── */
-.trip-strip {
-  background: var(--ocean);
-  padding: 10px 24px;
-}
-.trip-strip-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
-}
-.ts-item { display: flex; flex-direction: column; }
-.ts-label { font-size: 9px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.4); }
-.ts-value { font-size: 12px; color: rgba(255,255,255,.85); font-weight: 500; }
-.ts-sep { width: 1px; height: 28px; background: rgba(255,255,255,.15); flex-shrink:0; }
+/* ━━━ MAIN ━━━ */
+.main { max-width: 1080px; margin: 0 auto; padding: 24px 20px 100px; }
 
-/* ───── MAIN ───── */
-.main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 100px; }
-
-/* ───── STAT ROW ───── */
+/* ━━━ STAT ROW ━━━ */
 .stat-row {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
-  gap: 10px; margin-bottom: 24px;
+  display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
 }
-.stat-card {
-  background: var(--white); border: 1px solid var(--sand2);
-  border-radius: var(--r-lg); padding: 16px 18px;
-  display: flex; flex-direction: column; gap: 2px;
+.stat-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 7px 14px 7px 10px;
+  box-shadow: var(--shadow-sm);
 }
-.stat-num {
-  font-family: var(--serif); font-size: 2rem; font-weight: 600;
+.stat-pill-num {
+  font-family: var(--f-display); font-size: 18px; font-weight: 700;
   color: var(--ocean); line-height: 1;
 }
-.stat-lbl { font-size: 11px; color: var(--text3); font-weight: 500; margin-top:2px; }
-.stat-card.accent { background: var(--ocean); border-color: var(--ocean); }
-.stat-card.accent .stat-num { color: var(--white); }
-.stat-card.accent .stat-lbl { color: rgba(255,255,255,.5); }
+.stat-pill-lbl { font-size: 11.5px; color: var(--text3); font-weight: 500; }
+.stat-pill.hi { background: var(--ocean); border-color: var(--ocean); }
+.stat-pill.hi .stat-pill-num { color: #fff; }
+.stat-pill.hi .stat-pill-lbl { color: rgba(255,255,255,.6); }
 
-/* ───── SECTION LABEL ───── */
-.sec-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--text3);
-  margin-bottom: 14px; padding-left: 2px;
+/* ━━━ NOTE ━━━ */
+.note-strip {
+  background: var(--amber-bg); border: 1px solid #FCD34D;
+  border-radius: var(--r2); padding: 10px 14px;
+  font-size: 12.5px; color: var(--amber); line-height: 1.6;
+  margin-bottom: 18px;
 }
 
-/* ───── NOTE BOX ───── */
-.note-box {
-  background: #FFFBF0; border-left: 3px solid var(--gold);
-  border-radius: 0 var(--r) var(--r) 0;
-  padding: 12px 16px; font-size: 12.5px; color: var(--amber);
-  line-height: 1.6; margin-bottom: 20px;
+/* ━━━ DAY LIST ━━━ */
+.day-list { display: flex; flex-direction: column; gap: 4px; }
+.day-row {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r2); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .18s;
 }
-
-/* ───── DAY CARDS ───── */
-.days-wrap { display: flex; flex-direction: column; gap: 8px; }
-.day-card {
-  background: var(--white); border: 1px solid var(--sand2);
-  border-radius: var(--r-lg); overflow: hidden;
-  transition: box-shadow .2s;
-}
-.day-card:hover { box-shadow: 0 4px 20px rgba(12,31,44,.08); }
-.day-top {
+.day-row:hover { box-shadow: var(--shadow-md); }
+.day-header {
   display: flex; align-items: center; gap: 0;
-  cursor: pointer; user-select: none;
+  cursor: pointer; user-select: none; min-height: 52px;
 }
-.day-date-col {
-  width: 90px; flex-shrink: 0;
+.day-num-col {
+  width: 72px; flex-shrink: 0;
   display: flex; flex-direction: column; align-items: center;
-  justify-content: center; padding: 16px 10px;
-  background: var(--ocean); color: var(--white);
-  border-radius: 0;
+  justify-content: center; padding: 0 8px;
+  background: var(--ocean); height: 100%; min-height: 52px;
 }
-.day-d {
-  font-family: var(--serif); font-size: 1.1rem; font-weight: 700;
-  line-height: 1; color: #F5D06A;
+.day-num-d {
+  font-family: var(--f-display); font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.5); line-height: 1; letter-spacing: .04em;
 }
-.day-date-sm { font-size: 9.5px; opacity: .6; margin-top: 2px; font-weight: 500; letter-spacing:.04em; }
-.day-content { flex: 1; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
-.day-ttl { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
-.day-hotel-badge {
-  font-size: 10.5px; font-weight: 500; padding: 4px 11px; border-radius: 20px;
-  background: var(--foam); color: var(--ocean); white-space: nowrap; flex-shrink:0;
+.day-num-date {
+  font-size: 10px; color: rgba(255,255,255,.4);
+  margin-top: 1px; letter-spacing: .02em;
 }
-.day-meta { font-size: 12px; color: var(--text3); }
-.day-arr { font-size: 11px; color: var(--text3); padding: 0 18px 0 0; transition: transform .2s; flex-shrink:0; }
-.day-card.open .day-arr { transform: rotate(180deg); }
-.day-body { display: none; padding: 14px 18px 18px 18px; border-top: 1px solid var(--mist); }
-.day-card.open .day-body { display: block; }
+.day-row.open .day-num-col { background: var(--ocean2); }
+.day-title-col { flex: 1; padding: 0 16px; }
+.day-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.day-hotel-tag {
+  display: inline-block; font-size: 10.5px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text2); white-space: nowrap; flex-shrink: 0;
+}
+.day-arr {
+  padding: 0 16px 0 8px; font-size: 10px; color: var(--text3);
+  transition: transform .2s; flex-shrink: 0;
+}
+.day-row.open .day-arr { transform: rotate(180deg); }
+.day-body {
+  display: none; padding: 12px 16px 14px;
+  border-top: 1px solid var(--border2);
+}
+.day-row.open .day-body { display: block; }
 
-/* ───── TIMELINE ───── */
-.tl { display: flex; flex-direction: column; position: relative; }
+/* ━━━ TIMELINE ━━━ */
+.tl { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 12px; }
 .tl::before {
-  content: ''; position: absolute; left: 54px; top: 8px; bottom: 8px;
-  width: 1px; background: var(--sand2);
+  content: ''; position: absolute; left: 39px; top: 10px; bottom: 10px;
+  width: 1px; background: var(--border2); pointer-events: none;
 }
-.tl-row {
-  display: flex; gap: 0; align-items: flex-start;
-  padding: 5px 4px; border-radius: 8px; cursor: pointer;
-  transition: background .1s; position: relative;
+.tl-item {
+  display: flex; align-items: flex-start; gap: 0;
+  padding: 4px 4px 4px 0; border-radius: 8px; cursor: pointer;
+  transition: background .12s; position: relative;
 }
-.tl-row:hover { background: var(--mist); }
-.tl-row.done .tl-text { text-decoration: line-through; opacity: .4; }
-.tl-row.done .tl-dot { background: var(--sand2) !important; }
+.tl-item:hover { background: var(--bg); }
+.tl-item.done .tl-content { opacity: .4; text-decoration: line-through; text-decoration-color: var(--text3); }
+.tl-item.done .tl-dot-wrap .tl-dot { background: var(--border) !important; }
 .tl-time {
-  width: 46px; font-size: 11px; color: var(--text3); flex-shrink: 0;
-  padding-top: 4px; font-variant-numeric: tabular-nums; text-align: right;
-  padding-right: 8px;
+  width: 36px; flex-shrink: 0; font-size: 10.5px; color: var(--text3);
+  padding-top: 5px; text-align: right; padding-right: 6px;
+  font-variant-numeric: tabular-nums; letter-spacing: -.01em;
 }
-.tl-dot-col {
+.tl-dot-wrap {
   width: 16px; flex-shrink: 0; display: flex; flex-direction: column;
-  align-items: center; padding-top: 6px; z-index: 1;
+  align-items: center; padding-top: 7px; z-index: 1;
 }
-.tl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.tl-body { flex: 1; padding: 2px 0 2px 10px; display: flex; align-items: center; gap: 8px; }
-.tl-text { font-size: 13px; line-height: 1.5; flex: 1; }
-.tl-tag {
-  display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px;
-  margin-left: 4px; vertical-align: middle; font-weight: 500; flex-shrink:0;
-}
-.tl-actions {
-  display: flex; gap: 3px; opacity: 0; transition: opacity .15s; flex-shrink:0;
-}
-.tl-row:hover .tl-actions { opacity: 1; }
-.tl-act-btn {
-  font-size: 11px; padding: 2px 7px; border-radius: 6px;
-  border: 1px solid var(--sand2); background: var(--white); cursor: pointer; color: var(--text3);
-}
-.tl-act-btn:hover { background: var(--sand); color: var(--ocean); }
-.d-meal  { background: #27A060; }
-.d-pool  { background: #1A6EA0; }
+.tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.d-meal  { background: #059669; }
+.d-pool  { background: #0284C7; }
 .d-out   { background: var(--coral); }
 .d-hotel { background: var(--ocean); }
 .d-eve   { background: var(--gold); }
+.tl-content {
+  flex: 1; padding: 3px 8px 3px 8px; display: flex;
+  align-items: center; gap: 8px; min-width: 0;
+}
+.tl-text { font-size: 13px; color: var(--text); line-height: 1.45; flex: 1; min-width: 0; }
+.tl-tag {
+  display: inline-block; font-size: 10px; padding: 1px 7px;
+  border-radius: 20px; font-weight: 600; white-space: nowrap;
+  vertical-align: middle; margin-left: 4px; flex-shrink: 0;
+}
 .t-meal  { background: var(--green-bg); color: var(--green); }
-.t-pool  { background: var(--blue-bg); color: var(--blue-dark); }
-.t-out   { background: #FEF0ED; color: #9A3020; }
-.t-hotel { background: var(--foam); color: var(--ocean); }
+.t-pool  { background: var(--blue-bg); color: var(--blue); }
+.t-out   { background: var(--red-bg); color: var(--red); }
+.t-hotel { background: #E0F2FE; color: #0369A1; }
 .t-eve   { background: var(--amber-bg); color: var(--amber); }
-.tl-add-btn {
-  margin-top: 10px; font-size: 12px; padding: 6px 16px; border-radius: 20px;
-  border: 1px dashed var(--sand2); background: transparent; cursor: pointer;
-  color: var(--text3); font-family: var(--sans); transition: all .15s;
+.tl-acts { display: flex; gap: 2px; opacity: 0; transition: opacity .12s; flex-shrink: 0; }
+.tl-item:hover .tl-acts { opacity: 1; }
+.tl-btn {
+  font-size: 11px; padding: 2px 7px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--surface);
+  cursor: pointer; color: var(--text3); font-family: var(--f-body);
+  transition: all .12s;
 }
-.tl-add-btn:hover { background: var(--foam); color: var(--ocean); border-style: solid; }
+.tl-btn:hover { background: var(--bg); color: var(--ocean); border-color: var(--ocean); }
+.tl-add {
+  margin-top: 10px; font-size: 12px; padding: 6px 14px;
+  border-radius: 20px; border: 1px dashed var(--border);
+  background: transparent; cursor: pointer; color: var(--text3);
+  font-family: var(--f-body); transition: all .15s; display: inline-flex; align-items: center; gap: 5px;
+}
+.tl-add:hover { background: var(--bg); color: var(--ocean); border-style: solid; border-color: var(--ocean); }
 
-/* ───── ACTIVITY ───── */
-.region-head {
-  font-family: var(--serif); font-size: 1.5rem; font-weight: 400; font-style: italic;
-  color: var(--ocean); margin: 28px 0 14px; padding-left: 2px;
-  border-bottom: 1px solid var(--sand2); padding-bottom: 8px;
+/* ━━━ SECTION HEADING ━━━ */
+.section-h {
+  font-family: var(--f-serif); font-size: 1.35rem; font-style: italic;
+  color: var(--ocean); margin: 28px 0 12px;
+  display: flex; align-items: center; gap: 10px;
 }
+.section-h::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ━━━ FILTER ROW ━━━ */
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.fchip {
+  font-size: 12px; padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border); cursor: pointer;
+  background: var(--surface); color: var(--text2);
+  font-family: var(--f-body); transition: all .14s;
+  box-shadow: var(--shadow-sm);
+}
+.fchip.on { background: var(--ocean); color: #fff; border-color: var(--ocean); box-shadow: 0 2px 8px rgba(12,110,143,.3); }
+.fchip:hover:not(.on) { border-color: var(--ocean); color: var(--ocean); }
+
+/* ━━━ SEARCH ━━━ */
+.search-wrap { position: relative; margin-bottom: 12px; }
+.search-wrap::before { content: '🔍'; position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 13px; }
+.search-input {
+  width: 100%; padding: 10px 14px 10px 38px;
+  border: 1.5px solid var(--border); border-radius: var(--r2);
+  font-size: 13px; font-family: var(--f-body); background: var(--surface);
+  color: var(--text); outline: none; transition: border-color .15s;
+  box-shadow: var(--shadow-sm);
+}
+.search-input:focus { border-color: var(--ocean); }
+
+/* ━━━ ACTIVITY CARDS ━━━ */
 .act-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px; margin-bottom: 8px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px; margin-bottom: 6px;
 }
 .act-card {
-  background: var(--white); border: 1px solid var(--sand2);
-  border-radius: var(--r-lg); padding: 0; overflow: hidden;
-  transition: box-shadow .2s, transform .2s;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r2); overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: box-shadow .18s, transform .18s;
+  display: flex; flex-direction: column;
 }
-.act-card:hover { box-shadow: 0 8px 28px rgba(12,31,44,.1); transform: translateY(-2px); }
-.act-card-top {
-  padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--mist);
+.act-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.act-top { padding: 14px 14px 10px; flex: 1; }
+.act-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--bg); display: flex; align-items: center;
+  justify-content: center; font-size: 20px; margin-bottom: 10px;
 }
-.act-icon-wrap {
-  width: 42px; height: 42px; border-radius: 12px; display: flex;
-  align-items: center; justify-content: center; font-size: 22px;
-  background: var(--foam); margin-bottom: 10px;
+.act-name { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+.act-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.act-note { font-size: 11px; color: var(--text3); margin-top: 4px; font-style: italic; }
+.act-bot {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border2);
+  display: flex; align-items: center; gap: 6px;
 }
-.act-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
-.act-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
-.act-card-bot {
-  padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
-}
-.act-price { font-size: 11px; color: var(--text3); flex: 1; }
-.act-note-txt { font-size: 11px; color: var(--text3); font-style: italic; padding: 4px 14px 0; }
-.act-status {
+.act-price { font-size: 11px; color: var(--text3); flex: 1; line-height: 1.3; }
+.status-btn {
   font-size: 10.5px; font-weight: 600; padding: 3px 11px; border-radius: 20px;
-  cursor: pointer; border: none; font-family: var(--sans); transition: all .15s;
-  background: var(--mist); color: var(--text3); flex-shrink:0;
+  cursor: pointer; border: 1.5px solid var(--border); background: transparent;
+  font-family: var(--f-body); color: var(--text3); transition: all .14s; flex-shrink: 0;
 }
-.act-status.booked { background: var(--blue-bg); color: var(--blue-dark); }
-.act-status.done   { background: var(--green-bg); color: var(--green); }
-.act-edit-btn {
-  font-size: 11px; padding: 3px 9px; border-radius: 8px;
-  border: 1px solid var(--sand2); background: transparent; cursor: pointer;
-  color: var(--text3); flex-shrink:0;
+.status-btn:hover { border-color: var(--ocean); color: var(--ocean); }
+.status-btn.booked { background: var(--blue-bg); color: var(--blue); border-color: #93C5FD; }
+.status-btn.done   { background: var(--green-bg); color: var(--green); border-color: #6EE7B7; }
+.icon-btn {
+  width: 28px; height: 28px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: transparent; cursor: pointer;
+  font-size: 12px; color: var(--text3); transition: all .12s; flex-shrink: 0;
 }
-.act-edit-btn:hover { background: var(--foam); }
+.icon-btn:hover { background: var(--bg); border-color: var(--text3); color: var(--text); }
 
-/* ───── RESTAURANTS ───── */
-.r-search-bar { margin-bottom: 12px; }
-.r-search-input {
-  width: 100%; padding: 10px 16px; border: 1.5px solid var(--sand2);
-  border-radius: 12px; font-size: 13px; background: var(--white);
-  font-family: var(--sans); outline: none; color: var(--text);
-  transition: border-color .2s;
+/* ━━━ RESTAURANT CARDS ━━━ */
+.rest-list { display: flex; flex-direction: column; gap: 8px; }
+.rest-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 14px 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+  box-shadow: var(--shadow-sm); transition: box-shadow .18s;
 }
-.r-search-input:focus { border-color: var(--sea); }
-.r-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-.r-filter {
-  font-size: 12px; padding: 5px 14px; border-radius: 20px;
-  border: 1.5px solid var(--sand2); cursor: pointer; background: transparent;
-  color: var(--text2); transition: all .15s; font-family: var(--sans);
+.rest-card:hover { box-shadow: var(--shadow-md); }
+.rest-emoji {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: var(--bg); display: flex; align-items: center;
+  justify-content: center; font-size: 22px;
 }
-.r-filter.on { background: var(--ocean); color: var(--white); border-color: var(--ocean); }
-.r-grid { display: flex; flex-direction: column; gap: 10px; }
-.r-card {
-  background: var(--white); border: 1px solid var(--sand2);
-  border-radius: var(--r-lg); padding: 16px 18px; display: flex; gap: 14px;
-  transition: box-shadow .2s;
+.rest-body { flex: 1; min-width: 0; }
+.rest-top { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+.rest-name { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.2; }
+.visited-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+  background: var(--green-bg); color: var(--green); flex-shrink: 0;
 }
-.r-card:hover { box-shadow: 0 4px 18px rgba(12,31,44,.07); }
-.r-emoji-col {
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--foam); display: flex; align-items: center; justify-content: center;
-  font-size: 24px; flex-shrink: 0;
+.rest-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-wrap: wrap; }
+.rest-cat { font-size: 11.5px; color: var(--coral); font-weight: 600; }
+.rest-region {
+  font-size: 10.5px; background: var(--bg); color: var(--text2);
+  padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border);
 }
-.r-info { flex: 1; min-width: 0; }
-.r-top { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; margin-bottom: 5px; }
-.r-name { font-size: 15px; font-weight: 600; color: var(--text); }
-.r-visited-badge {
-  font-size: 10px; background: var(--green-bg); color: var(--green);
-  padding: 2px 9px; border-radius: 20px; font-weight: 600; flex-shrink:0;
-}
-.r-cat { font-size: 11.5px; color: var(--coral); font-weight: 500; }
-.r-region-pill {
-  display: inline-block; font-size: 10.5px; background: var(--foam);
-  color: var(--ocean); padding: 2px 9px; border-radius: 10px; margin-left: 6px;
-}
-.r-desc { font-size: 12.5px; color: var(--text2); line-height: 1.55; margin-top: 4px; }
-.r-note { font-size: 11.5px; color: var(--text3); margin-top: 3px; font-style: italic; }
-.r-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.rest-desc { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
+.rest-note { font-size: 11.5px; color: var(--text3); margin-top: 3px; font-style: italic; }
+.rest-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 .visit-btn {
   font-size: 12px; padding: 5px 14px; border-radius: 20px;
-  border: 1.5px solid var(--sand2); background: transparent; cursor: pointer;
-  color: var(--text2); font-family: var(--sans); transition: all .15s;
+  border: 1.5px solid var(--border); background: transparent; cursor: pointer;
+  color: var(--text2); font-family: var(--f-body); transition: all .14s;
 }
-.visit-btn.on { background: var(--green-bg); color: var(--green); border-color: var(--green); }
-.r-edit-btn, .r-del-btn {
+.visit-btn.on { background: var(--green-bg); color: var(--green); border-color: #6EE7B7; }
+.visit-btn:hover:not(.on) { border-color: var(--ocean); color: var(--ocean); }
+.text-btn {
   font-size: 12px; padding: 5px 12px; border-radius: 20px;
-  border: 1.5px solid var(--sand2); background: transparent;
-  cursor: pointer; font-family: var(--sans); transition: all .15s;
+  border: 1.5px solid var(--border); background: transparent;
+  cursor: pointer; font-family: var(--f-body); transition: all .14s;
 }
-.r-edit-btn { color: var(--ocean); }
-.r-del-btn  { color: var(--coral); }
-.r-edit-btn:hover { background: var(--foam); border-color: var(--sea); }
-.r-del-btn:hover  { background: #FEF0ED; border-color: var(--coral); }
+.text-btn.edit { color: var(--ocean); }
+.text-btn.del  { color: var(--coral); }
+.text-btn:hover { background: var(--bg); }
 
-/* ───── HOTELS ───── */
-.hotel-block { margin-bottom: 36px; }
-.hotel-hdr {
-  display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
-  flex-wrap: wrap;
+/* ━━━ HOTEL FACILITIES ━━━ */
+.hotel-section { margin-bottom: 32px; }
+.hotel-sect-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px; flex-wrap: wrap;
 }
-.hotel-hdr-name {
-  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
-  color: var(--ocean); line-height: 1.1;
+.hotel-sect-name {
+  font-family: var(--f-display); font-size: 1.15rem; font-weight: 700;
+  color: var(--text); flex: 1;
 }
-.hotel-period-badge {
-  font-size: 11px; font-weight: 600; padding: 4px 13px; border-radius: 20px;
-  background: var(--ocean); color: var(--white); letter-spacing: .02em;
+.hotel-period {
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  padding: 4px 12px; border-radius: 20px;
+  background: var(--ocean); color: #fff;
 }
+.hotel-progress { font-size: 12px; color: var(--text3); }
 .hotel-table-wrap {
-  background: var(--white); border: 1px solid var(--sand2);
-  border-radius: var(--r-lg); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r2); overflow: hidden; box-shadow: var(--shadow-sm);
 }
 table { width: 100%; border-collapse: collapse; }
 thead th {
-  background: var(--ocean); color: rgba(255,255,255,.75);
-  font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
-  text-transform: uppercase; padding: 11px 14px; text-align: left;
+  background: var(--nav); color: rgba(255,255,255,.6);
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; padding: 10px 14px; text-align: left;
+  font-family: var(--f-body);
 }
 tbody tr { transition: background .1s; }
-tbody tr:hover td { background: var(--mist); }
+tbody tr:hover td { background: var(--bg); }
 tbody td {
-  padding: 11px 14px; border-bottom: 1px solid var(--mist);
-  font-size: 13px; vertical-align: middle; line-height: 1.5;
+  padding: 11px 14px; border-bottom: 1px solid var(--border2);
+  font-size: 12.5px; vertical-align: middle; color: var(--text);
 }
 tbody tr:last-child td { border-bottom: none; }
 .badge {
-  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase; padding: 2px 9px; border-radius: 20px;
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 20px;
 }
-.badge-free { background: var(--foam); color: var(--ocean); }
-.badge-paid { background: #FEF0ED; color: #A0441C; }
-.fac-done {
-  width: 34px; height: 34px; border-radius: 50%; display: flex;
-  align-items: center; justify-content: center; cursor: pointer;
-  font-size: 16px; color: var(--sand2); transition: all .15s;
-  border: 1.5px solid var(--sand2);
+.badge-free { background: #DCFCE7; color: #15803D; }
+.badge-paid { background: #FEE2E2; color: #B91C1C; }
+.check-btn {
+  width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border);
+  background: transparent; cursor: pointer; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .14s; color: transparent;
 }
-.fac-done:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
-.fac-done.on { background: var(--green-bg); color: var(--green); border-color: var(--green); }
+.check-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+.check-btn.on { background: var(--green-bg); color: var(--green); border-color: #6EE7B7; }
 .hotel-tip {
-  background: linear-gradient(135deg, var(--foam), #F0FAF5);
-  border-left: 3px solid var(--sea); border-radius: 0 var(--r) var(--r) 0;
-  padding: 12px 16px; font-size: 12.5px; color: var(--ocean);
-  margin-top: 10px; line-height: 1.6;
+  margin-top: 10px; padding: 10px 14px;
+  background: #F0F9FF; border-left: 3px solid var(--teal);
+  border-radius: 0 var(--r) var(--r) 0;
+  font-size: 12.5px; color: #0C4A6E; line-height: 1.6;
 }
 
-/* ───── FAB ───── */
+/* ━━━ FAB ━━━ */
 .fab {
-  position: fixed; bottom: 28px; right: 22px;
-  width: 54px; height: 54px; border-radius: 50%;
-  background: var(--ocean); color: var(--white); font-size: 26px;
-  border: none; cursor: pointer;
-  box-shadow: 0 6px 20px rgba(26,74,92,.4); z-index: 90;
+  position: fixed; bottom: 24px; right: 20px;
+  width: 52px; height: 52px; border-radius: 16px;
+  background: var(--ocean); color: #fff; font-size: 22px;
+  border: none; cursor: pointer; z-index: 90;
+  box-shadow: 0 4px 16px rgba(12,110,143,.4), 0 2px 6px rgba(12,110,143,.2);
   display: flex; align-items: center; justify-content: center;
-  transition: background .15s, transform .15s, box-shadow .15s;
+  transition: all .18s;
 }
-.fab:hover { background: var(--sea); transform: scale(1.05); box-shadow: 0 8px 28px rgba(26,74,92,.5); }
+.fab:hover { background: var(--ocean2); box-shadow: 0 6px 24px rgba(12,110,143,.5); transform: translateY(-1px); }
+.fab:active { transform: translateY(0); }
 .fab.hidden { display: none; }
 
-/* ───── MODAL ───── */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(12,31,44,.5);
-  backdrop-filter: blur(4px); z-index: 200;
+/* ━━━ MODAL ━━━ */
+.modal-bg {
+  position: fixed; inset: 0; background: rgba(0,0,0,.4);
+  backdrop-filter: blur(6px); z-index: 200;
   display: none; align-items: center; justify-content: center; padding: 20px;
 }
-.modal-overlay.on { display: flex; }
-.modal {
-  background: var(--white); border-radius: 22px;
+.modal-bg.on { display: flex; }
+.modal-box {
+  background: var(--surface); border-radius: 24px;
   width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto;
-  box-shadow: 0 24px 80px rgba(12,31,44,.25);
-  animation: modalIn .2s cubic-bezier(.2,.8,.4,1);
+  box-shadow: var(--shadow-lg);
+  animation: slideUp .22s cubic-bezier(.16,1,.3,1);
 }
-@keyframes modalIn {
-  from { opacity: 0; transform: translateY(16px) scale(.97); }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.modal-head {
-  padding: 22px 22px 0;
-  display: flex; align-items: center; justify-content: space-between;
+.modal-hd {
+  padding: 22px 22px 0; display: flex;
+  align-items: center; justify-content: space-between; gap: 12px;
 }
-.modal-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ocean); }
-.modal-close {
-  font-size: 18px; cursor: pointer; color: var(--text3);
-  background: var(--mist); border: none; border-radius: 50%;
-  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-  transition: background .15s;
+.modal-ttl { font-family: var(--f-display); font-size: 1.2rem; font-weight: 700; color: var(--text); }
+.modal-x {
+  width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border);
+  background: var(--bg); cursor: pointer; font-size: 14px; color: var(--text3);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .12s;
 }
-.modal-close:hover { background: var(--sand2); }
+.modal-x:hover { background: var(--border); color: var(--text); }
 .modal-body { padding: 18px 22px; }
-.form-row { margin-bottom: 14px; }
-.form-label {
-  font-size: 11.5px; font-weight: 600; color: var(--text2);
-  margin-bottom: 6px; display: block; letter-spacing: .02em;
+.f-row { margin-bottom: 14px; }
+.f-label { font-size: 11.5px; font-weight: 600; color: var(--text2); margin-bottom: 5px; display: block; }
+.f-inp, .f-sel, .f-ta {
+  width: 100%; padding: 10px 13px; border: 1.5px solid var(--border);
+  border-radius: var(--r); font-size: 13px; font-family: var(--f-body);
+  background: var(--bg); color: var(--text); outline: none;
+  transition: border-color .15s;
 }
-.form-input, .form-select, .form-textarea {
-  width: 100%; padding: 10px 14px; border: 1.5px solid var(--sand2);
-  border-radius: 10px; font-size: 13px; font-family: var(--sans); outline: none;
-  background: var(--cream); color: var(--text); transition: border-color .2s;
-}
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--sea); background: var(--white); }
-.form-textarea { resize: vertical; min-height: 82px; }
-.modal-footer {
-  padding: 0 22px 22px;
-  display: flex; gap: 8px; justify-content: flex-end;
-}
+.f-inp:focus, .f-sel:focus, .f-ta:focus { border-color: var(--ocean); background: var(--surface); }
+.f-ta { resize: vertical; min-height: 80px; }
+.modal-ft { padding: 0 22px 22px; display: flex; gap: 8px; justify-content: flex-end; }
 .btn-cancel {
-  padding: 9px 20px; border-radius: 20px; border: 1.5px solid var(--sand2);
-  background: transparent; cursor: pointer; font-size: 13px; font-family: var(--sans);
-  color: var(--text2); transition: all .15s;
+  padding: 9px 18px; border-radius: 20px; border: 1.5px solid var(--border);
+  background: transparent; cursor: pointer; font-size: 13px;
+  font-family: var(--f-body); color: var(--text2); transition: all .12s;
 }
-.btn-cancel:hover { background: var(--mist); }
+.btn-cancel:hover { background: var(--bg); }
 .btn-save {
   padding: 9px 22px; border-radius: 20px; border: none;
-  background: var(--ocean); color: var(--white); cursor: pointer;
-  font-size: 13px; font-family: var(--sans); font-weight: 600;
-  transition: background .15s;
+  background: var(--ocean); color: #fff; cursor: pointer; font-size: 13px;
+  font-family: var(--f-body); font-weight: 600; transition: all .12s;
 }
-.btn-save:hover { background: var(--sea); }
+.btn-save:hover { background: var(--ocean2); }
 
-/* ───── EMPTY ───── */
-.empty-state {
-  text-align: center; padding: 48px 20px; color: var(--text3);
-  font-size: 14px; display: flex; flex-direction: column; align-items: center; gap: 8px;
-}
-.empty-state::before { content: '🌊'; font-size: 32px; }
+/* ━━━ EMPTY ━━━ */
+.empty { text-align: center; padding: 40px 20px; color: var(--text3); }
+.empty-icon { font-size: 36px; margin-bottom: 10px; }
 
-/* ───── RESPONSIVE ───── */
+/* ━━━ RESPONSIVE ━━━ */
 @media (max-width: 640px) {
-  .trip-strip { display: none; }
-  .r-card { flex-direction: column; }
-  .r-emoji-col { width: 40px; height: 40px; }
+  .trip-inner { flex-wrap: nowrap; }
   .act-grid { grid-template-columns: 1fr 1fr; }
-  .header-brand { padding-right: 14px; }
-  .brand-name { font-size: 1.05rem; }
-  tbody td { padding: 9px 10px; font-size: 12px; }
+  .rest-card { flex-direction: column; gap: 8px; }
+  .rest-emoji { width: 38px; height: 38px; }
+  .nav-brand-sub { display: none; }
+  table { font-size: 12px; }
+  thead th, tbody td { padding: 8px 10px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER + TABS -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="header-brand">
-      <div class="brand-name">Phú <em>Quốc</em></div>
-      <div class="brand-dates">7 / 24 – 8 / 7 · 2025</div>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-brand-name">Phú Quốc</div>
+      <div class="nav-brand-sub">7/24 – 8/7 · 2026</div>
     </div>
-    <div class="header-tabs">
-      <button class="htab on" onclick="switchTab('schedule')">
-        <span class="htab-icon">📅</span> 일정표
-      </button>
-      <button class="htab" onclick="switchTab('activities')">
-        <span class="htab-icon">🌊</span> 액티비티
-      </button>
-      <button class="htab" onclick="switchTab('restaurants')">
-        <span class="htab-icon">🍜</span> 맛집
-      </button>
-      <button class="htab" onclick="switchTab('hotels')">
-        <span class="htab-icon">🏨</span> 호텔 시설
-      </button>
+    <div class="nav-tabs">
+      <button class="ntab on" onclick="switchTab('schedule')"><span class="ntab-icon">📅</span>일정표</button>
+      <button class="ntab" onclick="switchTab('activities')"><span class="ntab-icon">🌊</span>액티비티</button>
+      <button class="ntab" onclick="switchTab('restaurants')"><span class="ntab-icon">🍜</span>맛집</button>
+      <button class="ntab" onclick="switchTab('hotels')"><span class="ntab-icon">🏨</span>호텔 시설</button>
     </div>
-    <div class="header-right">
-      <span id="syncStatus" title=""></span>
-    </div>
+    <div class="nav-sync"><span id="syncStatus"></span></div>
   </div>
-</header>
+</nav>
 
-<!-- TRIP STRIP -->
 <div class="trip-strip">
-  <div class="trip-strip-inner">
-    <div class="ts-item"><span class="ts-label">출발</span><span class="ts-value">7/24 (목) 19:30 · 이스타항공</span></div>
-    <div class="ts-sep"></div>
-    <div class="ts-item"><span class="ts-label">귀국</span><span class="ts-value">8/7 (목) 08:15 인천</span></div>
-    <div class="ts-sep"></div>
-    <div class="ts-item"><span class="ts-label">숙박</span><span class="ts-value">4개 리조트 · 13박</span></div>
-    <div class="ts-sep"></div>
-    <div class="ts-item"><span class="ts-label">리조트</span><span class="ts-value">BW → IHG → 크라운 플라자 → 뉴 월드</span></div>
+  <div class="trip-inner">
+    <div class="ts"><span class="ts-l">출발</span><span class="ts-v">7/24(목) 19:30 이스타항공</span></div>
+    <div class="ts"><span class="ts-l">귀국</span><span class="ts-v">8/7(목) 08:15 인천</span></div>
+    <div class="ts"><span class="ts-l">숙박</span><span class="ts-v">4개 리조트 · 13박</span></div>
+    <div class="ts"><span class="ts-l">리조트</span><span class="ts-v">베스트웨스턴 → 인터컨티넨탈 → 크라운플라자 → 뉴월드</span></div>
   </div>
 </div>
 
 <main class="main" id="main"></main>
 
-<!-- FAB -->
-<button class="fab" id="fab" onclick="handleFab()" title="추가">＋</button>
+<button class="fab" id="fab" onclick="handleFab()">＋</button>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
-    <div class="modal-head">
-      <span class="modal-title" id="modalTitle"></span>
-      <button class="modal-close" onclick="hideModal()">✕</button>
+<div class="modal-bg" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <span class="modal-ttl" id="modalTitle"></span>
+      <button class="modal-x" onclick="hideModal()">✕</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer">
+    <div class="modal-ft">
       <button class="btn-cancel" onclick="hideModal()">취소</button>
       <button class="btn-save" onclick="saveModal()">저장</button>
     </div>
@@ -542,17 +558,13 @@ tbody tr:last-child td { border-bottom: none; }
 </div>
 
 <script>
-
-// ──────────────────────────────────────────────
-// SEED DATA
-// ──────────────────────────────────────────────
 const SEED_SCHEDULE = [
-  {d:'D1 · 7/24(목)',title:'입국 & 소나시 정착',hotel:'베스트 웨스턴',items:[
+  {d:'D1',date:'7/24(목)',title:'입국 & 소나시 정착',hotel:'베스트웨스턴',items:[
     {time:'19:30',type:'out',text:'인천 출발 (이스타항공)',tag:'',tagType:''},
     {time:'23:20',type:'hotel',text:'푸꾸옥 도착 → 공항 라운지 (트립닷컴 무료) → 택시',tag:'체크인',tagType:'hotel'},
     {time:'자정',type:'eve',text:'짐 정리 후 취침',tag:'',tagType:''},
   ]},
-  {d:'D2 · 7/25(금)',title:'리조트 탐험 + 소나시 야시장',hotel:'베스트 웨스턴',items:[
+  {d:'D2',date:'7/25(금)',title:'리조트 탐험 + 소나시 야시장',hotel:'베스트웨스턴',items:[
     {time:'07:30',type:'meal',text:'조식 뷔페 (Essence)',tag:'무료',tagType:'meal'},
     {time:'09:00',type:'hotel',text:'네모 키즈클럽 등록 + 300m 라군풀 탐방',tag:'풀',tagType:'pool'},
     {time:'11:00',type:'pool',text:'프라이빗 비치 – 카약 / 패들보딩',tag:'무료',tagType:'pool'},
@@ -562,14 +574,14 @@ const SEED_SCHEDULE = [
     {time:'19:30',type:'meal',text:'소나시 야시장 39K – 마늘버터 새우·할아버지맥주',tag:'맛집',tagType:'meal'},
     {time:'21:30',type:'hotel',text:'귀환 및 취침',tag:'',tagType:''},
   ]},
-  {d:'D3 · 7/26(토)',title:'4섬 호핑투어 (스노클링)',hotel:'베스트 웨스턴',items:[
+  {d:'D3',date:'7/26(토)',title:'4섬 호핑투어 (스노클링)',hotel:'베스트웨스턴',items:[
     {time:'07:30',type:'meal',text:'조식 후 준비',tag:'',tagType:''},
     {time:'08:30',type:'out',text:'4섬 호핑투어 픽업',tag:'예약 필수',tagType:'out'},
     {time:'16:00',type:'pool',text:'귀환 → 라군풀에서 마무리 물놀이',tag:'',tagType:''},
     {time:'17:30',type:'hotel',text:'피트니스 or 스팀룸',tag:'무료',tagType:'hotel'},
     {time:'19:00',type:'meal',text:'딘꺼우 사원 → 즈엉동 야시장 크랩하우스',tag:'맛집',tagType:'meal'},
   ]},
-  {d:'D4 · 7/27(일)',title:'비치 & 리조트 완전 여유',hotel:'베스트 웨스턴',items:[
+  {d:'D4',date:'7/27(일)',title:'비치 & 리조트 완전 여유',hotel:'베스트웨스턴',items:[
     {time:'07:30',type:'meal',text:'조식 (여유롭게 2시간)',tag:'',tagType:''},
     {time:'09:30',type:'hotel',text:'네모 키즈클럽 프로그램 + 비치 수영',tag:'무료',tagType:'hotel'},
     {time:'13:00',type:'meal',text:'Essence 레스토랑 런치',tag:'',tagType:''},
@@ -577,8 +589,8 @@ const SEED_SCHEDULE = [
     {time:'17:30',type:'eve',text:'C View 루프탑 석양 칵테일',tag:'',tagType:''},
     {time:'20:00',type:'meal',text:'메오 키친 베트남 저녁',tag:'맛집',tagType:'meal'},
   ]},
-  {d:'D5 · 7/28(월)',title:'인터컨티넨탈 체크인 & INK 360',hotel:'인터컨티넨탈 체크인',items:[
-    {time:'07:30',type:'meal',text:'베스트 웨스턴 마지막 조식',tag:'',tagType:''},
+  {d:'D5',date:'7/28(월)',title:'인터컨티넨탈 체크인 & INK 360',hotel:'인터컨티넨탈',items:[
+    {time:'07:30',type:'meal',text:'베스트웨스턴 마지막 조식',tag:'',tagType:''},
     {time:'10:00',type:'hotel',text:'체크아웃 → 인터컨티넨탈 이동 (차 5분)',tag:'',tagType:''},
     {time:'11:00',type:'pool',text:'얼리 체크인 or SPLASH! 풀',tag:'키즈풀',tagType:'pool'},
     {time:'15:00',type:'hotel',text:'정식 체크인 → 액티비티 스케줄표 수령',tag:'',tagType:''},
@@ -586,24 +598,24 @@ const SEED_SCHEDULE = [
     {time:'17:30',type:'eve',text:'INK 360 루프탑바 (19층) 선셋 칵테일',tag:'★★★★★',tagType:'eve'},
     {time:'20:00',type:'meal',text:'Sora & Umi 레스토랑 디너',tag:'',tagType:''},
   ]},
-  {d:'D6 · 7/29(화)',title:'인터컨티넨탈 풀 패키지 + 야시장',hotel:'인터컨티넨탈',items:[
+  {d:'D6',date:'7/29(화)',title:'인터컨티넨탈 풀 패키지 + 야시장',hotel:'인터컨티넨탈',items:[
     {time:'07:00',type:'hotel',text:'리조트 요가 프로그램',tag:'무료·예약필수',tagType:'hotel'},
     {time:'08:00',type:'meal',text:'조식 뷔페 (아이 코너 이용)',tag:'',tagType:''},
     {time:'10:00',type:'pool',text:'Planet Trekkers + SPLASH! 풀',tag:'키즈 타임',tagType:'pool'},
     {time:'14:00',type:'hotel',text:'팔찌 만들기·모자 페인팅',tag:'무료',tagType:'hotel'},
     {time:'16:30',type:'pool',text:'Oasis Pool 수영',tag:'',tagType:''},
-    {time:'18:30',type:'out',text:'야시장 무료 셔틀 탑승 → 즈엉동 야시장',tag:'셔틀 무료',tagType:'out'},
+    {time:'18:30',type:'out',text:'야시장 무료 셔틀 → 즈엉동 야시장',tag:'셔틀 무료',tagType:'out'},
     {time:'20:30',type:'hotel',text:'귀환 → The Theatre 패밀리 스크리닝',tag:'무료',tagType:'hotel'},
   ]},
-  {d:'D7 · 7/30(수)',title:'크라운 플라자 체크인 & 바이다이 선셋',hotel:'크라운 플라자 체크인',items:[
+  {d:'D7',date:'7/30(수)',title:'크라운플라자 체크인 & 바이다이 선셋',hotel:'크라운플라자',items:[
     {time:'08:00',type:'meal',text:'인터컨티넨탈 마지막 조식',tag:'',tagType:''},
-    {time:'11:00',type:'hotel',text:'체크아웃 → 크라운 플라자 이동 (약 25분)',tag:'',tagType:''},
+    {time:'11:00',type:'hotel',text:'체크아웃 → 크라운플라자 이동 (약 25분)',tag:'',tagType:''},
     {time:'13:00',type:'hotel',text:'체크인 → Tribe 키즈클럽 등록',tag:'',tagType:''},
     {time:'14:00',type:'pool',text:'50m 랩풀 + 프라이빗 비치 탐방',tag:'',tagType:''},
     {time:'17:30',type:'eve',text:'바이다이 선셋',tag:'섬 최고 석양 ★★★★★',tagType:'eve'},
     {time:'19:30',type:'meal',text:'Horizons or Amber Sands 디너',tag:'',tagType:''},
   ]},
-  {d:'D8 · 7/31(목)',title:'빈펄 사파리 + 빈원더스 풀코스',hotel:'크라운 플라자',items:[
+  {d:'D8',date:'7/31(목)',title:'빈펄 사파리 + 빈원더스 풀코스',hotel:'크라운플라자',items:[
     {time:'07:00',type:'meal',text:'조식 후 바로 출발 준비',tag:'',tagType:''},
     {time:'08:30',type:'out',text:'빈펄 사파리 입장 (오전 동물 활동 시간)',tag:'가족 필수',tagType:'out'},
     {time:'12:00',type:'meal',text:'사파리 내 점심',tag:'',tagType:''},
@@ -611,15 +623,15 @@ const SEED_SCHEDULE = [
     {time:'17:30',type:'hotel',text:'귀환 → 50m 풀에서 다리 풀기',tag:'',tagType:''},
     {time:'19:30',type:'meal',text:'그랜드월드 야시장 저녁 (분수쇼 감상)',tag:'',tagType:''},
   ]},
-  {d:'D9 · 8/1(금)',title:'혼똔섬 케이블카 + 선셋타운',hotel:'크라운 플라자',items:[
+  {d:'D9',date:'8/1(금)',title:'혼똔섬 케이블카 + 선셋타운',hotel:'크라운플라자',items:[
     {time:'07:30',type:'meal',text:'조식',tag:'',tagType:''},
-    {time:'09:00',type:'out',text:'선셋타운 이동 → 세계최장 해상 케이블카 탑승',tag:'예약 추천',tagType:'out'},
+    {time:'09:00',type:'out',text:'선셋타운 → 세계최장 해상 케이블카 탑승',tag:'예약 추천',tagType:'out'},
     {time:'10:30',type:'out',text:'혼똔섬 썬월드 – 워터파크·놀이기구',tag:'',tagType:''},
     {time:'15:00',type:'hotel',text:'귀환 → 비치 휴식',tag:'',tagType:''},
     {time:'17:30',type:'eve',text:'바이다이 해변 선셋 산책',tag:'',tagType:''},
     {time:'19:30',type:'meal',text:'신 짜오 씨푸드 or Amber Sands 저녁',tag:'',tagType:''},
   ]},
-  {d:'D10 · 8/2(토)',title:'스타피쉬 비치 + 별 관측',hotel:'크라운 플라자',items:[
+  {d:'D10',date:'8/2(토)',title:'스타피쉬 비치 + 별 관측',hotel:'크라운플라자',items:[
     {time:'07:30',type:'meal',text:'조식',tag:'',tagType:''},
     {time:'09:00',type:'out',text:'스타피쉬 비치 (차 10분) – 불가사리 인생샷',tag:'무료',tagType:'out'},
     {time:'11:30',type:'hotel',text:'귀환 → 리조트 수영·비치 자유',tag:'',tagType:''},
@@ -627,7 +639,7 @@ const SEED_SCHEDULE = [
     {time:'19:30',type:'meal',text:'Horizons 레스토랑 저녁',tag:'',tagType:''},
     {time:'21:00',type:'eve',text:'50m 풀에서 성운 관측 (북서부 빛공해 적음)',tag:'★★★★',tagType:'eve'},
   ]},
-  {d:'D11 · 8/3(일)',title:'Hoa Sim 스파 + 완전 휴식일',hotel:'크라운 플라자',items:[
+  {d:'D11',date:'8/3(일)',title:'Hoa Sim 스파 + 완전 휴식일',hotel:'크라운플라자',items:[
     {time:'07:00',type:'hotel',text:'피트니스 오전 운동 or 비치 조깅',tag:'',tagType:''},
     {time:'08:00',type:'meal',text:'조식',tag:'',tagType:''},
     {time:'10:00',type:'hotel',text:'Hoa Sim 스파 커플 패키지',tag:'추천',tagType:'hotel'},
@@ -636,15 +648,15 @@ const SEED_SCHEDULE = [
     {time:'17:30',type:'eve',text:'바이다이 선셋 마지막 감상',tag:'',tagType:''},
     {time:'20:00',type:'meal',text:'그랜드월드 야시장 or 호텔 디너',tag:'',tagType:''},
   ]},
-  {d:'D12 · 8/4(월)',title:'뉴 월드 체크인 & 켐 비치 휴양',hotel:'뉴 월드 체크인',items:[
-    {time:'07:30',type:'meal',text:'크라운 플라자 마지막 조식',tag:'',tagType:''},
-    {time:'11:00',type:'hotel',text:'체크아웃 → 뉴 월드 이동 (남부, 약 40분)',tag:'',tagType:''},
+  {d:'D12',date:'8/4(월)',title:'뉴월드 체크인 & 켐 비치 휴양',hotel:'뉴월드',items:[
+    {time:'07:30',type:'meal',text:'크라운플라자 마지막 조식',tag:'',tagType:''},
+    {time:'11:00',type:'hotel',text:'체크아웃 → 뉴월드 이동 (남부, 약 40분)',tag:'',tagType:''},
     {time:'13:00',type:'pool',text:'체크인 → 무료 워터파크 입장',tag:'키즈 천국',tagType:'pool'},
     {time:'15:30',type:'pool',text:'120m 인피니티풀 + 켐 비치 수영',tag:'',tagType:''},
     {time:'17:30',type:'eve',text:'Bai Khem Bar 석양 칵테일',tag:'남부 최고 선셋',tagType:'eve'},
     {time:'19:30',type:'meal',text:'LUA Grill & Bar 우드파이어 저녁',tag:'',tagType:''},
   ]},
-  {d:'D13 · 8/5(화)',title:'안토이 스노클링 + 리조트 마무리',hotel:'뉴 월드 리조트',items:[
+  {d:'D13',date:'8/5(화)',title:'안토이 스노클링 + 리조트 마무리',hotel:'뉴월드',items:[
     {time:'07:00',type:'meal',text:'조식 뷔페 (5세 미만 무료)',tag:'무료',tagType:'meal'},
     {time:'08:30',type:'out',text:'안토이 군도 스노클링 (남부 최고 투명도)',tag:'예약 필수',tagType:'out'},
     {time:'13:00',type:'meal',text:'귀환 점심 + 아이 낮잠',tag:'',tagType:''},
@@ -653,84 +665,84 @@ const SEED_SCHEDULE = [
     {time:'19:30',type:'meal',text:'리조트 디너 (마지막 여유 저녁)',tag:'',tagType:''},
     {time:'21:00',type:'hotel',text:'짐 정리 시작',tag:'',tagType:''},
   ]},
-  {d:'D14 · 8/6(수)',title:'스파 & 귀국',hotel:'귀국일',items:[
+  {d:'D14',date:'8/6(수)',title:'스파 & 귀국',hotel:'귀국일',items:[
     {time:'07:00',type:'meal',text:'마지막 조식 (여유롭게)',tag:'',tagType:''},
     {time:'09:00',type:'hotel',text:'스파 마지막 트리트먼트',tag:'추천',tagType:'hotel'},
     {time:'11:00',type:'hotel',text:'체크아웃 → 짐 보관',tag:'',tagType:''},
-    {time:'12:00',type:'pool',text:'체크아웃 후 풀·게임룸 이용 가능',tag:'',tagType:''},
+    {time:'12:00',type:'pool',text:'체크아웃 후 풀·게임룸 이용',tag:'',tagType:''},
     {time:'21:00',type:'out',text:'공항 이동 (셔틀 예약)',tag:'',tagType:''},
     {time:'00:20',type:'out',text:'푸꾸옥 출발 → 8/7 08:15 인천 도착',tag:'',tagType:''},
   ]},
 ];
 
 const SEED_ACTIVITIES = [
-  {id:'a1',region:'중부 롱비치',icon:'🌊',name:'4섬 스노클링 호핑투어',desc:'낚시·스노클링·해적선 포함. 열대어·산호 직접 관찰. 아이 동반 가능.',price:'약 15,000–25,000원/인 · 하루 투어',status:'',note:''},
-  {id:'a2',region:'중부 롱비치',icon:'🌅',name:'INK 360 루프탑바',desc:'푸꾸옥 최고층(19층) 선셋 칵테일. 인터컨티넨탈 투숙 중 필수.',price:'입장 무료 · 음료 유료 · 저녁',status:'',note:''},
-  {id:'a3',region:'중부 롱비치',icon:'🏍',name:'딘꺼우 사원',desc:'푸꾸옥 수호신 사원. 일출·일몰 때 아름다운 현지 문화 명소.',price:'무료 · 오전 or 저녁 추천',status:'',note:''},
-  {id:'a4',region:'중부 롱비치',icon:'🌃',name:'즈엉동 야시장',desc:'푸꾸옥 최대 야시장. 해산물 직접 고르기, 길거리 음식, 기념품 쇼핑.',price:'무료 입장 · 17:00 – 23:00',status:'',note:''},
-  {id:'a5',region:'중부 롱비치',icon:'🧖',name:'로컬 마사지',desc:'즈엉동 야시장 주변 마사지샵. 야시장 후 루틴으로 인기.',price:'약 3,000 – 5,000원/60분',status:'',note:''},
+  {id:'a1',region:'중부 롱비치',icon:'🌊',name:'4섬 스노클링 호핑투어',desc:'낚시·스노클링·해적선 포함. 열대어·산호 직접 관찰. 아이 동반 가능.',price:'약 15,000–25,000원/인 · 하루',status:'',note:''},
+  {id:'a2',region:'중부 롱비치',icon:'🌅',name:'INK 360 루프탑바',desc:'푸꾸옥 최고층(19층) 선셋 칵테일. 인터컨티넨탈 투숙 중 필수.',price:'입장 무료 · 음료 유료',status:'',note:''},
+  {id:'a3',region:'중부 롱비치',icon:'🏯',name:'딘꺼우 사원',desc:'푸꾸옥 수호신 사원. 일출·일몰 때 아름다운 현지 문화 명소.',price:'무료 · 오전 or 저녁 추천',status:'',note:''},
+  {id:'a4',region:'중부 롱비치',icon:'🌃',name:'즈엉동 야시장',desc:'푸꾸옥 최대 야시장. 해산물 직접 고르기, 길거리 음식, 기념품 쇼핑.',price:'무료 입장 · 17:00–23:00',status:'',note:''},
+  {id:'a5',region:'중부 롱비치',icon:'💆',name:'로컬 마사지',desc:'즈엉동 야시장 주변 마사지샵. 야시장 후 루틴으로 인기.',price:'약 3,000–5,000원/60분',status:'',note:''},
   {id:'a6',region:'북서부 바이다이',icon:'🦁',name:'빈펄 사파리 + 빈원더스',desc:'아프리카 사파리 동물원 + 워터파크·아쿠아리움 복합 시설. 가족 여행 최고.',price:'약 70,000–100,000원/인 · 하루',status:'',note:''},
-  {id:'a7',region:'북서부 바이다이',icon:'🚡',name:'혼똔섬 케이블카 + 썬월드',desc:'세계 최장급 해상 케이블카 → 혼똔섬 썬월드. 워터파크·놀이공원 포함.',price:'약 30,000–40,000원/인 · 반나절+',status:'',note:''},
-  {id:'a8',region:'북서부 바이다이',icon:'⭐',name:'스타피쉬 비치',desc:'불가사리 가득한 비치. 크라운 플라자에서 차로 10분. 인생샷 명소.',price:'무료 · 오전 추천',status:'',note:''},
+  {id:'a7',region:'북서부 바이다이',icon:'🚡',name:'혼똔섬 케이블카 + 썬월드',desc:'세계 최장급 해상 케이블카. 워터파크·놀이공원 포함.',price:'약 30,000–40,000원/인 · 반나절+',status:'',note:''},
+  {id:'a8',region:'북서부 바이다이',icon:'⭐',name:'스타피쉬 비치',desc:'불가사리 가득한 비치. 크라운플라자에서 차로 10분. 인생샷 명소.',price:'무료 · 오전 추천',status:'',note:''},
   {id:'a9',region:'북서부 바이다이',icon:'🌆',name:'그랜드월드 + 야시장',desc:'복합 쇼핑·엔터테인먼트 단지. 분수쇼·야시장·쇼핑.',price:'무료 입장 · 저녁 추천',status:'',note:''},
-  {id:'a10',region:'북서부 바이다이',icon:'🎰',name:'코로나 카지노',desc:'외국인 입장 가능 카지노. 크라운 플라자에서 매우 가까워 저녁 번외 코스.',price:'외국인 무료 입장',status:'',note:''},
-  {id:'a11',region:'북서부 바이다이',icon:'⛳',name:'빈펄 골프',desc:'국제 규격 골프장. 크라운 플라자에서 10분. 성인 단독 여유 시간.',price:'약 50,000원+/인',status:'',note:''},
-  {id:'a12',region:'남부 켐 비치',icon:'🏖',name:'켐 비치 선셋',desc:'푸꾸옥 남부 최고 비치. 프라이빗하고 물 맑음. 리조트 전용 해변 일몰.',price:'무료 · 저녁 석양 ★★★★★',status:'',note:''},
-  {id:'a13',region:'남부 켐 비치',icon:'🤿',name:'안토이 군도 스노클링',desc:'남부 섬 일대 산호·열대어 포인트. 푸꾸옥 전체에서 가장 물 투명도 높음.',price:'약 20,000원/인 · 반나절',status:'',note:''},
-  {id:'a14',region:'남부 켐 비치',icon:'💆',name:'뉴 월드 스파',desc:'16개 트리트먼트 룸. 귀국 전날 패키지로 완전 리프레시. 마지막 날 필수.',price:'유료 · 사전 예약 추천',status:'',note:''},
+  {id:'a10',region:'북서부 바이다이',icon:'🎰',name:'코로나 카지노',desc:'외국인 입장 가능 카지노. 크라운플라자에서 가까워 저녁 번외 코스.',price:'외국인 무료 입장',status:'',note:''},
+  {id:'a11',region:'북서부 바이다이',icon:'⛳',name:'빈펄 골프',desc:'국제 규격 골프장. 크라운플라자에서 10분. 성인 단독 여유 시간.',price:'약 50,000원+/인',status:'',note:''},
+  {id:'a12',region:'남부 켐 비치',icon:'🏖',name:'켐 비치 선셋',desc:'푸꾸옥 남부 최고 비치. 프라이빗하고 물 맑음. 리조트 전용 해변 일몰.',price:'무료 · 석양 ★★★★★',status:'',note:''},
+  {id:'a13',region:'남부 켐 비치',icon:'🤿',name:'안토이 군도 스노클링',desc:'남부 섬 일대. 푸꾸옥 전체에서 가장 물 투명도 높은 구역.',price:'약 20,000원/인 · 반나절',status:'',note:''},
+  {id:'a14',region:'남부 켐 비치',icon:'🧖',name:'뉴월드 스파',desc:'16개 트리트먼트 룸. 귀국 전날 패키지로 완전 리프레시.',price:'유료 · 사전 예약 추천',status:'',note:''},
 ];
 
 const SEED_RESTAURANTS = [
   {id:'r1',name:'39K 소나시 야시장',emoji:'🦐',region:'중부 소나시',category:'해산물 · 야시장',desc:'마늘버터 새우구이·오징어튀김 명물. 기본 메뉴 39,000동(약 2천원). 할아버지 맥주 필수.',visited:false,note:''},
   {id:'r2',name:'앵그리 크랩',emoji:'🦀',region:'중부 소나시',category:'씨푸드 레스토랑',desc:'즈엉동 야시장 근처. 게·새우·조개 구이 전문. 현지인+관광객 모두 줄 서는 맛집.',visited:false,note:''},
-  {id:'r3',name:'신 짜오 (Xin Chào)',emoji:'🦞',region:'중부 소나시',category:'프리미엄 해산물',desc:'해변가 씨푸드 레스토랑. 소금달걀 새우구이·레몬그라스 오징어. 야시장에서 500m.',visited:false,note:''},
+  {id:'r3',name:'신 짜오 (Xin Chào)',emoji:'🦞',region:'중부 소나시',category:'프리미엄 해산물',desc:'해변가 씨푸드. 소금달걀 새우구이·레몬그라스 오징어. 야시장에서 500m.',visited:false,note:''},
   {id:'r4',name:'메오 키친',emoji:'☕',region:'중부 소나시',category:'베트남 퓨전',desc:'모던 인테리어·에어컨 완비. 반쎄오·꼬치·쌀국수 인기. 낮에도 쾌적.',visited:false,note:''},
-  {id:'r5',name:'크랩 하우스',emoji:'🦀',region:'중부 소나시',category:'씨푸드',desc:'즈엉동 대표 씨푸드. 랍스터·킹크랩 직접 선택 후 즉석 조리. 세트 메뉴 추천.',visited:false,note:''},
-  {id:'r6',name:'반쎄오 꾸어이',emoji:'🥗',region:'중부 소나시',category:'로컬 분식',desc:'바삭한 반쎄오 전문 로컬 맛집. 저렴하고 푸짐. 신선 채소와 함께 먹는 정통 스타일.',visited:false,note:''},
-  {id:'r7',name:'그랜드월드 야시장',emoji:'🌃',region:'북부 그랜드월드',category:'복합 야시장',desc:'즈엉동보다 쾌적하고 넓음. 해산물·양념닭발·열대과일. 분수쇼 보면서 식사.',visited:false,note:''},
-  {id:'r8',name:'Amber Sands Beach Club',emoji:'🍹',region:'북부 그랜드월드',category:'비치클럽 (크라운 플라자 내)',desc:'낮에는 풀&비치, 저녁에는 칵테일&다이닝. 분위기 최고.',visited:false,note:''},
-  {id:'r9',name:'Horizons Restaurant',emoji:'🍽',region:'북부 그랜드월드',category:'인터내셔널 (크라운 플라자 내)',desc:'뷔페 조식 수준 높음. 저녁 세트 메뉴도 품질 대비 합리적.',visited:false,note:''},
-  {id:'r10',name:'LUA Grill & Bar',emoji:'🔥',region:'남부 켐 비치',category:'우드파이어 그릴 (뉴 월드 내)',desc:'현지 식재료 장작 구이. 인터랙티브 쿠킹쇼 스타일. 리조트 내 저녁 식사 강력 추천.',visited:false,note:''},
-  {id:'r11',name:'Bai Khem Bar',emoji:'🍹',region:'남부 켐 비치',category:'비치바 (뉴 월드 내)',desc:'켐 비치 접한 칵테일 바. 석양 보며 트로피컬 분위기. 체크아웃 전 오전도 운영.',visited:false,note:''},
+  {id:'r5',name:'크랩 하우스',emoji:'🦀',region:'중부 소나시',category:'씨푸드',desc:'즈엉동 대표 씨푸드. 랍스터·킹크랩 직접 선택 후 즉석 조리.',visited:false,note:''},
+  {id:'r6',name:'반쎄오 꾸어이',emoji:'🥗',region:'중부 소나시',category:'로컬 분식',desc:'바삭한 반쎄오 전문 로컬 맛집. 저렴하고 푸짐.',visited:false,note:''},
+  {id:'r7',name:'그랜드월드 야시장',emoji:'🌃',region:'북부 그랜드월드',category:'복합 야시장',desc:'즈엉동보다 쾌적하고 넓음. 해산물·양념닭발·열대과일. 분수쇼 보며 식사.',visited:false,note:''},
+  {id:'r8',name:'Amber Sands Beach Club',emoji:'🍹',region:'북부 그랜드월드',category:'비치클럽 (크라운플라자 내)',desc:'낮에는 풀&비치, 저녁에는 칵테일&다이닝.',visited:false,note:''},
+  {id:'r9',name:'Horizons Restaurant',emoji:'🍽',region:'북부 그랜드월드',category:'인터내셔널 (크라운플라자 내)',desc:'뷔페 조식 수준 높음. 저녁 세트 메뉴도 품질 대비 합리적.',visited:false,note:''},
+  {id:'r10',name:'LUA Grill & Bar',emoji:'🔥',region:'남부 켐 비치',category:'우드파이어 그릴 (뉴월드 내)',desc:'현지 식재료 장작 구이. 인터랙티브 쿠킹쇼 스타일.',visited:false,note:''},
+  {id:'r11',name:'Bai Khem Bar',emoji:'🍹',region:'남부 켐 비치',category:'비치바 (뉴월드 내)',desc:'켐 비치 접한 칵테일 바. 석양 보며 트로피컬 분위기.',visited:false,note:''},
 ];
 
 const SEED_HOTELS = [
-  {id:'bw',name:'베스트 웨스턴 프리미어 소나시',period:'7/24 – 7/28 · 4박',tip:'소나시 야시장이 호텔 바로 맞은편. 저녁 즈엉동 셔틀 1회 무료. C View 루프탑은 석양 시간대 필수.',facilities:[
+  {id:'bw',name:'베스트웨스턴 프리미어 소나시',period:'7/24–7/28 · 4박',tip:'소나시 야시장이 호텔 바로 맞은편. 저녁 즈엉동 셔틀 1회 무료. C View 루프탑은 석양 시간대 필수.',facilities:[
     {type:'free',name:'조식 뷔페 (Essence Restaurant)',hours:'매일',note:'베트남+인터내셔널 · 도넛월 인기'},
     {type:'free',name:'300m 라군풀 + 프라이빗 비치',hours:'07:00–19:00',note:'패들보딩·카약·보드서핑 포함'},
-    {type:'free',name:'네모 키즈클럽 (Nemo Kids Club)',hours:'08:30–16:00',note:'영화·미술공예·풀게임 주간 스케줄'},
+    {type:'free',name:'네모 키즈클럽 (Nemo Kids Club)',hours:'08:30–16:00',note:'영화·미술공예·풀게임'},
     {type:'free',name:'피트니스센터 + 스팀룸',hours:'06:00–22:00',note:'트레드밀·사이클·웨이트'},
-    {type:'free',name:'C View 루프탑 스카이바 입장',hours:'저녁',note:'360도 선셋뷰 ★★★'},
+    {type:'free',name:'C View 루프탑 스카이바',hours:'저녁',note:'360도 선셋뷰 ★★★'},
     {type:'free',name:'코코넛잎 아트·수중스쿠터 체험',hours:'수시',note:'프런트 스케줄 확인 후 참여'},
-    {type:'free',name:'공항 셔틀 + Wi-Fi 전 구역',hours:'08:00–18:00',note:'사전 예약 필요'},
+    {type:'free',name:'공항 셔틀 + Wi-Fi',hours:'08:00–18:00',note:'사전 예약 필요'},
     {type:'paid',name:'Thala Spa 마사지',hours:'–',note:'인도차이나 스타일'},
-    {type:'paid',name:'베이비시팅 (키즈클럽 연계)',hours:'08:30–16:00',note:'소액 추가요금'},
+    {type:'paid',name:'베이비시팅',hours:'08:30–16:00',note:'소액 추가요금'},
   ]},
-  {id:'ihg',name:'인터컨티넨탈 푸꾸옥 롱비치 리조트',period:'7/28 – 7/30 · 2박',tip:'리조트 프로그램이 시간대별로 매우 촘촘함. 체크인 당일 프런트에서 전체 액티비티 스케줄표 받을 것. INK 360 선셋 좌석 사전 예약 강력 추천.',facilities:[
+  {id:'ihg',name:'인터컨티넨탈 푸꾸옥 롱비치 리조트',period:'7/28–7/30 · 2박',tip:'체크인 당일 프런트에서 전체 액티비티 스케줄표 받을 것. INK 360 선셋 좌석 사전 예약 강력 추천.',facilities:[
     {type:'free',name:'조식 뷔페 (Sora & Umi)',hours:'06:30–10:30',note:'일식·베트남식·인터내셔널'},
-    {type:'free',name:'수영장 4개 (SPLASH! 워터슬라이드 포함)',hours:'07:00–19:00',note:'SPLASH!는 워터슬라이드 키즈풀'},
+    {type:'free',name:'수영장 4개 (SPLASH! 워터슬라이드 포함)',hours:'07:00–19:00',note:'SPLASH!는 키즈풀'},
     {type:'free',name:'Planet Trekkers 키즈클럽 (4–12세)',hours:'매일',note:'250㎡, 인증 교사 운영'},
     {type:'free',name:'The Hideout 게임룸',hours:'09:00–21:00',note:'빌리어드·PS4·보드게임'},
     {type:'free',name:'The Theatre 영화관',hours:'저녁',note:'스낵 포함 패밀리 스크리닝'},
     {type:'free',name:'피트니스센터 24h',hours:'24시간',note:'요가·스트레칭 세션 예약 가능'},
-    {type:'free',name:'INK 360 루프탑바 입장 (19층)',hours:'저녁',note:'푸꾸옥 최고층 선셋뷰 ★★★★★'},
+    {type:'free',name:'INK 360 루프탑바 (19층)',hours:'저녁',note:'푸꾸옥 최고층 선셋뷰 ★★★★★'},
     {type:'free',name:'요가·명상·팔찌·모자 페인팅',hours:'시간대별',note:'전날 예약 필수'},
     {type:'free',name:'즈엉동 야시장 셔틀 (1일 1회)',hours:'저녁',note:'프런트 확인'},
     {type:'paid',name:'HARNN Heritage Spa',hours:'–',note:'어워드 수상 스파'},
     {type:'paid',name:'Kids Can Cook / Kids Camp',hours:'주말+방학',note:'별도 예약·요금'},
   ]},
-  {id:'cp',name:'크라운 플라자 푸꾸옥 스타베이',period:'7/30 – 8/4 · 5박',tip:'북서쪽 바이다이 위치 → 빈원더스·사파리·그랜드월드 가장 가까운 호텔. 5박 베이스로 북부 관광지 모두 공략 가능. 50m 풀 새벽 수영 강력 추천.',facilities:[
+  {id:'cp',name:'크라운플라자 푸꾸옥 스타베이',period:'7/30–8/4 · 5박',tip:'북서쪽 바이다이 위치 → 빈원더스·사파리·그랜드월드 가장 가까운 호텔. 50m 풀 새벽 수영 강력 추천.',facilities:[
     {type:'free',name:'조식 뷔페 (Horizons Restaurant)',hours:'매일',note:'–'},
     {type:'free',name:'수영장 2개 (50m 랩풀 포함)',hours:'–',note:'야간 성운 관측 명소'},
-    {type:'free',name:'Tribe 키즈클럽 & 게임룸',hours:'–',note:'야생탐험가 컨셉, 창의·교육 활동'},
-    {type:'free',name:'피트니스센터 (최신 장비)',hours:'–',note:'–'},
-    {type:'free',name:'바이다이 프라이빗 비치',hours:'–',note:'섬 최고 선셋 포인트 ★★★★★'},
-    {type:'free',name:'일일 레크리에이션 (비치 스포츠·요가 등)',hours:'매일',note:'스케줄 프런트 확인'},
-    {type:'free',name:'공항 셔틀 (스케줄 운영)',hours:'정해진 시간',note:'12시간 전 예약 필수'},
+    {type:'free',name:'Tribe 키즈클럽 & 게임룸',hours:'–',note:'야생탐험가 컨셉'},
+    {type:'free',name:'피트니스센터',hours:'–',note:'최신 장비'},
+    {type:'free',name:'바이다이 프라이빗 비치',hours:'–',note:'섬 최고 선셋 ★★★★★'},
+    {type:'free',name:'일일 레크리에이션',hours:'매일',note:'비치 스포츠·요가 등'},
+    {type:'free',name:'공항 셔틀',hours:'정해진 시간',note:'12시간 전 예약 필수'},
     {type:'paid',name:'Hoa Sim Spa',hours:'–',note:'커플 패키지 인기'},
     {type:'paid',name:'Amber Sands Beach Club 식음',hours:'–',note:'비치클럽 분위기'},
   ]},
-  {id:'nw',name:'뉴 월드 푸꾸옥 리조트',period:'8/4 – 8/6 · 2박',tip:'남부 켐 비치 위치 → 가장 조용하고 프라이빗. 마지막 2박 여행 피로 회복에 최적. 귀국 전날 스파 예약 필수.',facilities:[
+  {id:'nw',name:'뉴월드 푸꾸옥 리조트',period:'8/4–8/6 · 2박',tip:'남부 켐 비치 위치 → 가장 조용하고 프라이빗. 마지막 2박 여행 피로 회복에 최적. 귀국 전날 스파 예약 필수.',facilities:[
     {type:'free',name:'조식 뷔페 (5세 미만 어린이 무료)',hours:'07:00–10:30',note:'아이 코너 만족도 매우 높음'},
     {type:'free',name:'무료 워터파크 (슬라이드·스플래시존)',hours:'–',note:'투숙객 무료 입장'},
     {type:'free',name:'수영장 2개 + 키즈풀 (120m 인피니티풀)',hours:'–',note:'–'},
@@ -743,16 +755,14 @@ const SEED_HOTELS = [
   ]},
 ];
 
-// ──────────────────────────────────────────────
-// STATE
-// ──────────────────────────────────────────────
-const DATA_VERSION = 1;
+// ━━━ STATE ━━━
 const SERVER_URL = 'https://osaka-trip-server.onrender.com';
 let state = {};
+let _syncTimer = null;
 
-function getDefaultState() {
+function getDefault() {
   return {
-    version: DATA_VERSION,
+    version: 2,
     schedule: SEED_SCHEDULE.map(d => ({...d, items: d.items.map(i => ({...i, done: false}))})),
     activities: JSON.parse(JSON.stringify(SEED_ACTIVITIES)),
     restaurants: JSON.parse(JSON.stringify(SEED_RESTAURANTS)),
@@ -762,473 +772,414 @@ function getDefaultState() {
 
 function loadState() {
   try {
-    const saved = localStorage.getItem('phuquoc2025');
-    if (saved) { state = JSON.parse(saved); return; }
+    const s = localStorage.getItem('phuquoc2026');
+    if (s) { state = JSON.parse(s); return; }
   } catch(e) {}
-  state = getDefaultState();
+  state = getDefault();
 }
 
 function saveState() {
-  localStorage.setItem('phuquoc2025', JSON.stringify(state));
-  syncToServer();
+  localStorage.setItem('phuquoc2026', JSON.stringify(state));
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(doSync, 800);
 }
 
-// ──────────────────────────────────────────────
-// SYNC
-// ──────────────────────────────────────────────
-let _syncTimer = null;
 function setSyncStatus(s) {
   const el = document.getElementById('syncStatus');
   if (!el) return;
-  const map = {idle:'', syncing:'🔄', ok:'☁️', error:'⚠️'};
-  const tip = {idle:'', syncing:'저장 중…', ok:'서버 동기화됨', error:'서버 저장 실패 (로컬 저장됨)'};
-  el.textContent = map[s] || '';
-  el.title = tip[s] || '';
+  const m = {syncing:'🔄', ok:'☁️', error:'⚠️'};
+  const t = {syncing:'저장 중…', ok:'동기화됨', error:'저장 실패'};
+  el.textContent = m[s] || ''; el.title = t[s] || '';
 }
-function syncToServer() {
-  clearTimeout(_syncTimer);
-  _syncTimer = setTimeout(async () => {
-    setSyncStatus('syncing');
-    try {
-      const res = await fetch(`${SERVER_URL}/phuquoc/state`, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(state),
-      });
-      setSyncStatus(res.ok ? 'ok' : 'error');
-    } catch(e) { setSyncStatus('error'); }
-  }, 800);
+
+async function doSync() {
+  setSyncStatus('syncing');
+  try {
+    const r = await fetch(`${SERVER_URL}/phuquoc/state`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(state),
+    });
+    setSyncStatus(r.ok ? 'ok' : 'error');
+  } catch(e) { setSyncStatus('error'); }
 }
+
 async function loadFromServer() {
   try {
-    const res = await fetch(`${SERVER_URL}/phuquoc/state`);
-    if (!res.ok) return;
-    const sv = await res.json();
+    const r = await fetch(`${SERVER_URL}/phuquoc/state`);
+    if (!r.ok) return;
+    const sv = await r.json();
     if (!sv || !sv.version) return;
     state = sv;
-    localStorage.setItem('phuquoc2025', JSON.stringify(state));
-    renderMain();
-    setSyncStatus('ok');
+    localStorage.setItem('phuquoc2026', JSON.stringify(state));
+    renderMain(); setSyncStatus('ok');
   } catch(e) {}
 }
 
-// ──────────────────────────────────────────────
-// TABS
-// ──────────────────────────────────────────────
+// ━━━ TABS ━━━
 let activeTab = 'schedule';
+
 function switchTab(id) {
   activeTab = id;
-  const labels = {schedule:'일정표',activities:'액티비티',restaurants:'맛집',hotels:'호텔'};
-  document.querySelectorAll('.htab').forEach(b => b.classList.toggle('on', b.textContent.includes(labels[id]||'')));
-  const fab = document.getElementById('fab');
-  fab.classList.toggle('hidden', id === 'hotels');
+  const labels = {schedule:'일정표', activities:'액티비티', restaurants:'맛집', hotels:'호텔'};
+  document.querySelectorAll('.ntab').forEach(b =>
+    b.classList.toggle('on', b.textContent.trim().includes(labels[id]))
+  );
+  document.getElementById('fab').classList.toggle('hidden', id === 'hotels');
   renderMain();
-}
-function handleFab() {
-  if (activeTab === 'schedule') showAddTimelineModal(0);
-  else if (activeTab === 'activities') showAddActivityModal();
-  else if (activeTab === 'restaurants') showAddRestaurantModal();
-}
-function renderMain() {
-  const main = document.getElementById('main');
-  if (activeTab === 'schedule') main.innerHTML = renderSchedule();
-  else if (activeTab === 'activities') main.innerHTML = renderActivities();
-  else if (activeTab === 'restaurants') main.innerHTML = renderRestaurants();
-  else if (activeTab === 'hotels') main.innerHTML = renderHotels();
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// ──────────────────────────────────────────────
-// SCHEDULE
-// ──────────────────────────────────────────────
+function handleFab() {
+  if (activeTab === 'schedule') showAddTLModal(0);
+  else if (activeTab === 'activities') showAddActModal();
+  else if (activeTab === 'restaurants') showAddRestModal();
+}
+
+function renderMain() {
+  const el = document.getElementById('main');
+  if (activeTab === 'schedule') el.innerHTML = renderSchedule();
+  else if (activeTab === 'activities') el.innerHTML = renderActivities();
+  else if (activeTab === 'restaurants') el.innerHTML = renderRestaurants();
+  else if (activeTab === 'hotels') el.innerHTML = renderHotels();
+}
+
+// ━━━ SCHEDULE ━━━
+const DOT = {meal:'d-meal',pool:'d-pool',out:'d-out',hotel:'d-hotel',eve:'d-eve'};
+const TAG  = {meal:'t-meal',pool:'t-pool',out:'t-out',hotel:'t-hotel',eve:'t-eve'};
+
 function renderSchedule() {
-  const doneCount = state.schedule.reduce((acc, d) => acc + d.items.filter(i => i.done).length, 0);
-  const totalCount = state.schedule.reduce((acc, d) => acc + d.items.length, 0);
+  const done = state.schedule.reduce((a,d) => a + d.items.filter(i=>i.done).length, 0);
+  const total = state.schedule.reduce((a,d) => a + d.items.length, 0);
+  const pct = Math.round(done / Math.max(total,1) * 100);
   return `
-  <div class="stat-row">
-    <div class="stat-card accent"><div class="stat-num">${state.schedule.length}</div><div class="stat-lbl">총 일수</div></div>
-    <div class="stat-card"><div class="stat-num">${doneCount}</div><div class="stat-lbl">완료 항목</div></div>
-    <div class="stat-card"><div class="stat-num">${totalCount - doneCount}</div><div class="stat-lbl">남은 항목</div></div>
-    <div class="stat-card"><div class="stat-num">${Math.round(doneCount/Math.max(totalCount,1)*100)}%</div><div class="stat-lbl">진행률</div></div>
-  </div>
-  <div class="note-box">⚡ 사전 예약 필수: INK 360 선셋 좌석 / 4섬 호핑투어 / 빈펄 사파리+빈원더스 / 혼똔섬 케이블카 / 각 리조트 스파</div>
-  <div style="margin-top:16px">
-    ${state.schedule.map((day, di) => `
-    <div class="day-card" id="daycard-${di}">
-      <div class="day-top" onclick="toggleDay(${di})">
-        <span class="day-num">${day.d}</span>
-        <span class="day-ttl">${day.title}</span>
-        <span class="day-badge">${day.hotel}</span>
-        <span class="day-arr">▼</span>
+    <div class="stat-row">
+      <div class="stat-pill hi"><span class="stat-pill-num">14</span><span class="stat-pill-lbl">일</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${done}</span><span class="stat-pill-lbl">완료</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${total - done}</span><span class="stat-pill-lbl">남음</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${pct}%</span><span class="stat-pill-lbl">진행률</span></div>
+    </div>
+    <div class="note-strip">⚡ 사전 예약 필수: INK 360 선셋 좌석 / 4섬 호핑투어 / 빈펄 사파리+빈원더스 / 혼똔섬 케이블카 / 각 리조트 스파</div>
+    <div class="day-list">
+      ${state.schedule.map((day, di) => `
+        <div class="day-row" id="dc${di}">
+          <div class="day-header" onclick="toggleDay(${di})">
+            <div class="day-num-col">
+              <div class="day-num-d">${day.d}</div>
+              <div class="day-num-date">${day.date}</div>
+            </div>
+            <div class="day-title-col">
+              <div class="day-title">${day.title}</div>
+            </div>
+            <span class="day-hotel-tag">${day.hotel}</span>
+            <span class="day-arr">▼</span>
+          </div>
+          <div class="day-body">
+            <div class="tl">
+              ${day.items.map((item, ii) => renderTLItem(di, item, ii, ii === day.items.length - 1)).join('')}
+            </div>
+            <button class="tl-add" onclick="showAddTLModal(${di})">＋ 항목 추가</button>
+          </div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function renderTLItem(di, item, ii, isLast) {
+  const tagHtml = item.tag
+    ? `<span class="tl-tag ${TAG[item.tagType] || TAG[item.type] || 't-hotel'}">${item.tag}</span>`
+    : '';
+  return `<div class="tl-item${item.done?' done':''}" onclick="toggleDone(${di},${ii})">
+    <span class="tl-time">${item.time}</span>
+    <div class="tl-dot-wrap"><span class="tl-dot ${DOT[item.type]||'d-hotel'}"></span></div>
+    <div class="tl-content">
+      <span class="tl-text">${item.text}${tagHtml}</span>
+      <div class="tl-acts">
+        <button class="tl-btn" onclick="event.stopPropagation();showEditTLModal(${di},${ii})">✎</button>
+        <button class="tl-btn" onclick="event.stopPropagation();delTLItem(${di},${ii})">✕</button>
       </div>
-      <div class="day-body">
-        <div class="tl">
-          ${day.items.map((item, ii) => renderTLItem(di, item, ii)).join('')}
-        </div>
-        <button class="tl-add-btn" onclick="showAddTimelineModal(${di})">＋ 항목 추가</button>
-      </div>
-    </div>`).join('')}
+    </div>
   </div>`;
 }
 
 function toggleDay(di) {
-  document.getElementById('daycard-' + di).classList.toggle('open');
+  document.getElementById('dc'+di).classList.toggle('open');
 }
 
-const DOT_CLASS = {meal:'d-meal',pool:'d-pool',out:'d-out',hotel:'d-hotel',eve:'d-eve'};
-const TAG_CLASS = {meal:'t-meal',pool:'t-pool',out:'t-out',hotel:'t-hotel',eve:'t-eve'};
-
-function renderTLItem(di, item, ii) {
-  const isLast = ii === state.schedule[di].items.length - 1;
-  const tagHtml = item.tag ? `<span class="tag ${TAG_CLASS[item.tagType]||TAG_CLASS[item.type]||'t-hotel'}">${item.tag}</span>` : '';
-  return `<div class="tl-row${item.done?' done':''}" onclick="toggleTLDone(${di},${ii})">
-    <span class="tl-time">${item.time}</span>
-    <div class="tl-dot-col">
-      <span class="tl-dot ${DOT_CLASS[item.type]||'d-hotel'}"></span>
-    </div>
-    <div class="tl-body">
-      <span class="tl-text">${item.text}${tagHtml}</span>
-      <div class="tl-actions">
-        <button class="tl-act-btn" onclick="event.stopPropagation();showEditTLModal(${di},${ii})">✎</button>
-        <button class="tl-act-btn" onclick="event.stopPropagation();deleteTLItem(${di},${ii})">✕</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-function toggleTLDone(di, ii) {
+function toggleDone(di, ii) {
   state.schedule[di].items[ii].done = !state.schedule[di].items[ii].done;
-  saveState();
-  renderMain();
-  document.getElementById('daycard-' + di)?.classList.add('open');
+  saveState(); renderMain();
+  requestAnimationFrame(() => { document.getElementById('dc'+di)?.classList.add('open'); });
 }
 
-function deleteTLItem(di, ii) {
-  if (!confirm('이 항목을 삭제할까요?')) return;
+function delTLItem(di, ii) {
+  if (!confirm('삭제할까요?')) return;
   state.schedule[di].items.splice(ii, 1);
   saveState(); renderMain();
-  document.getElementById('daycard-' + di)?.classList.add('open');
+  requestAnimationFrame(() => { document.getElementById('dc'+di)?.classList.add('open'); });
 }
 
-// ──────────────────────────────────────────────
-// ACTIVITIES
-// ──────────────────────────────────────────────
-let aFilterRegion = 'all';
+// ━━━ ACTIVITIES ━━━
+let aRegion = 'all';
+
 function renderActivities() {
   const regions = [...new Set(state.activities.map(a => a.region))];
-  const filtered = aFilterRegion === 'all' ? state.activities : state.activities.filter(a => a.region === aFilterRegion);
-  const booked = state.activities.filter(a => a.status === 'booked').length;
-  const done = state.activities.filter(a => a.status === 'done').length;
+  const booked = state.activities.filter(a => a.status==='booked').length;
+  const done   = state.activities.filter(a => a.status==='done').length;
+  const list = aRegion === 'all' ? state.activities : state.activities.filter(a => a.region === aRegion);
   return `
-  <div class="stat-row">
-    <div class="stat-card accent"><div class="stat-num">${state.activities.length}</div><div class="stat-lbl">총 액티비티</div></div>
-    <div class="stat-card"><div class="stat-num">${booked}</div><div class="stat-lbl">예약완료</div></div>
-    <div class="stat-card"><div class="stat-num">${done}</div><div class="stat-lbl">완료</div></div>
-    <div class="stat-card"><div class="stat-num">${state.activities.length - booked - done}</div><div class="stat-lbl">미예약</div></div>
-  </div>
-  <div class="r-filters">
-    <span class="r-filter${aFilterRegion==='all'?' on':''}" onclick="aFilterRegion='all';renderMain()">전체</span>
-    ${regions.map(r => `<span class="r-filter${aFilterRegion===r?' on':''}" onclick="aFilterRegion='${r}';renderMain()">${r}</span>`).join('')}
-  </div>
-  ${filtered.length === 0 ? '<div class="empty-state">액티비티가 없어요</div>' : ''}
-  ${regions.filter(r => aFilterRegion==='all' || aFilterRegion===r).map(region => {
-    const acts = filtered.filter(a => a.region === region);
-    if (!acts.length) return '';
-    return `<div class="region-heading">${region}</div>
-    <div class="act-grid">${acts.map(a => renderActCard(a)).join('')}</div>`;
-  }).join('')}`;
+    <div class="stat-row">
+      <div class="stat-pill hi"><span class="stat-pill-num">${state.activities.length}</span><span class="stat-pill-lbl">전체</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${booked}</span><span class="stat-pill-lbl">예약완료</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${done}</span><span class="stat-pill-lbl">완료</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${state.activities.length-booked-done}</span><span class="stat-pill-lbl">미예약</span></div>
+    </div>
+    <div class="filter-row">
+      <span class="fchip${aRegion==='all'?' on':''}" onclick="aRegion='all';renderMain()">전체</span>
+      ${regions.map(r => `<span class="fchip${aRegion===r?' on':''}" onclick="aRegion='${r}';renderMain()">${r}</span>`).join('')}
+    </div>
+    ${(aRegion==='all' ? regions : [aRegion]).map(region => {
+      const acts = list.filter(a => a.region === region);
+      if (!acts.length) return '';
+      return `<div class="section-h">${region}</div>
+      <div class="act-grid">
+        ${acts.map(a => {
+          const s = a.status || '';
+          return `<div class="act-card">
+            <div class="act-top">
+              <div class="act-icon">${a.icon}</div>
+              <div class="act-name">${a.name}</div>
+              <div class="act-desc">${a.desc}</div>
+              ${a.note ? `<div class="act-note">${a.note}</div>` : ''}
+            </div>
+            <div class="act-bot">
+              <span class="act-price">${a.price}</span>
+              <button class="status-btn${s==='booked'?' booked':s==='done'?' done':''}" onclick="cycleAct('${a.id}')">${s==='done'?'✓ 완료':s==='booked'?'예약완료':'예약 전'}</button>
+              <button class="icon-btn" onclick="showEditActModal('${a.id}')" title="편집">✎</button>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }).join('')}`;
 }
 
-function renderActCard(a) {
-  const s = a.status || '';
-  return `<div class="act-card">
-    <div class="act-card-top">
-      <div class="act-icon-wrap">${a.icon}</div>
-      <div class="act-name">${a.name}</div>
-      <div class="act-desc">${a.desc}</div>
-      ${a.note ? `<div class="act-note-txt">${a.note}</div>` : ''}
-    </div>
-    <div class="act-card-bot">
-      <span class="act-price">${a.price}</span>
-      <button class="act-status${s==='booked'?' booked':s==='done'?' done':''}" onclick="cycleActStatus('${a.id}')">${s==='done'?'✓ 완료':s==='booked'?'예약완료':'예약 전'}</button>
-      <button class="act-edit-btn" onclick="showEditActivityModal('${a.id}')">✎</button>
-    </div>
-  </div>`;
-}
-
-function cycleActStatus(id) {
-  const a = state.activities.find(x => x.id === id);
+function cycleAct(id) {
+  const a = state.activities.find(x => x.id===id);
   if (!a) return;
-  a.status = a.status === '' ? 'booked' : a.status === 'booked' ? 'done' : '';
+  a.status = a.status==='' ? 'booked' : a.status==='booked' ? 'done' : '';
   saveState(); renderMain();
 }
 
-function deleteActivity(id) {
-  if (!confirm('이 액티비티를 삭제할까요?')) return;
-  state.activities = state.activities.filter(a => a.id !== id);
+function delAct(id) {
+  if (!confirm('삭제할까요?')) return;
+  state.activities = state.activities.filter(a => a.id!==id);
   saveState(); renderMain();
 }
 
-// ──────────────────────────────────────────────
-// RESTAURANTS
-// ──────────────────────────────────────────────
-let rSearch = '', rFilterRegion = 'all';
+// ━━━ RESTAURANTS ━━━
+let rSearch = '', rRegion = 'all';
+
 function renderRestaurants() {
   const regions = [...new Set(state.restaurants.map(r => r.region))];
-  const filtered = state.restaurants.filter(r => {
-    const matchSearch = !rSearch || r.name.toLowerCase().includes(rSearch.toLowerCase()) || r.desc.toLowerCase().includes(rSearch.toLowerCase());
-    const matchRegion = rFilterRegion === 'all' || r.region === rFilterRegion;
-    return matchSearch && matchRegion;
-  });
   const visited = state.restaurants.filter(r => r.visited).length;
+  const filtered = state.restaurants.filter(r => {
+    const ms = !rSearch || r.name.toLowerCase().includes(rSearch.toLowerCase()) || r.desc.toLowerCase().includes(rSearch.toLowerCase());
+    const mr = rRegion==='all' || r.region===rRegion;
+    return ms && mr;
+  });
   return `
-  <div class="stat-row">
-    <div class="stat-card accent"><div class="stat-num">${state.restaurants.length}</div><div class="stat-lbl">총 맛집</div></div>
-    <div class="stat-card"><div class="stat-num">${visited}</div><div class="stat-lbl">방문완료</div></div>
-    <div class="stat-card"><div class="stat-num">${state.restaurants.length - visited}</div><div class="stat-lbl">미방문</div></div>
-  </div>
-  <div class="r-search-bar">
-    <input class="r-search-input" placeholder="🔍 맛집 이름, 메뉴 검색..." value="${rSearch}" oninput="rSearch=this.value;renderMain()">
-  </div>
-  <div class="r-filters">
-    <span class="r-filter${rFilterRegion==='all'?' on':''}" onclick="rFilterRegion='all';renderMain()">전체</span>
-    ${regions.map(r => `<span class="r-filter${rFilterRegion===r?' on':''}" onclick="rFilterRegion='${r}';renderMain()">${r}</span>`).join('')}
-  </div>
-  <div class="note-box">💡 현금 필수: 야시장·로컬 식당은 현금(베트남 동) 결제만 가능. 고수 빼달라고 할 때: "không ngò" (콩응오)</div>
-  <div class="r-grid" style="margin-top:14px">
-    ${filtered.length === 0 ? '<div class="empty-state">검색 결과가 없어요</div>' : filtered.map(r => renderRestCard(r)).join('')}
-  </div>`;
-}
-
-function renderRestCard(r) {
-  return `<div class="r-card">
-    <div class="r-emoji-col">${r.emoji||'🍴'}</div>
-    <div class="r-info">
-      <div class="r-top">
-        <span class="r-name">${r.name}</span>
-        ${r.visited?'<span class="r-visited-badge">✓ 방문완료</span>':''}
-      </div>
-      <div><span class="r-cat">${r.category}</span><span class="r-region-pill">${r.region}</span></div>
-      <div class="r-desc">${r.desc}</div>
-      ${r.note ? `<div class="r-note">📝 ${r.note}</div>` : ''}
-      <div class="r-actions">
-        <button class="visit-btn${r.visited?' on':''}" onclick="toggleVisited('${r.id}')">${r.visited?'✓ 방문완료':'방문 체크'}</button>
-        <button class="r-edit-btn" onclick="showEditRestModal('${r.id}')">편집</button>
-        <button class="r-del-btn" onclick="deleteRest('${r.id}')">삭제</button>
-      </div>
+    <div class="stat-row">
+      <div class="stat-pill hi"><span class="stat-pill-num">${state.restaurants.length}</span><span class="stat-pill-lbl">총 맛집</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${visited}</span><span class="stat-pill-lbl">방문완료</span></div>
+      <div class="stat-pill"><span class="stat-pill-num">${state.restaurants.length-visited}</span><span class="stat-pill-lbl">미방문</span></div>
     </div>
-  </div>`;
+    <div class="search-wrap">
+      <input class="search-input" placeholder="맛집 이름, 메뉴 검색…" value="${rSearch.replace(/"/g,'&quot;')}" oninput="rSearch=this.value;renderMain()">
+    </div>
+    <div class="filter-row">
+      <span class="fchip${rRegion==='all'?' on':''}" onclick="rRegion='all';renderMain()">전체</span>
+      ${regions.map(r => `<span class="fchip${rRegion===r?' on':''}" onclick="rRegion='${r}';renderMain()">${r}</span>`).join('')}
+    </div>
+    <div class="note-strip">💡 현금 필수: 야시장·로컬 식당은 현금(베트남 동) 결제. 고수 빼달라고 할 때: <strong>"không ngò"</strong> (콩응오)</div>
+    <div class="rest-list" style="margin-top:14px">
+      ${filtered.length === 0
+        ? '<div class="empty"><div class="empty-icon">🔍</div>검색 결과가 없어요</div>'
+        : filtered.map(r => `
+        <div class="rest-card">
+          <div class="rest-emoji">${r.emoji||'🍴'}</div>
+          <div class="rest-body">
+            <div class="rest-top">
+              <span class="rest-name">${r.name}</span>
+              ${r.visited ? '<span class="visited-badge">✓ 방문완료</span>' : ''}
+            </div>
+            <div class="rest-meta">
+              <span class="rest-cat">${r.category}</span>
+              <span class="rest-region">${r.region}</span>
+            </div>
+            <div class="rest-desc">${r.desc}</div>
+            ${r.note ? `<div class="rest-note">📝 ${r.note}</div>` : ''}
+            <div class="rest-actions">
+              <button class="visit-btn${r.visited?' on':''}" onclick="toggleVisited('${r.id}')">${r.visited?'✓ 방문완료':'방문 체크'}</button>
+              <button class="text-btn edit" onclick="showEditRestModal('${r.id}')">편집</button>
+              <button class="text-btn del" onclick="delRest('${r.id}')">삭제</button>
+            </div>
+          </div>
+        </div>`).join('')}
+    </div>`;
 }
 
 function toggleVisited(id) {
-  const r = state.restaurants.find(x => x.id === id);
+  const r = state.restaurants.find(x => x.id===id);
   if (r) { r.visited = !r.visited; saveState(); renderMain(); }
 }
-function deleteRest(id) {
-  if (!confirm('이 맛집을 삭제할까요?')) return;
-  state.restaurants = state.restaurants.filter(r => r.id !== id);
+function delRest(id) {
+  if (!confirm('삭제할까요?')) return;
+  state.restaurants = state.restaurants.filter(r => r.id!==id);
   saveState(); renderMain();
 }
 
-// ──────────────────────────────────────────────
-// HOTELS
-// ──────────────────────────────────────────────
+// ━━━ HOTELS ━━━
 function renderHotels() {
-  const doneKeys = Object.keys(state.hotelDone||{}).filter(k=>state.hotelDone[k]);
   return SEED_HOTELS.map(hotel => {
-    const totalFac = hotel.facilities.length;
-    const doneFac = hotel.facilities.filter((_,fi)=>state.hotelDone&&state.hotelDone[hotel.id+'_'+fi]).length;
-    return `
-  <div class="hotel-block">
-    <div class="hotel-hdr">
-      <span class="hotel-hdr-name">${hotel.name}</span>
-      <span class="hotel-period-badge">${hotel.period}</span>
-      <span style="font-size:12px;color:var(--text3);margin-left:4px">${doneFac}/${totalFac} 이용완료</span>
-    </div>
-    <div class="hotel-table-wrap">
-      <table>
-        <thead><tr><th style="width:50px">완료</th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr></thead>
-        <tbody>
-        ${hotel.facilities.map((f, fi) => {
-          const key = hotel.id + '_' + fi;
-          const done = !!(state.hotelDone && state.hotelDone[key]);
-          return `<tr>
-            <td><div class="fac-done${done?' on':''}" onclick="toggleFacDone('${hotel.id}',${fi})" title="완료 체크">${done?'✓':'○'}</div></td>
-            <td><span class="badge badge-${f.type}">${f.type==='free'?'무료':'유료'}</span></td>
-            <td style="font-weight:500">${f.name}</td>
-            <td style="color:var(--text3)">${f.hours}</td>
-            <td style="color:var(--text3)">${f.note}</td>
-          </tr>`;
-        }).join('')}
-        </tbody>
-      </table>
-    </div>
-    <div class="hotel-tip">💡 ${hotel.tip}</div>
-  </div>`;
+    const doneCnt = hotel.facilities.filter((_,fi) => state.hotelDone && state.hotelDone[hotel.id+'_'+fi]).length;
+    return `<div class="hotel-section">
+      <div class="hotel-sect-head">
+        <span class="hotel-sect-name">${hotel.name}</span>
+        <span class="hotel-period">${hotel.period}</span>
+        <span class="hotel-progress">${doneCnt}/${hotel.facilities.length}</span>
+      </div>
+      <div class="hotel-table-wrap">
+        <table>
+          <thead><tr><th style="width:46px"></th><th>구분</th><th>시설 / 프로그램</th><th>운영시간</th><th>비고</th></tr></thead>
+          <tbody>
+            ${hotel.facilities.map((f,fi) => {
+              const k = hotel.id+'_'+fi;
+              const on = !!(state.hotelDone && state.hotelDone[k]);
+              return `<tr>
+                <td><button class="check-btn${on?' on':''}" onclick="toggleFac('${hotel.id}',${fi})" title="완료 체크">${on?'✓':''}</button></td>
+                <td><span class="badge badge-${f.type}">${f.type==='free'?'무료':'유료'}</span></td>
+                <td style="font-weight:500">${f.name}</td>
+                <td style="color:var(--text3);font-size:12px">${f.hours}</td>
+                <td style="color:var(--text3);font-size:12px">${f.note}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+      <div class="hotel-tip">💡 ${hotel.tip}</div>
+    </div>`;
   }).join('');
 }
 
-function toggleFacDone(hotelId, fi) {
+function toggleFac(hid, fi) {
   if (!state.hotelDone) state.hotelDone = {};
-  const key = hotelId + '_' + fi;
-  state.hotelDone[key] = !state.hotelDone[key];
+  const k = hid+'_'+fi;
+  state.hotelDone[k] = !state.hotelDone[k];
   saveState(); renderMain();
 }
 
-// ──────────────────────────────────────────────
-// MODAL SYSTEM
-// ──────────────────────────────────────────────
-let modalMode = null, modalCtx = {};
-function showModal(title, bodyHtml) {
+// ━━━ MODAL ━━━
+let mMode = null, mCtx = {};
+function showModal(title, body) {
   document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').innerHTML = bodyHtml;
+  document.getElementById('modalBody').innerHTML = body;
   document.getElementById('modalOverlay').classList.add('on');
 }
 function hideModal() { document.getElementById('modalOverlay').classList.remove('on'); }
-function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) hideModal(); }
+function closeModal(e) { if (e.target===document.getElementById('modalOverlay')) hideModal(); }
 
-// ─── Timeline Modal ───
-function showAddTimelineModal(di) {
-  modalMode = 'addTL'; modalCtx = { di };
+function showAddTLModal(di) {
+  mMode='addTL'; mCtx={di};
   showModal('항목 추가', tlForm({time:'',type:'hotel',text:'',tag:'',tagType:''}));
 }
 function showEditTLModal(di, ii) {
-  modalMode = 'editTL'; modalCtx = { di, ii };
+  mMode='editTL'; mCtx={di,ii};
   showModal('항목 편집', tlForm(state.schedule[di].items[ii]));
 }
 function tlForm(item) {
   return `
-  <div class="form-row"><label class="form-label">시간</label>
-    <input class="form-input" id="f-time" value="${item.time||''}" placeholder="예: 09:00">
-  </div>
-  <div class="form-row"><label class="form-label">유형</label>
-    <select class="form-select" id="f-type">
-      ${['meal','pool','out','hotel','eve'].map(t => `<option value="${t}"${item.type===t?' selected':''}>${{meal:'🍽 식사',pool:'🏊 풀/비치',out:'🗺 외출/관광',hotel:'🏨 호텔',eve:'🌅 이벤트'}[t]}</option>`).join('')}
-    </select>
-  </div>
-  <div class="form-row"><label class="form-label">내용</label>
-    <input class="form-input" id="f-text" value="${(item.text||'').replace(/"/g,'&quot;')}" placeholder="일정 내용">
-  </div>
-  <div class="form-row"><label class="form-label">태그 (선택)</label>
-    <input class="form-input" id="f-tag" value="${item.tag||''}" placeholder="예: 예약 필수">
-  </div>`;
+    <div class="f-row"><label class="f-label">시간</label>
+      <input class="f-inp" id="f-time" value="${item.time||''}" placeholder="09:00"></div>
+    <div class="f-row"><label class="f-label">유형</label>
+      <select class="f-sel" id="f-type">
+        ${['meal','pool','out','hotel','eve'].map(t=>`<option value="${t}"${item.type===t?' selected':''}>${{meal:'🍽 식사',pool:'🏊 풀/비치',out:'🗺 외출/관광',hotel:'🏨 호텔',eve:'🌅 이벤트'}[t]}</option>`).join('')}
+      </select></div>
+    <div class="f-row"><label class="f-label">내용</label>
+      <input class="f-inp" id="f-text" value="${(item.text||'').replace(/"/g,'&quot;')}" placeholder="일정 내용"></div>
+    <div class="f-row"><label class="f-label">태그 (선택)</label>
+      <input class="f-inp" id="f-tag" value="${item.tag||''}" placeholder="예: 예약 필수"></div>`;
 }
 
-// ─── Activity Modal ───
-function showAddActivityModal() {
-  modalMode = 'addAct'; modalCtx = {};
+function showAddActModal() {
+  mMode='addAct'; mCtx={};
   showModal('액티비티 추가', actForm({icon:'🌊',region:'중부 롱비치',name:'',desc:'',price:'',note:''}));
 }
-function showEditActivityModal(id) {
-  modalMode = 'editAct'; modalCtx = { id };
-  const a = state.activities.find(x => x.id === id);
-  showModal('액티비티 편집', actForm(a));
+function showEditActModal(id) {
+  mMode='editAct'; mCtx={id};
+  showModal('액티비티 편집', actForm(state.activities.find(x=>x.id===id)));
 }
 function actForm(a) {
-  const regions = ['중부 롱비치','북서부 바이다이','남부 켐 비치'];
+  const regs = ['중부 롱비치','북서부 바이다이','남부 켐 비치'];
   return `
-  <div class="form-row"><label class="form-label">아이콘</label>
-    <input class="form-input" id="f-icon" value="${a.icon||'🌊'}">
-  </div>
-  <div class="form-row"><label class="form-label">지역</label>
-    <select class="form-select" id="f-region">
-      ${regions.map(r => `<option value="${r}"${a.region===r?' selected':''}>${r}</option>`).join('')}
-    </select>
-  </div>
-  <div class="form-row"><label class="form-label">이름</label>
-    <input class="form-input" id="f-name" value="${(a.name||'').replace(/"/g,'&quot;')}">
-  </div>
-  <div class="form-row"><label class="form-label">설명</label>
-    <textarea class="form-textarea" id="f-desc">${a.desc||''}</textarea>
-  </div>
-  <div class="form-row"><label class="form-label">가격/시간</label>
-    <input class="form-input" id="f-price" value="${(a.price||'').replace(/"/g,'&quot;')}">
-  </div>
-  <div class="form-row"><label class="form-label">메모</label>
-    <input class="form-input" id="f-note" value="${(a.note||'').replace(/"/g,'&quot;')}" placeholder="개인 메모">
-  </div>`;
+    <div class="f-row"><label class="f-label">아이콘</label><input class="f-inp" id="f-icon" value="${a.icon||'🌊'}"></div>
+    <div class="f-row"><label class="f-label">지역</label>
+      <select class="f-sel" id="f-region">
+        ${regs.map(r=>`<option value="${r}"${a.region===r?' selected':''}>${r}</option>`).join('')}
+      </select></div>
+    <div class="f-row"><label class="f-label">이름</label><input class="f-inp" id="f-name" value="${(a.name||'').replace(/"/g,'&quot;')}"></div>
+    <div class="f-row"><label class="f-label">설명</label><textarea class="f-ta" id="f-desc">${a.desc||''}</textarea></div>
+    <div class="f-row"><label class="f-label">가격/시간</label><input class="f-inp" id="f-price" value="${(a.price||'').replace(/"/g,'&quot;')}"></div>
+    <div class="f-row"><label class="f-label">메모</label><input class="f-inp" id="f-note" value="${(a.note||'').replace(/"/g,'&quot;')}" placeholder="개인 메모"></div>`;
 }
 
-// ─── Restaurant Modal ───
 function showAddRestModal() {
-  modalMode = 'addRest'; modalCtx = {};
+  mMode='addRest'; mCtx={};
   showModal('맛집 추가', restForm({emoji:'🍴',name:'',region:'중부 소나시',category:'',desc:'',note:''}));
 }
-function showAddRestaurantModal() { showAddRestModal(); }
 function showEditRestModal(id) {
-  modalMode = 'editRest'; modalCtx = { id };
-  const r = state.restaurants.find(x => x.id === id);
-  showModal('맛집 편집', restForm(r));
+  mMode='editRest'; mCtx={id};
+  showModal('맛집 편집', restForm(state.restaurants.find(x=>x.id===id)));
 }
 function restForm(r) {
-  const regions = ['중부 소나시','북부 그랜드월드','남부 켐 비치'];
+  const regs = ['중부 소나시','북부 그랜드월드','남부 켐 비치'];
   return `
-  <div class="form-row"><label class="form-label">이모지</label>
-    <input class="form-input" id="f-emoji" value="${r.emoji||'🍴'}">
-  </div>
-  <div class="form-row"><label class="form-label">이름</label>
-    <input class="form-input" id="f-name" value="${(r.name||'').replace(/"/g,'&quot;')}">
-  </div>
-  <div class="form-row"><label class="form-label">지역</label>
-    <select class="form-select" id="f-region">
-      ${regions.map(rg => `<option value="${rg}"${r.region===rg?' selected':''}>${rg}</option>`).join('')}
-    </select>
-  </div>
-  <div class="form-row"><label class="form-label">카테고리</label>
-    <input class="form-input" id="f-category" value="${(r.category||'').replace(/"/g,'&quot;')}">
-  </div>
-  <div class="form-row"><label class="form-label">설명</label>
-    <textarea class="form-textarea" id="f-desc">${r.desc||''}</textarea>
-  </div>
-  <div class="form-row"><label class="form-label">메모</label>
-    <input class="form-input" id="f-note" value="${(r.note||'').replace(/"/g,'&quot;')}" placeholder="개인 메모">
-  </div>`;
+    <div class="f-row"><label class="f-label">이모지</label><input class="f-inp" id="f-emoji" value="${r.emoji||'🍴'}"></div>
+    <div class="f-row"><label class="f-label">이름</label><input class="f-inp" id="f-name" value="${(r.name||'').replace(/"/g,'&quot;')}"></div>
+    <div class="f-row"><label class="f-label">지역</label>
+      <select class="f-sel" id="f-region">
+        ${regs.map(rg=>`<option value="${rg}"${r.region===rg?' selected':''}>${rg}</option>`).join('')}
+      </select></div>
+    <div class="f-row"><label class="f-label">카테고리</label><input class="f-inp" id="f-category" value="${(r.category||'').replace(/"/g,'&quot;')}"></div>
+    <div class="f-row"><label class="f-label">설명</label><textarea class="f-ta" id="f-desc">${r.desc||''}</textarea></div>
+    <div class="f-row"><label class="f-label">메모</label><input class="f-inp" id="f-note" value="${(r.note||'').replace(/"/g,'&quot;')}" placeholder="개인 메모"></div>`;
 }
 
-// ─── Save Modal ───
 function saveModal() {
   const g = id => document.getElementById(id)?.value?.trim() || '';
-  if (modalMode === 'addTL' || modalMode === 'editTL') {
-    const item = { time:g('f-time'), type:g('f-type'), text:g('f-text'), tag:g('f-tag'), tagType:g('f-type'), done: false };
+  if (mMode==='addTL' || mMode==='editTL') {
+    const item = {time:g('f-time'),type:g('f-type'),text:g('f-text'),tag:g('f-tag'),tagType:g('f-type'),done:false};
     if (!item.text) return alert('내용을 입력해주세요');
-    if (modalMode === 'addTL') {
-      state.schedule[modalCtx.di].items.push(item);
-    } else {
-      item.done = state.schedule[modalCtx.di].items[modalCtx.ii].done;
-      state.schedule[modalCtx.di].items[modalCtx.ii] = item;
-    }
+    if (mMode==='addTL') state.schedule[mCtx.di].items.push(item);
+    else { item.done = state.schedule[mCtx.di].items[mCtx.ii].done; state.schedule[mCtx.di].items[mCtx.ii] = item; }
     saveState(); hideModal(); renderMain();
-    document.getElementById('daycard-' + modalCtx.di)?.classList.add('open');
-  } else if (modalMode === 'addAct' || modalMode === 'editAct') {
-    const a = { icon:g('f-icon'), region:g('f-region'), name:g('f-name'), desc:g('f-desc'), price:g('f-price'), note:g('f-note') };
+    requestAnimationFrame(() => { document.getElementById('dc'+mCtx.di)?.classList.add('open'); });
+  } else if (mMode==='addAct' || mMode==='editAct') {
+    const a = {icon:g('f-icon'),region:g('f-region'),name:g('f-name'),desc:g('f-desc'),price:g('f-price'),note:g('f-note')};
     if (!a.name) return alert('이름을 입력해주세요');
-    if (modalMode === 'addAct') {
-      a.id = 'a' + Date.now(); a.status = '';
-      state.activities.push(a);
-    } else {
-      const idx = state.activities.findIndex(x => x.id === modalCtx.id);
-      state.activities[idx] = { ...state.activities[idx], ...a };
-    }
+    if (mMode==='addAct') { a.id='a'+Date.now(); a.status=''; state.activities.push(a); }
+    else { const i=state.activities.findIndex(x=>x.id===mCtx.id); state.activities[i]={...state.activities[i],...a}; }
     saveState(); hideModal(); renderMain();
-  } else if (modalMode === 'addRest' || modalMode === 'editRest') {
-    const r = { emoji:g('f-emoji'), name:g('f-name'), region:g('f-region'), category:g('f-category'), desc:g('f-desc'), note:g('f-note') };
+  } else if (mMode==='addRest' || mMode==='editRest') {
+    const r = {emoji:g('f-emoji'),name:g('f-name'),region:g('f-region'),category:g('f-category'),desc:g('f-desc'),note:g('f-note')};
     if (!r.name) return alert('이름을 입력해주세요');
-    if (modalMode === 'addRest') {
-      r.id = 'r' + Date.now(); r.visited = false;
-      state.restaurants.push(r);
-    } else {
-      const idx = state.restaurants.findIndex(x => x.id === modalCtx.id);
-      state.restaurants[idx] = { ...state.restaurants[idx], ...r };
-    }
+    if (mMode==='addRest') { r.id='r'+Date.now(); r.visited=false; state.restaurants.push(r); }
+    else { const i=state.restaurants.findIndex(x=>x.id===mCtx.id); state.restaurants[i]={...state.restaurants[i],...r}; }
     saveState(); hideModal(); renderMain();
   }
 }
 
-// ──────────────────────────────────────────────
-// INIT
-// ──────────────────────────────────────────────
+// ━━━ INIT ━━━
 loadState();
 renderMain();
 loadFromServer();
-
 </script>
 </body>
 </html>
