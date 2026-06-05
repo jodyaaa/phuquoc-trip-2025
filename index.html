@@ -496,6 +496,21 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .btn-save:hover { background: var(--ocean2); }
 
+/* ━━━ DDAY ━━━ */
+.dday-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--f-display); font-size: 11px; font-weight: 700;
+  padding: 2px 9px; border-radius: 20px; letter-spacing: .02em;
+  background: var(--gold); color: #fff;
+  box-shadow: 0 2px 8px rgba(232,160,32,.4);
+}
+.dday-badge.today { background: var(--coral); box-shadow: 0 2px 8px rgba(212,97,74,.4); animation: pulse 1.5s ease-in-out infinite; }
+.dday-badge.past  { background: var(--green); box-shadow: 0 2px 8px rgba(4,120,87,.3); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+
+.ts-dday { font-family: var(--f-display); font-size: 20px; font-weight: 700; color: var(--gold); line-height: 1; }
+.ts-dday-lbl { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 2px; }
+
 /* ━━━ EMPTY ━━━ */
 .empty { text-align: center; padding: 40px 20px; color: var(--text3); }
 .empty-icon { font-size: 36px; margin-bottom: 10px; }
@@ -517,7 +532,10 @@ tbody tr:last-child td { border-bottom: none; }
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <div class="nav-brand-name">Phú Quốc</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="nav-brand-name">Phú Quốc</div>
+        <span class="dday-badge" id="navDday"></span>
+      </div>
       <div class="nav-brand-sub">7/24 – 8/7 · 2026</div>
     </div>
     <div class="nav-tabs">
@@ -532,6 +550,10 @@ tbody tr:last-child td { border-bottom: none; }
 
 <div class="trip-strip">
   <div class="trip-inner">
+    <div class="ts" style="border-right:1px solid rgba(255,255,255,.15);padding-right:24px">
+      <span class="ts-dday-lbl">출발까지</span>
+      <span class="ts-dday" id="stripDday">–</span>
+    </div>
     <div class="ts"><span class="ts-l">출발</span><span class="ts-v">7/24(목) 19:30 이스타항공</span></div>
     <div class="ts"><span class="ts-l">귀국</span><span class="ts-v">8/7(목) 08:15 인천</span></div>
     <div class="ts"><span class="ts-l">숙박</span><span class="ts-v">4개 리조트 · 13박</span></div>
@@ -1176,10 +1198,30 @@ function saveModal() {
   }
 }
 
+// ━━━ DDAY ━━━
+function initDday() {
+  const departure = new Date('2026-07-24T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.ceil((departure - today) / (1000 * 60 * 60 * 24));
+
+  let text, cls;
+  if (diff > 0)      { text = `D-${diff}`;          cls = ''; }
+  else if (diff === 0) { text = 'D-Day! 🛫';         cls = 'today'; }
+  else               { text = `D+${Math.abs(diff)}`; cls = 'past'; }
+
+  const nav = document.getElementById('navDday');
+  if (nav) { nav.textContent = text; nav.className = 'dday-badge ' + cls; }
+
+  const strip = document.getElementById('stripDday');
+  if (strip) { strip.textContent = text; }
+}
+
 // ━━━ INIT ━━━
 loadState();
 renderMain();
 loadFromServer();
+initDday();
 </script>
 </body>
 </html>
